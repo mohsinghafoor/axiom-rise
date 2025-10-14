@@ -11,12 +11,12 @@ export default function ProductCategoriesSection() {
     { 
       title: "HOODIES MANUFACTURER", 
       description: "Comfortable and stylish hoodies for all seasons",
-      image: "/images/hero/hoodies.avif"
+      image: "/images/hero/hoodies.png"
     },
     { 
       title: "WHOLESALE VARSITY JACKETS", 
       description: "Classic varsity jackets with modern styling",
-      image: "/images/hero/varsity-jacket.webp"
+      image: "/images/hero/varsity-jacket.png"
     },
     { 
       title: "HOODIES SUPPLIER AND VENDORS", 
@@ -46,7 +46,7 @@ export default function ProductCategoriesSection() {
     { 
       title: "WHOLESALE SHORTS", 
       description: "Versatile shorts for sports, casual, and activewear",
-      image: "/images/hero/shorts.avif"
+      image: "/images/hero/shorts.png"
     },
     { 
       title: "FITNESS CLOTHING MANUFACTURER", 
