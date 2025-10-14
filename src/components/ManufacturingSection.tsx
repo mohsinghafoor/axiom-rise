@@ -21,17 +21,17 @@ export default function ManufacturingSection() {
               </span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
               Are You Seeking a Trusted Partner in the Garment Industry for Your{' '}
               <span className="text-primary-600">Perfect Clothing Manufacturing?</span>
             </h2>
             
-            <p className="text-lg md:text-xl text-gray-600 mb-6 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
               With countless garment producers in the market, finding the right partner can be overwhelming and exhausting. 
               <span className="font-semibold text-gray-900"> But your search ends here!</span> As one of the most reputable and established clothing manufacturing companies, we provide comprehensive solutions for all your garment production requirements.
             </p>
             
-            <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
               As a pioneer of innovative fashion, we pride ourselves on being your ultimate manufacturing partner, ensuring your brand distinguishes itself in today&apos;s competitive marketplace through our premium{' '}
               <Link href="/services" className="text-primary-600 hover:text-primary-700 font-semibold underline decoration-2 underline-offset-4 transition-colors">
                 garment manufacturing services
@@ -40,9 +40,9 @@ export default function ManufacturingSection() {
             </p>
             
             <div className="mt-8">
-              <Link href="/contact" className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-blue-600 text-white text-base font-bold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-lg">
+              <Link href="/contact" className="inline-flex items-center px-7 py-3 bg-gradient-to-r from-primary-600 to-blue-600 text-white text-sm font-bold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-lg">
                 GET A QUOTE
-                <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
@@ -67,12 +67,12 @@ export default function ManufacturingSection() {
               {/* Enhanced Stats Grid */}
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="group bg-white/90 backdrop-blur-sm rounded-2xl p-5 text-center border border-gray-100 hover:border-primary-300 hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl md:text-5xl font-bold text-primary-600">5+</div>
-                  <div className="text-sm md:text-base text-gray-600 mt-1 font-semibold">Years Experience</div>
+                  <div className="text-3xl md:text-4xl font-bold text-primary-600">5+</div>
+                  <div className="text-xs md:text-sm text-gray-600 mt-1 font-semibold">Years Experience</div>
                 </div>
                 <div className="group bg-white/90 backdrop-blur-sm rounded-2xl p-5 text-center border border-gray-100 hover:border-primary-300 hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl md:text-5xl font-bold text-primary-600">20+</div>
-                  <div className="text-sm md:text-base text-gray-600 mt-1 font-semibold">Countries Served</div>
+                  <div className="text-3xl md:text-4xl font-bold text-primary-600">20+</div>
+                  <div className="text-xs md:text-sm text-gray-600 mt-1 font-semibold">Countries Served</div>
                 </div>
               </div>
             </div>

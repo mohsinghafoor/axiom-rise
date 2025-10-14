@@ -398,6 +398,14 @@ export default function Navbar() {
               >
                 BLOG
               </Link>
+              <Link
+                href="/about"
+                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
+                  pathname === '/about' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
+                }`}
+              >
+                ABOUT US
+              </Link>
             </div>
           </div>
 
