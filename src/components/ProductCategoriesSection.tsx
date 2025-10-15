@@ -42,7 +42,7 @@ export default function ProductCategoriesSection() {
     { 
       title: "JACKET MANUFACTURER", 
       description: "Quality jackets from casual to premium outerwear",
-      image: "/images/hero/leather-jacket.jpg"
+      image: "/images/products/jackets.png"
     },
     { 
       title: "HOODIES MANUFACTURER", 
