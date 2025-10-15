@@ -1,9 +1,46 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 
 export default function ManufacturingSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px 0px 0px 0px'
+      }
+    );
+
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
   return (
-    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)' }}>
+    <section 
+      ref={sectionRef}
+      className="py-20 relative overflow-hidden" 
+      style={{ background: 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)' }}
+    >
       {/* Decorative accent circles */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl"></div>
@@ -13,7 +50,9 @@ export default function ManufacturingSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Text Content - Wider on desktop, appears first on mobile */}
-          <div className="order-1 lg:col-span-3">
+          <div className={`order-1 lg:col-span-3 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+          }`}>
             {/* Badge */}
             <div className="inline-block mb-6">
               <span className="bg-primary-600 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
@@ -50,7 +89,9 @@ export default function ManufacturingSection() {
           </div>
           
           {/* Image - Smaller on desktop, appears second on mobile */}
-          <div className="order-2 lg:col-span-2">
+          <div className={`order-2 lg:col-span-2 transition-all duration-700 delay-200 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+          }`}>
             <div className="group relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-md mx-auto lg:max-w-none hover:shadow-xl transition-shadow duration-300">
                 <Image 

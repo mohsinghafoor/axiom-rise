@@ -1,18 +1,35 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect, useRef } from 'react';
 
 interface BlogGridProps {
   activeCategory: string;
 }
 
 export default function BlogGrid({ activeCategory }: BlogGridProps) {
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const cardsRef = useRef<(HTMLElement | null)[]>([]);
+
+  // Helper function to format date with day gap
+  const getFormattedDate = (daysAgo: number) => {
+    const date = new Date();
+    date.setDate(date.getDate() - daysAgo);
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  };
+
   const blogPosts = [
     {
       title: "The Complete Guide to Starting Your Private Label Clothing Line",
       excerpt: "Learn everything you need to know about launching your own private label clothing brand, from finding the right manufacturer to quality control.",
       image: "/images/hero/hoodies.png",
       category: "Manufacturing",
-      date: "October 10, 2025",
+      date: getFormattedDate(0), // Today
       readTime: "8 min read",
       author: "Sarah Johnson"
     },
@@ -21,7 +38,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       excerpt: "Discover how eco-friendly practices and sustainable materials are transforming the clothing manufacturing landscape.",
       image: "/images/hero/fitness.jpg",
       category: "Sustainability",
-      date: "October 8, 2025",
+      date: getFormattedDate(1), // Yesterday
       readTime: "6 min read",
       author: "Michael Chen"
     },
@@ -30,7 +47,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       excerpt: "Everything you need to know about fabric types, quality grades, and how to choose the right materials for your clothing line.",
       image: "/images/hero/tshirt.jpg",
       category: "Quality Control",
-      date: "October 5, 2025",
+      date: getFormattedDate(2), // 2 days ago
       readTime: "10 min read",
       author: "Emily Rodriguez"
     },
@@ -39,7 +56,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       excerpt: "Navigate the complex world of international trade with our comprehensive guide to export documentation and customs clearance.",
       image: "/images/hero/varsity-jacket.png",
       category: "Export Guide",
-      date: "October 3, 2025",
+      date: getFormattedDate(3), // 3 days ago
       readTime: "7 min read",
       author: "David Kim"
     },
@@ -48,7 +65,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       excerpt: "Stay ahead of the curve with our analysis of the biggest fashion trends and how they're influencing manufacturing demands.",
       image: "/images/hero/sports-wear.png",
       category: "Fashion Trends",
-      date: "September 28, 2025",
+      date: getFormattedDate(4), // 4 days ago
       readTime: "5 min read",
       author: "Jessica Martinez"
     },
@@ -57,7 +74,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       excerpt: "A detailed checklist to ensure your products meet international quality standards and exceed customer expectations.",
       image: "/images/hero/sweatshirt.webp",
       category: "Quality Control",
-      date: "September 25, 2025",
+      date: getFormattedDate(5), // 5 days ago
       readTime: "9 min read",
       author: "Robert Thompson"
     },
@@ -66,7 +83,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       excerpt: "Key factors to consider when selecting a manufacturing partner, from production capacity to communication and reliability.",
       image: "/images/hero/leather-jacket.jpg",
       category: "Manufacturing",
-      date: "September 20, 2025",
+      date: getFormattedDate(6), // 6 days ago
       readTime: "8 min read",
       author: "Amanda Lee"
     },
@@ -75,7 +92,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       excerpt: "Explore the booming athleisure market and how manufacturers can capitalize on this growing trend.",
       image: "/images/hero/shorts.png",
       category: "Industry News",
-      date: "September 15, 2025",
+      date: getFormattedDate(7), // 7 days ago
       readTime: "6 min read",
       author: "Chris Anderson"
     },
@@ -84,7 +101,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       excerpt: "Learn about minimum order quantities, how they work, and strategies for negotiating better terms with manufacturers.",
       image: "/images/hero/hoodies.png",
       category: "Manufacturing",
-      date: "September 10, 2025",
+      date: getFormattedDate(8), // 8 days ago
       readTime: "7 min read",
       author: "Lisa Wang"
     }
@@ -94,6 +111,54 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
   const filteredPosts = activeCategory === 'All' 
     ? blogPosts 
     : blogPosts.filter(post => post.category === activeCategory);
+
+  useEffect(() => {
+    // Reset visible cards when filtered posts change
+    setVisibleCards(new Set());
+    
+    // Minimal delay to ensure DOM is ready
+    const setupTimer = setTimeout(() => {
+      const observers: IntersectionObserver[] = [];
+      
+      cardsRef.current.forEach((card, index) => {
+        if (!card) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Reduced delay for faster appearance
+                const delay = Math.min(index * 20, 100); // Max 100ms delay
+                setTimeout(() => {
+                  setVisibleCards((prev) => {
+                    const newSet = new Set(prev);
+                    newSet.add(index);
+                    return newSet;
+                  });
+                }, delay);
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.05, // Reduced threshold - triggers earlier
+            rootMargin: '100px 0px 0px 0px' // Start loading 100px before entering viewport
+          }
+        );
+
+        observer.observe(card);
+        observers.push(observer);
+      });
+
+      return () => {
+        observers.forEach(obs => obs.disconnect());
+      };
+    }, 50); // Reduced initial delay
+
+    return () => {
+      clearTimeout(setupTimer);
+    };
+  }, [filteredPosts.length, activeCategory]);
 
   return (
     <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%)' }}>
@@ -110,7 +175,15 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
           {filteredPosts.map((post, index) => (
             <article 
               key={index}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              ref={(el) => {cardsRef.current[index] = el}}
+              className={`bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${
+                visibleCards.has(index)
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-10'
+              }`}
+              style={{
+                transitionDelay: visibleCards.has(index) ? `${Math.min(index * 20, 100)}ms` : '0ms'
+              }}
             >
               {/* Image */}
               <div className="relative h-56 w-full overflow-hidden">
