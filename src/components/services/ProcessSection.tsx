@@ -41,7 +41,7 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgb(253, 252, 251) 0%, rgb(226, 209, 195) 100%);' }}>
+    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgb(253, 252, 251) 25%, rgb(226, 209, 195) 96%)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">

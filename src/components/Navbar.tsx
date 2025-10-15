@@ -245,7 +245,8 @@ export default function Navbar() {
                 alt="Axiom Rise Logo" 
                 width={150} 
                 height={40}
-                className="h-10 w-auto"
+                className="h-auto w-auto"
+                style={{ height: '40px' }}
                 priority
               />
             </Link>
@@ -264,7 +265,7 @@ export default function Navbar() {
               </Link>
               
               {/* Products Dropdown */}
-              <div 
+              {/* <div 
                 className="relative group"
                 onMouseEnter={() => {
                   setIsProductsOpen(true)
@@ -280,10 +281,10 @@ export default function Navbar() {
                   <svg className="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
-                </button>
+                </button> */}
 
                 {/* Main Dropdown */}
-                {isProductsOpen && (
+                {/* {isProductsOpen && (
                   <div className="absolute left-0 top-full w-80 bg-white rounded-xl border border-gray-200 z-50" style={{ boxShadow: '0 8px 32px 0 rgba(60,72,88,0.18)' }}>
                     <div className="py-2">
                       {productCategories.map((category, index) => (
@@ -303,10 +304,10 @@ export default function Navbar() {
                             <svg className="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                             </svg>
-                          </Link>
+                          </Link> */}
 
                           {/* Submenu */}
-                          {activeSubmenu === category.title && (
+                          {/* {activeSubmenu === category.title && (
                             <div 
                               className="absolute left-full top-0 w-72 bg-white rounded-lg shadow-xl border border-gray-200 z-60"
                               onMouseEnter={() => setActiveSubmenu(category.title)}
@@ -340,7 +341,7 @@ export default function Navbar() {
                                     </Link>
 
                                     {/* Third Level Submenu */}
-                                    {subcategory.subcategories && activeThirdLevel === subcategory.title && (
+                                    {/* {subcategory.subcategories && activeThirdLevel === subcategory.title && (
                                       <div 
                                         className="absolute left-full top-0 w-80 bg-white rounded-lg shadow-xl border border-gray-200 z-70 max-h-96 overflow-y-auto"
                                         onMouseEnter={() => setActiveThirdLevel(subcategory.title)}
@@ -370,10 +371,18 @@ export default function Navbar() {
                       ))}
                     </div>
                   </div>
-                )}
-              </div>
+                )} */}
+              {/* </div>  */}
 
               {/* Other navigation items excluding Contact */}
+              <Link
+                href="/products"
+                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
+                  pathname === '/products' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
+                }`}
+              >
+                OUR PRODUCTS
+              </Link>
               <Link
                 href="/services"
                 className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
@@ -382,6 +391,7 @@ export default function Navbar() {
               >
                 SERVICES
               </Link>
+
               <Link
                 href="/clients"
                 className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
@@ -444,8 +454,17 @@ export default function Navbar() {
                 Home
               </Link>
               
-              {/* Mobile Products Section */}
-              <div>
+              {/* Mobile Products Link - Simple Link */}
+              <Link
+                href="/products"
+                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Products
+              </Link>
+
+              {/* Mobile Products Dropdown - Commented out for now */}
+              {/* <div>
                 <button
                   onClick={() => setIsProductsOpen(!isProductsOpen)}
                   className="w-full text-left text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-base font-medium flex items-center justify-between"
@@ -530,18 +549,52 @@ export default function Navbar() {
                     ))}
                   </div>
                 )}
-              </div>
+              </div> */}
 
-              {navItems.slice(1).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {/* Services Link */}
+              <Link
+                href="/services"
+                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Services
+              </Link>
+
+              {/* Clients Link */}
+              <Link
+                href="/clients"
+                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Clients
+              </Link>
+
+              {/* Blog Link */}
+              <Link
+                href="/blog"
+                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
+              </Link>
+
+              {/* About Us Link */}
+              <Link
+                href="/about"
+                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About Us
+              </Link>
+
+              {/* Contact/Talk to Expert Link */}
+              <Link
+                href="/contact"
+                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
+              </Link>
             </div>
           </div>
         )}

@@ -14,7 +14,8 @@ export default function Footer() {
                 alt="Axiom Rise Logo" 
                 width={180} 
                 height={50}
-                className="h-12 w-auto"
+                className="h-auto w-auto"
+                style={{ height: '48px' }}
               />
             </div>
             <p className="text-gray-600 mb-4">

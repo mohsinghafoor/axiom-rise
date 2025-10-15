@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Axiom Rise - Premium Clothing Export',
   description: 'Leading clothing export company specializing in high-quality garments for global markets',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({

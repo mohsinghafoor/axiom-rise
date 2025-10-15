@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from 'react';
+import { productsData } from '@/data/products';
 
 export default function ProductCategoriesSection() {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
@@ -16,16 +17,18 @@ export default function ProductCategoriesSection() {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
+              // Reduced delay for faster appearance
+              const delay = Math.min(index * 20, 100);
               setTimeout(() => {
                 setVisibleCards((prev) => [...prev, index]);
-              }, index * 40); // Stagger animation by 40ms (reduced from 80ms)
+              }, delay);
               observer.unobserve(entry.target);
             }
           });
         },
         {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
+          threshold: 0.05, // Triggers earlier
+          rootMargin: '100px 0px 0px 0px' // Start loading 100px before entering viewport
         }
       );
 
@@ -38,83 +41,8 @@ export default function ProductCategoriesSection() {
     };
   }, []);
 
-  const categories = [
-    { 
-      title: "JACKET MANUFACTURER", 
-      description: "Quality jackets from casual to premium outerwear",
-      image: "/images/products/jackets.png"
-    },
-    { 
-      title: "HOODIES MANUFACTURER", 
-      description: "Comfortable and stylish hoodies for all seasons",
-      image: "/images/hero/hoodies.png"
-    },
-    { 
-      title: "WHOLESALE VARSITY JACKETS", 
-      description: "Classic varsity jackets with modern styling",
-      image: "/images/hero/varsity-jacket.png"
-    },
-    { 
-      title: "HOODIES SUPPLIER AND VENDORS", 
-      description: "Bulk hoodie supply with customization options",
-      image: "/images/hero/hoodie.avif"
-    },
-    { 
-      title: "T-SHIRTS MANUFACTURER", 
-      description: "Premium custom t-shirts in various styles and fabrics",
-      image: "/images/hero/tshirt.jpg"
-    },
-    { 
-      title: "WHOLESALE SCRUB VENDORS", 
-      description: "High-quality medical scrubs for healthcare professionals",
-      image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&h=400&fit=crop"
-    },
-    { 
-      title: "UNIFORM MANUFACTURERS", 
-      description: "Professional uniforms for corporate and industrial needs",
-      image: "/images/products/uniform.png"
-    },
-    { 
-      title: "SPORTSWEAR MANUFACTURER", 
-      description: "Performance-driven athletic wear for active lifestyles",
-      image: "/images/hero/sports-wear.png"
-    },
-    { 
-      title: "WHOLESALE SHORTS", 
-      description: "Versatile shorts for sports, casual, and activewear",
-      image: "/images/hero/shorts.png"
-    },
-    { 
-      title: "FITNESS CLOTHING MANUFACTURER", 
-      description: "Advanced workout gear and gym apparel",
-      image: "/images/hero/fitness.jpg"
-    },
-    { 
-      title: "SWEATSHIRT MANUFACTURERS", 
-      description: "Cozy and durable sweatshirts for everyday comfort",
-      image: "/images/hero/sweatshirt.webp"
-    },
-    { 
-      title: "MARTIAL ARTS CLOTHING", 
-      description: "Specialized martial arts uniforms and training gear",
-      image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=400&fit=crop"
-    },
-    { 
-      title: "EQUESTRIAN CLOTHING MANUFACTURER", 
-      description: "Professional equestrian apparel and riding gear",
-      image: "/images/products/equestrian.webp"
-    },
-    { 
-      title: "HAT MANUFACTURERS", 
-      description: "Custom hats and headwear for all occasions",
-      image: "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600&h=400&fit=crop"
-    },
-    { 
-      title: "LEATHER BAGS MANUFACTURER", 
-      description: "Premium leather bags and accessories",
-      image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&h=400&fit=crop"
-    }
-  ];
+  // Show only first 6 products on landing page
+  const categories = productsData.slice(0, 6);
   return (
     <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)', boxShadow: 'inset 0 4px 8px rgba(0,0,0,0.04)' }}>
       {/* Wave decoration at top */}
@@ -139,14 +67,14 @@ export default function ProductCategoriesSection() {
             <div 
               key={index}
               ref={(el) => {cardsRef.current[index] = el}}
-              className={`bg-white rounded-lg overflow-hidden hover:shadow-xl transition-all duration-500 ${
+              className={`bg-white rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 ${
                 visibleCards.includes(index)
                   ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-20'
+                  : 'opacity-0 translate-y-10'
               }`}
               style={{
                 boxShadow: '0 4px 8px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.02)',
-                transitionDelay: visibleCards.includes(index) ? `${index * 40}ms` : '0ms'
+                transitionDelay: visibleCards.includes(index) ? `${Math.min(index * 20, 100)}ms` : '0ms'
               }}
             >
               <div className="relative h-48 bg-gray-200 overflow-hidden">
@@ -161,7 +89,7 @@ export default function ProductCategoriesSection() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-primary-700">{category.title}</h3>
                 <p className="text-gray-600 mb-4">{category.description}</p>
-                <Link href="/products" className="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+                <Link href={`/products/${category.slug}`} className="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition-colors">
                   READ MORE
                   <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -170,6 +98,19 @@ export default function ProductCategoriesSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Explore More Button */}
+        <div className="text-center mt-12">
+          <Link 
+            href="/products"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-blue-600 text-white text-lg font-bold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-lg"
+          >
+            EXPLORE MORE PRODUCTS
+            <svg className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>
