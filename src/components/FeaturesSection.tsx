@@ -1,4 +1,41 @@
+"use client"
+
+import { useEffect, useRef, useState } from 'react';
+
 export default function FeaturesSection() {
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers = cardsRef.current.map((card, index) => {
+      if (!card) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                setVisibleCards((prev) => [...prev, index]);
+              }, index * 50); // Stagger animation by 50ms (reduced from 100ms)
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        }
+      );
+
+      observer.observe(card);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+    };
+  }, []);
+
   const features = [
     {
       title: "Premium Quality Assurance",
@@ -109,8 +146,16 @@ export default function FeaturesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div 
-              key={index} 
-              className="group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100 hover:border-primary-300 hover:-translate-y-2"
+              key={index}
+              ref={(el) => {cardsRef.current[index] = el}}
+              className={`group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 hover:border-primary-300 hover:-translate-y-2 ${
+                visibleCards.includes(index)
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-20'
+              }`}
+              style={{
+                transitionDelay: visibleCards.includes(index) ? `${index * 50}ms` : '0ms'
+              }}
             >
               {/* Icon with colored background */}
               <div className={`w-20 h-20 ${feature.color} rounded-2xl flex items-center justify-center mb-6 text-white transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-xl`}>
@@ -139,7 +184,14 @@ export default function FeaturesSection() {
         </div>
 
         {/* Statistics Section */}
-        <div className="mt-20 bg-gradient-to-r from-primary-600 to-blue-600 rounded-3xl p-8 md:p-12 shadow-2xl">
+        <div 
+          ref={(el) => {cardsRef.current[6] = el}}
+          className={`mt-20 bg-gradient-to-r from-primary-600 to-blue-600 rounded-3xl p-8 md:p-12 shadow-2xl transition-all duration-500 ${
+            visibleCards.includes(6)
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-20'
+          }`}
+        >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold">15+</div>

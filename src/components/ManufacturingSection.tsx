@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function ManufacturingSection() {
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)' }}>
       {/* Decorative accent circles */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl"></div>
