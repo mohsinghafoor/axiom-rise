@@ -3,22 +3,22 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200">
+    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="mb-4">
               <Image 
-                src="/images/axiom-rise.png" 
+                src="/images/axiom-rise-logo.png" 
                 alt="Axiom Rise Logo" 
                 width={180} 
                 height={50}
-                className="h-auto w-auto"
+                className="h-auto w-auto dark:brightness-110"
                 style={{ height: '48px' }}
               />
             </div>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Leading clothing export company specializing in high-quality garments for global markets. 
               We deliver excellence in every thread.
             </p>
@@ -27,7 +27,7 @@ export default function Footer() {
                 href="https://www.facebook.com/share/1ChLBrEUzV/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-blue-600 transition-colors"
+                className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <span className="sr-only">Facebook</span>
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@ export default function Footer() {
                 href="https://www.instagram.com/ar___apparel?igsh=MWt1d2NqZHR0bmg3" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-pink-600 transition-colors"
+                className="text-gray-500 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
               >
                 <span className="sr-only">Instagram</span>
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -50,30 +50,30 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-gray-900">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-gray-600 hover:text-orange-500 transition-colors">About Us</Link></li>
-              <li><Link href="/products" className="text-gray-600 hover:text-orange-500 transition-colors">Products</Link></li>
-              <li><Link href="/services" className="text-gray-600 hover:text-orange-500 transition-colors">Services</Link></li>
-              <li><Link href="/contact" className="text-gray-600 hover:text-orange-500 transition-colors">Contact</Link></li>
+              <li><Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">About Us</Link></li>
+              <li><Link href="/products" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">Products</Link></li>
+              <li><Link href="/services" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">Services</Link></li>
+              <li><Link href="/contact" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-gray-900">Contact Info</h4>
-            <div className="space-y-2 text-gray-600">
-              <p>Paris Road, Sialkot Cantt</p>
+            <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Contact Info</h4>
+            <div className="space-y-2 text-gray-600 dark:text-gray-300">
+              <p>Kotla Amba Wala Road, Sialkot</p>
               <p>Sialkot, Punjab 51310</p>
               <p>Pakistan</p>
-              <p className="font-medium text-gray-900">+92 327 1213923</p>
-              <p className="font-medium text-gray-900">info@axiomrise.com</p>
+              <p className="font-medium text-gray-900 dark:text-white">+92 327 1213923</p>
+              <p className="font-medium text-gray-900 dark:text-white">info@axiomrise.com</p>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-200 mt-8 pt-8 text-center">
-          <p className="text-gray-500">
+        <div className="border-t border-gray-200 dark:border-gray-800 mt-8 pt-8 text-center">
+          <p className="text-gray-500 dark:text-gray-400">
             © 2025 Axiom Rise. All rights reserved.
           </p>
         </div>

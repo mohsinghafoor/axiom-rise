@@ -8,7 +8,7 @@ import CTASection from '@/components/CTASection'
 
 export default function Home() {
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       <HeroSection />
       <ManufacturingSection />
       <CustomClothingSection />

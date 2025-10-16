@@ -38,12 +38,12 @@ export default function CustomClothingSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 relative overflow-hidden bg-white"
+      className="py-20 relative overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-300"
     >
       {/* Decorative accent circles */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-orange-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-yellow-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-72 h-72 bg-orange-300/20 dark:bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-yellow-300/20 dark:bg-yellow-500/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -67,13 +67,13 @@ export default function CustomClothingSection() {
             
               {/* Enhanced Stats Grid */}
               <div className="mt-6 grid grid-cols-2 gap-4">
-                <div className="group bg-white/90 backdrop-blur-sm rounded-2xl p-5 text-center border border-gray-100 hover:border-orange-300 hover:shadow-lg transition-all duration-300">
-                  <div className="text-3xl md:text-4xl font-bold text-orange-600">100%</div>
-                  <div className="text-xs md:text-sm text-gray-600 mt-1 font-semibold">Custom Designs</div>
+                <div className="group bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-5 text-center border border-gray-100 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-500 hover:shadow-lg transition-all duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400">100%</div>
+                  <div className="text-xs md:text-sm text-gray-600 dark:text-gray-300 mt-1 font-semibold">Custom Designs</div>
                 </div>
-                <div className="group bg-white/90 backdrop-blur-sm rounded-2xl p-5 text-center border border-gray-100 hover:border-orange-300 hover:shadow-lg transition-all duration-300">
-                  <div className="text-3xl md:text-4xl font-bold text-orange-600">24/7</div>
-                  <div className="text-xs md:text-sm text-gray-600 mt-1 font-semibold">Support Available</div>
+                <div className="group bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-5 text-center border border-gray-100 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-500 hover:shadow-lg transition-all duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400">24/7</div>
+                  <div className="text-xs md:text-sm text-gray-600 dark:text-gray-300 mt-1 font-semibold">Support Available</div>
                 </div>
               </div>
             </div>
@@ -90,18 +90,18 @@ export default function CustomClothingSection() {
               </span>
             </div>
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               Custom Clothing Manufacturers in Pakistan,{' '}
               <span className="bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">Manufacturing Exclusive Clothing</span>
             </h2>
             
-            <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
               If you are searching for a custom clothing manufacturer in Pakistan that can fulfill all your unique requirements? Your search ends here at Rijiz, where we deliver an extensive range of custom clothing solutions to transform your vision into reality. Unlike other bespoke apparel manufacturers, we provide complete custom clothing manufacturing services with limitless customization possibilities.
             </p>
             
-            <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               At Rijiz, we take pride in producing premium-quality clothing that aligns with your exact specifications. From screen printing and embroidery to digital printing,{' '}
-              <Link href="/services" className="text-orange-600 hover:text-orange-700 font-semibold underline decoration-2 underline-offset-4 transition-colors">
+              <Link href="/services" className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-semibold underline decoration-2 underline-offset-4 transition-colors">
                 private label clothing manufacturing
               </Link>
               , cut and sew clothing production, and custom designing, we present a comprehensive array of customization services that are unparalleled in the industry.

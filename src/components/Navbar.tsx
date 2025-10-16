@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -235,7 +236,7 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-white shadow-xl border-b border-gray-100 sticky top-0 z-50" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
+    <nav className="bg-white dark:bg-gray-800 shadow-xl border-b border-gray-100 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-300" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -258,7 +259,7 @@ export default function Navbar() {
               <Link
                 href="/"
                 className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
+                  pathname === '/' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
                 HOME
@@ -378,7 +379,7 @@ export default function Navbar() {
               <Link
                 href="/products"
                 className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/products' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
+                  pathname === '/products' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
                 OUR PRODUCTS
@@ -386,7 +387,7 @@ export default function Navbar() {
               <Link
                 href="/services"
                 className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/services' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
+                  pathname === '/services' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
                 SERVICES
@@ -395,7 +396,7 @@ export default function Navbar() {
               <Link
                 href="/clients"
                 className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/clients' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
+                  pathname === '/clients' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
                 CLIENTS
@@ -403,7 +404,7 @@ export default function Navbar() {
               <Link
                 href="/blog"
                 className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/blog' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
+                  pathname === '/blog' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
                 BLOG
@@ -411,7 +412,7 @@ export default function Navbar() {
               <Link
                 href="/about"
                 className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/about' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
+                  pathname === '/about' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
                 ABOUT US
@@ -419,21 +420,25 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Right Side - Talk to Expert Button */}
-          <div className="hidden md:flex items-center">
+          {/* Right Side - Theme Toggle & Talk to Expert Button */}
+          <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/contact"
               className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors shadow-md hover:shadow-lg"
             >
               TALK TO AN EXPERT
             </Link>
+            <div className="flex-shrink-0 ml-4">
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-primary-600 focus:outline-none focus:text-primary-600"
+              className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none focus:text-primary-600"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -444,11 +449,11 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <Link
                 href="/"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
@@ -457,7 +462,7 @@ export default function Navbar() {
               {/* Mobile Products Link - Simple Link */}
               <Link
                 href="/products"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
@@ -554,7 +559,7 @@ export default function Navbar() {
               {/* Services Link */}
               <Link
                 href="/services"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
@@ -563,7 +568,7 @@ export default function Navbar() {
               {/* Clients Link */}
               <Link
                 href="/clients"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Clients
@@ -572,7 +577,7 @@ export default function Navbar() {
               {/* Blog Link */}
               <Link
                 href="/blog"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
@@ -581,7 +586,7 @@ export default function Navbar() {
               {/* About Us Link */}
               <Link
                 href="/about"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
@@ -590,7 +595,7 @@ export default function Navbar() {
               {/* Contact/Talk to Expert Link */}
               <Link
                 href="/contact"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact

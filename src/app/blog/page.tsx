@@ -10,7 +10,7 @@ export default function Blog() {
   const [activeCategory, setActiveCategory] = useState('All');
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
       <BlogHeroSection />
       <BlogCategories activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
       <BlogGrid activeCategory={activeCategory} />

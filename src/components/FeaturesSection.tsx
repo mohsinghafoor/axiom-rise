@@ -100,26 +100,26 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="py-20 relative overflow-hidden min-h-screen bg-gradient-to-br from-blue-50 via-blue-50/50 to-white">
+    <section className="py-20 relative overflow-hidden min-h-screen bg-gradient-to-br from-blue-50 via-blue-50/50 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-900 transition-colors duration-300">
       {/* Decorative accent circles */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-300/20 dark:bg-primary-500/10 rounded-full blur-3xl"></div>
         
         {/* Decorative dots pattern - top left */}
-        <div className="absolute top-32 left-20 opacity-20">
+        <div className="absolute top-32 left-20 opacity-20 dark:opacity-10">
           <div className="grid grid-cols-3 gap-2">
             {[...Array(9)].map((_, i) => (
-              <div key={i} className="w-2 h-2 bg-primary-600 rounded-full"></div>
+              <div key={i} className="w-2 h-2 bg-primary-600 dark:bg-primary-400 rounded-full"></div>
             ))}
           </div>
         </div>
         
         {/* Decorative dots pattern - bottom right */}
-        <div className="absolute bottom-32 right-32 opacity-20">
+        <div className="absolute bottom-32 right-32 opacity-20 dark:opacity-10">
           <div className="grid grid-cols-3 gap-2">
             {[...Array(9)].map((_, i) => (
-              <div key={i} className="w-2 h-2 bg-blue-600 rounded-full"></div>
+              <div key={i} className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
             ))}
           </div>
         </div>
@@ -129,14 +129,14 @@ export default function FeaturesSection() {
         {/* Header */}
         <div className="text-center mb-16 relative">
           <div className="inline-block mb-4">
-            <span className="bg-primary-600 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
+            <span className="bg-primary-600 dark:bg-primary-500 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
               Our Advantages
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Why Choose <span className="text-primary-600">Axiom Rise</span>?
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            Why Choose <span className="text-primary-600 dark:text-primary-400">Axiom Rise</span>?
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             We combine traditional craftsmanship with cutting-edge technology to deliver exceptional 
             clothing products that exceed expectations and set industry standards worldwide.
           </p>
@@ -148,7 +148,7 @@ export default function FeaturesSection() {
             <div 
               key={index}
               ref={(el) => {cardsRef.current[index] = el}}
-              className={`group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 hover:border-primary-300 hover:-translate-y-2 ${
+              className={`group bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-500 hover:-translate-y-2 ${
                 visibleCards.includes(index)
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-20'
@@ -163,16 +163,16 @@ export default function FeaturesSection() {
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed text-sm">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                 {feature.description}
               </p>
 
               {/* Decorative Element */}
-              <div className="mt-6 pt-6 border-t border-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="flex items-center text-primary-600 font-semibold text-sm">
+              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex items-center text-primary-600 dark:text-primary-400 font-semibold text-sm">
                   Learn more
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

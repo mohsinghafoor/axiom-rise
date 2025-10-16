@@ -76,18 +76,18 @@ export default function WhyChooseSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 relative overflow-hidden bg-gradient-to-b from-white to-gray-50"
+      className="py-20 relative overflow-hidden bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"
     >
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-orange-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-200/20 dark:bg-yellow-500/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Why Axiom Rise Apparel Is Among One Of The Leading{' '}
             <span className="bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">
               Clothing Manufacturer
@@ -108,8 +108,8 @@ export default function WhyChooseSection() {
               {/* Image Side */}
               <div className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-yellow-400 dark:from-orange-500 dark:to-yellow-500 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl dark:shadow-orange-500/10">
                     <Image
                       src={feature.image}
                       alt={feature.imageAlt}
@@ -117,18 +117,18 @@ export default function WhyChooseSection() {
                       height={400}
                       className="w-full h-auto object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-orange-900/20 via-transparent to-yellow-500/20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-orange-900/20 via-transparent to-yellow-500/20 dark:from-orange-900/40 dark:to-yellow-500/30"></div>
                   </div>
                 </div>
               </div>
 
               {/* Content Side */}
               <div className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
-                <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl dark:shadow-orange-500/10 transition-all duration-300 border border-transparent dark:border-gray-700">
                   <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">
                     {feature.title}
                   </h3>
-                  <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+                  <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

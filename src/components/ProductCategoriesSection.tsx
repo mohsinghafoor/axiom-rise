@@ -44,30 +44,30 @@ export default function ProductCategoriesSection() {
   // Show only first 6 products on landing page
   const categories = productsData.slice(0, 6);
   return (
-    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)', boxShadow: 'inset 0 4px 8px rgba(0,0,0,0.04)' }}>
+    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-[#fdfcfb] to-[#e2d1c3] dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       {/* Wave decoration at top */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
         <svg className="relative block w-full h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#e9f0ff" fillOpacity="0.5"></path>
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-[#e9f0ff] dark:fill-gray-800/50" fillOpacity="0.5"></path>
         </svg>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
-            <span className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
+            <span className="bg-gradient-to-r from-orange-600 to-red-600 dark:from-orange-500 dark:to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
               Our Products
             </span>
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Product Categories</h2>
-          <p className="text-xl text-gray-600">Discover our diverse range of high-quality clothing for various markets</p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Product Categories</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300">Discover our diverse range of high-quality clothing for various markets</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category, index) => (
             <div 
               key={index}
               ref={(el) => {cardsRef.current[index] = el}}
-              className={`bg-white rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 ${
+              className={`bg-white dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-xl dark:hover:shadow-orange-500/10 transition-all duration-300 border border-transparent dark:border-gray-700 ${
                 visibleCards.includes(index)
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-10'
@@ -77,7 +77,7 @@ export default function ProductCategoriesSection() {
                 transitionDelay: visibleCards.includes(index) ? `${Math.min(index * 20, 100)}ms` : '0ms'
               }}
             >
-              <div className="relative h-48 bg-gray-200 overflow-hidden">
+              <div className="relative h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
                 <Image 
                   src={category.image} 
                   alt={category.title}
@@ -87,9 +87,9 @@ export default function ProductCategoriesSection() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-primary-700">{category.title}</h3>
-                <p className="text-gray-600 mb-4">{category.description}</p>
-                <Link href={`/products/${category.slug}`} className="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+                <h3 className="text-xl font-semibold mb-2 text-primary-700 dark:text-primary-400">{category.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{category.description}</p>
+                <Link href={`/products/${category.slug}`} className="inline-flex items-center text-primary-600 dark:text-primary-400 font-semibold hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
                   READ MORE
                   <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -104,7 +104,7 @@ export default function ProductCategoriesSection() {
         <div className="text-center mt-12">
           <Link 
             href="/products"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-blue-600 text-white text-lg font-bold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-lg"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-blue-600 dark:from-primary-500 dark:to-blue-500 text-white text-lg font-bold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-lg"
           >
             EXPLORE MORE PRODUCTS
             <svg className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

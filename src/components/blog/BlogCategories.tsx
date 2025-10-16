@@ -17,7 +17,7 @@ export default function BlogCategories({ activeCategory, setActiveCategory }: Bl
   ];
 
   return (
-    <section className="py-8 sm:py-12 bg-gray-50 border-b border-gray-200">
+    <section className="py-8 sm:py-12 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
           {categories.map((category) => (
@@ -26,8 +26,8 @@ export default function BlogCategories({ activeCategory, setActiveCategory }: Bl
               onClick={() => setActiveCategory(category)}
               className={`px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm md:text-base font-semibold transition-all whitespace-nowrap ${
                 activeCategory === category
-                  ? 'bg-primary-600 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                  ? 'bg-primary-600 dark:bg-primary-500 text-white shadow-lg'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-transparent dark:border-gray-700'
               }`}
             >
               {category}

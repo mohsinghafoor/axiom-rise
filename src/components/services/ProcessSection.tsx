@@ -41,13 +41,13 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgb(253, 252, 251) 25%, rgb(226, 209, 195) 96%)' }}>
+    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Our Process
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             A streamlined approach ensuring quality and efficiency at every step
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function ProcessSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
           {processSteps.map((step, index) => (
             <div key={index} className="relative">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl dark:hover:shadow-primary-500/20 transition-all duration-300 hover:-translate-y-2 border border-transparent dark:border-gray-700 overflow-hidden">
                 {/* Image Section */}
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image 
@@ -65,23 +65,23 @@ export default function ProcessSection() {
                     className="object-cover hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent dark:from-black/60"></div>
                   {/* Step Number Badge */}
-                  <div className="absolute top-4 left-4 w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                  <div className="absolute top-4 left-4 w-16 h-16 bg-primary-600 dark:bg-primary-500 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
                     {step.step}
                   </div>
                 </div>
                 
                 {/* Content Section */}
                 <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
-                  <p className="text-gray-600">{step.description}</p>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{step.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
                 </div>
               </div>
               {/* Arrow - hide for last item in each row */}
               {index < processSteps.length - 1 && (index + 1) % 3 !== 0 && (
                 <div className="hidden lg:flex absolute top-1/2 -right-8 transform -translate-y-1/2 z-10 items-center justify-center">
-                  <svg className="w-6 h-6 text-primary-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-6 h-6 text-primary-400 dark:text-primary-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"/>
                   </svg>
                 </div>

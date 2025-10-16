@@ -164,7 +164,7 @@ export const productsData = [
   { 
     title: "BELT MANUFACTURER", 
     description: "Quality leather and fabric belts",
-    image: "https://images.unsplash.com/photo-1624222247344-550fb60583bb?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=400&fit=crop&q=80",
     slug: "belt-manufacturer"
   },
   { 
