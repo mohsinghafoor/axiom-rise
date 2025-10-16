@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function ProductsCTASection() {
   return (
-    <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)' }}>
+    <section className="relative py-20 overflow-hidden" style={{ backgroundImage: 'radial-gradient(circle farthest-corner at 10% 20%, rgba(214,40,40,1) 0%, rgba(255,195,0,1) 90%)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
           Can&apos;t Find What You&apos;re Looking For?
