@@ -241,7 +241,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image 
-                src="/images/axiom-rise.png" 
+                src="/images/axiom-rise-logo.png" 
                 alt="Axiom Rise Logo" 
                 width={150} 
                 height={40}
