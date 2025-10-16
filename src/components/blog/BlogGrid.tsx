@@ -27,7 +27,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
     {
       title: "The Complete Guide to Starting Your Private Label Clothing Line",
       excerpt: "Learn everything you need to know about launching your own private label clothing brand, from finding the right manufacturer to quality control.",
-      image: "/images/hero/hoodies.png",
+      image: "/images/hero/hoodies.webp",
       category: "Manufacturing",
       date: getFormattedDate(0), // Today
       readTime: "8 min read",
@@ -36,7 +36,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
     {
       title: "Sustainable Manufacturing: The Future of Fashion Industry",
       excerpt: "Discover how eco-friendly practices and sustainable materials are transforming the clothing manufacturing landscape.",
-      image: "/images/hero/fitness.jpg",
+      image: "/images/hero/fitness.webp",
       category: "Sustainability",
       date: getFormattedDate(1), // Yesterday
       readTime: "6 min read",
@@ -45,7 +45,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
     {
       title: "Understanding Fabric Quality: A Buyer's Guide",
       excerpt: "Everything you need to know about fabric types, quality grades, and how to choose the right materials for your clothing line.",
-      image: "/images/hero/tshirt.jpg",
+      image: "/images/hero/tshirt.webp",
       category: "Quality Control",
       date: getFormattedDate(2), // 2 days ago
       readTime: "10 min read",
@@ -54,7 +54,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
     {
       title: "Export Documentation: Essential Guide for Clothing Manufacturers",
       excerpt: "Navigate the complex world of international trade with our comprehensive guide to export documentation and customs clearance.",
-      image: "/images/hero/varsity-jacket.png",
+      image: "/images/hero/varsity-jacket.webp",
       category: "Export Guide",
       date: getFormattedDate(3), // 3 days ago
       readTime: "7 min read",
@@ -63,7 +63,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
     {
       title: "Top 10 Fashion Trends Shaping 2025",
       excerpt: "Stay ahead of the curve with our analysis of the biggest fashion trends and how they're influencing manufacturing demands.",
-      image: "/images/hero/sports-wear.png",
+      image: "/images/hero/sports-wear.webp",
       category: "Fashion Trends",
       date: getFormattedDate(4), // 4 days ago
       readTime: "5 min read",
@@ -81,7 +81,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
     {
       title: "How to Choose the Right Clothing Manufacturer for Your Brand",
       excerpt: "Key factors to consider when selecting a manufacturing partner, from production capacity to communication and reliability.",
-      image: "/images/hero/leather-jacket.jpg",
+      image: "/images/hero/leather-jacket.webp",
       category: "Manufacturing",
       date: getFormattedDate(6), // 6 days ago
       readTime: "8 min read",
@@ -90,7 +90,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
     {
       title: "The Rise of Athleisure: Manufacturing Opportunities",
       excerpt: "Explore the booming athleisure market and how manufacturers can capitalize on this growing trend.",
-      image: "/images/hero/shorts.png",
+      image: "/images/hero/shorts.webp",
       category: "Industry News",
       date: getFormattedDate(7), // 7 days ago
       readTime: "6 min read",
@@ -99,7 +99,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
     {
       title: "Understanding MOQ: Minimum Order Quantities Explained",
       excerpt: "Learn about minimum order quantities, how they work, and strategies for negotiating better terms with manufacturers.",
-      image: "/images/hero/hoodies.png",
+      image: "/images/hero/hoodies.webp",
       category: "Manufacturing",
       date: getFormattedDate(8), // 8 days ago
       readTime: "7 min read",

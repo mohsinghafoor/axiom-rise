@@ -4,14 +4,14 @@ import Carousel from "@/components/Carousel";
 import { useState } from "react";
 
 const heroImages = [
-  "/images/hero/hoodies.png",
-  "/images/hero/sports-wear.png",
-  "/images/hero/tshirt.jpg",
-  "/images/hero/varsity-jacket.png",
-  "/images/hero/leather-jacket.jpg",
-  "/images/hero/fitness.jpg",
+  "/images/hero/hoodies.webp",
+  "/images/hero/sports-wear.webp",
+  "/images/hero/tshirt.webp",
+  "/images/hero/varsity-jacket.webp",
+  "/images/hero/leather-jacket.webp",
+  "/images/hero/fitness.webp",
   "/images/hero/sweatshirt.webp",
-  "/images/hero/shorts.png"
+  "/images/hero/shorts.webp"
 ];
 
 const heroContent = [

@@ -11,7 +11,7 @@ export default function ServicesGrid() {
         "Skilled craftsmen and technicians",
         "Flexible production capacity"
       ],
-      image: "/images/services/manufacturing-excellence.png"
+      image: "/images/services/manufacturing-excellence.webp"
     },
     {
       title: "Custom Design & Development",
@@ -22,7 +22,7 @@ export default function ServicesGrid() {
         "Design consultation",
         "Trend analysis and forecasting"
       ],
-      image: "/images/services/custom-design.png"
+      image: "/images/services/custom-design.webp"
     },
     {
       title: "Global Export Services",
@@ -33,7 +33,7 @@ export default function ServicesGrid() {
         "Documentation support",
         "Tracking and logistics management"
       ],
-      image: "/images/services/global-export.png"
+      image: "/images/services/global-export.webp"
     },
     {
       title: "Quality Assurance",
@@ -44,7 +44,7 @@ export default function ServicesGrid() {
         "Final inspection protocols",
         "Compliance certifications"
       ],
-      image: "/images/services/quality-assurance.png"
+      image: "/images/services/quality-assurance.webp"
     },
     {
       title: "Private Label Solutions",
@@ -55,7 +55,7 @@ export default function ServicesGrid() {
         "Label and tag production",
         "Exclusive product lines"
       ],
-      image: "/images/services/private-label.png"
+      image: "/images/services/private-label.webp"
     },
     {
       title: "Supply Chain Management",
@@ -66,7 +66,7 @@ export default function ServicesGrid() {
         "Production planning",
         "Delivery scheduling"
       ],
-      image: "/images/services/supply-chain.png"
+      image: "/images/services/supply-chain.webp"
     }
   ];
 

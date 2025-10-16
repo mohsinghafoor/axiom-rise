@@ -34,7 +34,7 @@ export default function CTASection() {
   }, []);
 
   return (
-    <section className="relative text-white py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #6366f1 100%)' }}>
+    <section className="relative text-white py-20 overflow-hidden" style={{ backgroundImage: 'radial-gradient(circle farthest-corner at 10% 20%, rgba(214,40,40,1) 0%, rgba(255,195,0,1) 90%)' }}>
       {/* Curved top border using clip-path */}
       {/* <div className="absolute inset-0" style={{ clipPath: 'ellipse(120% 100% at 50% 100%)' }}>
         <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #4f46e5 100%)' }}></div>

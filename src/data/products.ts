@@ -2,31 +2,31 @@ export const productsData = [
   { 
     title: "JACKET MANUFACTURER", 
     description: "Quality jackets from casual to premium outerwear",
-    image: "/images/products/jackets.png",
+    image: "/images/products/jackets.webp",
     slug: "jacket-manufacturer"
   },
   { 
     title: "HOODIES MANUFACTURER", 
     description: "Comfortable and stylish hoodies for all seasons",
-    image: "/images/hero/hoodies.png",
+    image: "/images/hero/hoodies.webp",
     slug: "hoodies-manufacturer"
   },
   { 
     title: "WHOLESALE VARSITY JACKETS", 
     description: "Classic varsity jackets with modern styling",
-    image: "/images/hero/varsity-jacket.png",
+    image: "/images/hero/varsity-jacket.webp",
     slug: "wholesale-varsity-jackets"
   },
   { 
     title: "HOODIES SUPPLIER AND VENDORS", 
     description: "Bulk hoodie supply with customization options",
-    image: "/images/hero/hoodie.avif",
+    image: "/images/hero/hoodie.webp",
     slug: "hoodies-supplier-vendors"
   },
   { 
     title: "T-SHIRTS MANUFACTURER", 
     description: "Premium custom t-shirts in various styles and fabrics",
-    image: "/images/hero/tshirt.jpg",
+    image: "/images/hero/tshirt.webp",
     slug: "t-shirts-manufacturer"
   },
   { 
@@ -38,25 +38,25 @@ export const productsData = [
   { 
     title: "UNIFORM MANUFACTURERS", 
     description: "Professional uniforms for corporate and industrial needs",
-    image: "/images/products/uniform.png",
+    image: "/images/products/uniform.webp",
     slug: "uniform-manufacturers"
   },
   { 
     title: "SPORTSWEAR MANUFACTURER", 
     description: "Performance-driven athletic wear for active lifestyles",
-    image: "/images/hero/sports-wear.png",
+    image: "/images/hero/sports-wear.webp",
     slug: "sportswear-manufacturer"
   },
   { 
     title: "WHOLESALE SHORTS", 
     description: "Versatile shorts for sports, casual, and activewear",
-    image: "/images/hero/shorts.png",
+    image: "/images/hero/shorts.webp",
     slug: "wholesale-shorts"
   },
   { 
     title: "FITNESS CLOTHING MANUFACTURER", 
     description: "Advanced workout gear and gym apparel",
-    image: "/images/hero/fitness.jpg",
+    image: "/images/hero/fitness.webp",
     slug: "fitness-clothing-manufacturer"
   },
   { 

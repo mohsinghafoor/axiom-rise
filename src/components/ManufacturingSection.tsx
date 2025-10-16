@@ -95,7 +95,7 @@ export default function ManufacturingSection() {
             <div className="group relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-md mx-auto lg:max-w-none hover:shadow-xl transition-shadow duration-300">
                 <Image 
-                  src="/images/hero/fitness.jpg" 
+                  src="/images/hero/fitness.webp" 
                   alt="Expert garment manufacturing process" 
                   width={500} 
                   height={350} 

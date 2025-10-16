@@ -6,37 +6,37 @@ export default function ProcessSection() {
       step: "01",
       title: "Consultation",
       description: "Initial discussion to understand your requirements and specifications",
-      image: "/images/process/consultation.png"
+      image: "/images/process/consultation.webp"
     },
     {
       step: "02",
       title: "Design & Planning",
       description: "Create detailed designs and production timeline based on your needs",
-      image: "/images/process/planning.png"
+      image: "/images/process/planning.webp"
     },
     {
       step: "03",
       title: "Sample Development",
       description: "Develop and refine samples until they meet your exact requirements",
-      image: "/images/process/sample.png"
+      image: "/images/process/sample.webp"
     },
     {
       step: "04",
       title: "Production",
       description: "Begin full-scale production with continuous quality monitoring",
-      image: "/images/process/production.png"
+      image: "/images/process/production.webp"
     },
     {
       step: "05",
       title: "Quality Control",
       description: "Comprehensive quality checks before packaging and shipping",
-      image: "/images/services/quality-assurance.png"
+      image: "/images/services/quality-assurance.webp"
     },
     {
       step: "06",
       title: "Delivery",
       description: "Secure packaging and timely delivery to your specified destination",
-      image: "/images/process/delivery.png"
+      image: "/images/process/delivery.webp"
     }
   ];
 
