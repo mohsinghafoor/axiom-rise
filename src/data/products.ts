@@ -2,7 +2,7 @@ export const productsData = [
   { 
     title: "JACKET MANUFACTURER", 
     description: "Quality jackets from casual to premium outerwear",
-    image: "/images/products/jackets.webp",
+    image: "/images/hero/leather-jacket.webp",
     slug: "jacket-manufacturer"
   },
   { 
@@ -12,34 +12,10 @@ export const productsData = [
     slug: "hoodies-manufacturer"
   },
   { 
-    title: "WHOLESALE VARSITY JACKETS", 
+    title: "VARSITY JACKETS MANUFACTURER", 
     description: "Classic varsity jackets with modern styling",
     image: "/images/hero/varsity-jacket.webp",
     slug: "wholesale-varsity-jackets"
-  },
-  { 
-    title: "HOODIES SUPPLIER AND VENDORS", 
-    description: "Bulk hoodie supply with customization options",
-    image: "/images/hero/hoodie.webp",
-    slug: "hoodies-supplier-vendors"
-  },
-  { 
-    title: "T-SHIRTS MANUFACTURER", 
-    description: "Premium custom t-shirts in various styles and fabrics",
-    image: "/images/hero/tshirt.webp",
-    slug: "t-shirts-manufacturer"
-  },
-  { 
-    title: "WHOLESALE SCRUB VENDORS", 
-    description: "High-quality medical scrubs for healthcare professionals",
-    image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&h=400&fit=crop",
-    slug: "wholesale-scrub-vendors"
-  },
-  { 
-    title: "UNIFORM MANUFACTURERS", 
-    description: "Professional uniforms for corporate and industrial needs",
-    image: "/images/products/uniform.webp",
-    slug: "uniform-manufacturers"
   },
   { 
     title: "SPORTSWEAR MANUFACTURER", 
@@ -47,6 +23,35 @@ export const productsData = [
     image: "/images/hero/sports-wear.webp",
     slug: "sportswear-manufacturer"
   },
+
+  { 
+    title: "T-SHIRTS MANUFACTURER", 
+    description: "Premium custom t-shirts in various styles and fabrics",
+    image: "/images/hero/tshirt.webp",
+    slug: "t-shirts-manufacturer"
+  },
+    
+  { 
+    title: "UNIFORM MANUFACTURERS", 
+    description: "Professional uniforms for corporate and industrial needs",
+    image: "/images/products/uniform.webp",
+    slug: "uniform-manufacturers"
+  },
+
+  { 
+    title: "WHOLESALE SCRUB VENDORS", 
+    description: "High-quality medical scrubs for healthcare professionals",
+    image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&h=400&fit=crop",
+    slug: "wholesale-scrub-vendors"
+  },
+
+  { 
+    title: "POLO-SHIRTS MANUFACTURER", 
+    description: "Premium custom polo shirts in various styles and fabrics",
+    image: "/images/products/polo-shirts.webp",
+    slug: "polo-shirts-manufacturer"
+  },
+
   { 
     title: "WHOLESALE SHORTS", 
     description: "Versatile shorts for sports, casual, and activewear",
@@ -66,9 +71,15 @@ export const productsData = [
     slug: "sweatshirt-manufacturers"
   },
   { 
+    title: "ZIP LOCK HOODIES MANUFACTURER", 
+    description: "Bulk zip lock hoodie supply with customization options",
+    image: "/images/products/zip-hoodies.webp",
+    slug: "zip-lock-hoodies-manufacturer"
+  },
+  { 
     title: "MARTIAL ARTS CLOTHING", 
     description: "Specialized martial arts uniforms and training gear",
-    image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=400&fit=crop",
+    image: "/images/products/martial-art.webp",
     slug: "martial-arts-clothing"
   },
   { 
@@ -80,20 +91,14 @@ export const productsData = [
   { 
     title: "HAT MANUFACTURERS", 
     description: "Custom hats and headwear for all occasions",
-    image: "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600&h=400&fit=crop",
+    image: "/images/products/hats.webp",
     slug: "hat-manufacturers"
   },
   { 
     title: "LEATHER BAGS MANUFACTURER", 
     description: "Premium leather bags and accessories",
-    image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&h=400&fit=crop",
+    image: "/images/products/leather-bags.webp",
     slug: "leather-bags-manufacturer"
-  },
-  { 
-    title: "SCHOOL UNIFORM MANUFACTURER", 
-    description: "Durable and comfortable school uniforms for all grades",
-    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600&h=400&fit=crop",
-    slug: "school-uniform-manufacturer"
   },
   { 
     title: "CORPORATE UNIFORM MANUFACTURER", 
@@ -102,10 +107,10 @@ export const productsData = [
     slug: "corporate-uniform-manufacturer"
   },
   { 
-    title: "HOSPITALITY UNIFORM MANUFACTURER", 
-    description: "Elegant uniforms for hotels and restaurants",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    slug: "hospitality-uniform-manufacturer"
+    title: "HOSPITAL UNIFORM MANUFACTURER", 
+    description: "Elegant uniforms for hospitals and healthcare facilities",
+    image: "/images/products/hospital-wear.webp",
+    slug: "hospital-uniform-manufacturer"
   },
   { 
     title: "SECURITY UNIFORM MANUFACTURER", 
@@ -119,12 +124,7 @@ export const productsData = [
     image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&h=400&fit=crop",
     slug: "chef-uniform-manufacturer"
   },
-  { 
-    title: "SPORTS UNIFORM MANUFACTURER", 
-    description: "Custom sports uniforms for teams and clubs",
-    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=400&fit=crop",
-    slug: "sports-uniform-manufacturer"
-  },
+
   { 
     title: "BACKPACK MANUFACTURER", 
     description: "Durable backpacks for school, travel, and outdoor",
@@ -164,7 +164,7 @@ export const productsData = [
   { 
     title: "BELT MANUFACTURER", 
     description: "Quality leather and fabric belts",
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=400&fit=crop&q=80",
+    image: "/images/products/belts.webp",
     slug: "belt-manufacturer"
   },
   { 
@@ -173,10 +173,10 @@ export const productsData = [
     image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=600&h=400&fit=crop",
     slug: "wallet-manufacturer"
   },
-  { 
-    title: "GYM BAG MANUFACTURER", 
-    description: "Spacious gym and duffel bags for athletes",
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=400&fit=crop",
-    slug: "gym-bag-manufacturer"
-  }
+  // { 
+  //   title: "GYM BAG MANUFACTURER", 
+  //   description: "Spacious gym and duffel bags for athletes",
+  //   image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=400&fit=crop",
+  //   slug: "gym-bag-manufacturer"
+  // }
 ];
