@@ -2,7 +2,8 @@ import Link from "next/link";
 
 export default function ProductsCTASection() {
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-[#d62828] via-[#f77f00] to-[#fcbf49] dark:from-orange-900 dark:via-orange-800 dark:to-yellow-800 transition-colors duration-300">
+    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-[#38ef7d] to-[#7ee8fa]
+dark:from-[#0f766e] dark:via-[#14b8a6] dark:to-[#2dd4bf] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
           Can&apos;t Find What You&apos;re Looking For?

@@ -3,7 +3,7 @@ export default function About() {
     {
       name: "Sarah Johnson",
       role: "CEO & Founder",
-      experience: "15+ years in textile industry",
+      experience: "5+ years in textile industry",
       description: "Visionary leader with extensive experience in global textile markets"
     },
     {
@@ -31,7 +31,7 @@ export default function About() {
     { year: "2012", event: "Expanded operations to serve 10+ countries" },
     { year: "2015", event: "Achieved ISO 9001:2015 certification for quality management" },
     { year: "2018", event: "Opened second manufacturing facility" },
-    { year: "2020", event: "Reached milestone of 50+ countries served" },
+    { year: "2020", event: "Reached milestone of 10+ countries served" },
     { year: "2024", event: "Celebrating 15 years of excellence in clothing exports" }
   ]
 
@@ -203,11 +203,11 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl lg:text-5xl font-bold mb-2">15+</div>
+              <div className="text-4xl lg:text-5xl font-bold mb-2">5+</div>
               <p className="text-primary-100">Years of Experience</p>
             </div>
             <div>
-              <div className="text-4xl lg:text-5xl font-bold mb-2">50+</div>
+              <div className="text-4xl lg:text-5xl font-bold mb-2">10+</div>
               <p className="text-primary-100">Countries Served</p>
             </div>
             <div>

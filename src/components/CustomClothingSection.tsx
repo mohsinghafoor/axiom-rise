@@ -3,10 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function CustomClothingSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,11 +71,11 @@ export default function CustomClothingSection() {
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="group bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-5 text-center border border-gray-100 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-500 hover:shadow-lg transition-all duration-300">
                   <div className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400">100%</div>
-                  <div className="text-xs md:text-sm text-gray-600 dark:text-gray-300 mt-1 font-semibold">Custom Designs</div>
+                  <div className="text-xs md:text-sm text-gray-600 dark:text-gray-300 mt-1 font-semibold">{t('customDesigns')}</div>
                 </div>
                 <div className="group bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-5 text-center border border-gray-100 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-500 hover:shadow-lg transition-all duration-300">
                   <div className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400">24/7</div>
-                  <div className="text-xs md:text-sm text-gray-600 dark:text-gray-300 mt-1 font-semibold">Support Available</div>
+                  <div className="text-xs md:text-sm text-gray-600 dark:text-gray-300 mt-1 font-semibold">{t('supportAvailable')}</div>
                 </div>
               </div>
             </div>
@@ -86,30 +88,30 @@ export default function CustomClothingSection() {
             {/* Badge */}
             <div className="inline-block mb-6">
               <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
-                Custom Solutions
+                {t('customBadge')}
               </span>
             </div>
 
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              Custom Clothing Manufacturers in Pakistan,{' '}
-              <span className="bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">Manufacturing Exclusive Clothing</span>
+              {t('customTitleStart')}{' '}
+              <span className="bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">{t('customTitleHighlight')}</span>
             </h2>
             
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-              If you are searching for a custom clothing manufacturer in Pakistan that can fulfill all your unique requirements? Your search ends here at Rijiz, where we deliver an extensive range of custom clothing solutions to transform your vision into reality. Unlike other bespoke apparel manufacturers, we provide complete custom clothing manufacturing services with limitless customization possibilities.
+              {t('customDesc1')}
             </p>
             
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              At Rijiz, we take pride in producing premium-quality clothing that aligns with your exact specifications. From screen printing and embroidery to digital printing,{' '}
+              {t('customDesc2Start')}{' '}
               <Link href="/services" className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-semibold underline decoration-2 underline-offset-4 transition-colors">
-                private label clothing manufacturing
+                {t('customDesc2Link')}
               </Link>
-              , cut and sew clothing production, and custom designing, we present a comprehensive array of customization services that are unparalleled in the industry.
+              {t('customDesc2End')}
             </p>
             
             <div className="mt-8">
               <Link href="/contact" className="inline-flex items-center px-7 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-sm font-bold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-lg">
-                GET A QUOTE
+                {t('getQuote')}
                 <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

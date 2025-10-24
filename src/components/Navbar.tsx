@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import ThemeToggle from './ThemeToggle'
+import LanguageSelector from './LanguageSelector'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -12,6 +14,7 @@ export default function Navbar() {
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const [activeThirdLevel, setActiveThirdLevel] = useState<string | null>(null)
   const pathname = usePathname()
+  const { t } = useLanguage()
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -255,14 +258,14 @@ export default function Navbar() {
 
           {/* Desktop Menu - Center Navigation */}
           <div className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-2 lg:space-x-4 xl:space-x-6 flex-nowrap">
               <Link
                 href="/"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
+                className={`px-1 lg:px-1 xl:px-2 py-4 text-xs lg:text-sm font-semibold transition-colors relative whitespace-nowrap ${
                   pathname === '/' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
-                HOME
+                {t('home')}
               </Link>
               
               {/* Products Dropdown */}
@@ -378,63 +381,67 @@ export default function Navbar() {
               {/* Other navigation items excluding Contact */}
               <Link
                 href="/products"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
+                className={`px-1 lg:px-1 xl:px-2 py-4 text-xs lg:text-sm font-semibold transition-colors relative whitespace-nowrap ${
                   pathname === '/products' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
-                OUR PRODUCTS
+                {t('products')}
               </Link>
               <Link
                 href="/services"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
+                className={`px-1 lg:px-1 xl:px-2 py-4 text-xs lg:text-sm font-semibold transition-colors relative whitespace-nowrap ${
                   pathname === '/services' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
-                SERVICES
+                {t('services')}
               </Link>
 
               <Link
                 href="/clients"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
+                className={`px-1 lg:px-1 xl:px-2 py-4 text-xs lg:text-sm font-semibold transition-colors relative whitespace-nowrap ${
                   pathname === '/clients' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
-                CLIENTS
+                {t('clients')}
               </Link>
               <Link
                 href="/blog"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
+                className={`px-1 lg:px-1 xl:px-2 py-4 text-xs lg:text-sm font-semibold transition-colors relative whitespace-nowrap ${
                   pathname === '/blog' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
-                BLOG
+                {t('blog')}
               </Link>
               <Link
                 href="/about"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
+                className={`px-1 lg:px-1 xl:px-2 py-4 text-xs lg:text-sm font-semibold transition-colors relative whitespace-nowrap ${
                   pathname === '/about' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                 }`}
               >
-                ABOUT US
+                {t('about')}
               </Link>
             </div>
           </div>
 
           {/* Right Side - Theme Toggle & Talk to Expert Button */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
             <Link
               href="/contact"
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors shadow-md hover:shadow-lg"
+              className="bg-orange-500 hover:bg-orange-600 text-white px-2 lg:px-3 xl:px-4 py-2 rounded-full text-xs lg:text-sm font-semibold transition-colors shadow-md hover:shadow-lg whitespace-nowrap"
             >
-              TALK TO AN EXPERT
+              {t('talkToExpert')}
             </Link>
-            <div className="flex-shrink-0 ml-4">
+            <div className="flex-shrink-0">
+              <LanguageSelector />
+            </div>
+            <div className="flex-shrink-0 ml-2 lg:ml-3">
               <ThemeToggle />
             </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
+            <LanguageSelector />
             <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -453,19 +460,19 @@ export default function Navbar() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <Link
                 href="/"
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Home
+                {t('home')}
               </Link>
               
               {/* Mobile Products Link - Simple Link */}
               <Link
                 href="/products"
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Products
+                {t('products')}
               </Link>
 
               {/* Mobile Products Dropdown - Commented out for now */}
@@ -559,46 +566,46 @@ export default function Navbar() {
               {/* Services Link */}
               <Link
                 href="/services"
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Services
+                {t('services')}
               </Link>
 
               {/* Clients Link */}
               <Link
                 href="/clients"
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Clients
+                {t('clients')}
               </Link>
 
               {/* Blog Link */}
               <Link
                 href="/blog"
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Blog
+                {t('blog')}
               </Link>
 
               {/* About Us Link */}
               <Link
                 href="/about"
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About Us
+                {t('about')}
               </Link>
 
               {/* Contact/Talk to Expert Link */}
               <Link
                 href="/contact"
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contact
+                {t('contact')}
               </Link>
             </div>
           </div>

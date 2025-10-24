@@ -1,6 +1,9 @@
 export default function ProductsHeroSection() {
   return (
-    <section className="relative text-white py-20 overflow-hidden bg-gradient-to-br from-[#d62828] via-[#f77f00] to-[#fcbf49] dark:from-orange-900 dark:via-orange-800 dark:to-yellow-800 transition-colors duration-300">
+<section className="relative text-white py-20 overflow-hidden 
+  bg-gradient-to-br from-[#11998e] to-[#38ef7d] 
+  dark:from-[#065f46] dark:via-[#0f766e] dark:to-[#14b8a6] 
+  transition-colors duration-300">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>

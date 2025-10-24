@@ -194,15 +194,15 @@ export default function FeaturesSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold">15+</div>
+              <div className="text-4xl md:text-5xl font-bold">5+</div>
               <div className="text-primary-100 text-sm md:text-base">Years Experience</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold">50+</div>
+              <div className="text-4xl md:text-5xl font-bold">10+</div>
               <div className="text-primary-100 text-sm md:text-base">Countries Served</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold">10K+</div>
+              <div className="text-4xl md:text-5xl font-bold">100+</div>
               <div className="text-primary-100 text-sm md:text-base">Happy Clients</div>
             </div>
             <div className="space-y-2">
