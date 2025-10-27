@@ -1,41 +1,44 @@
+'use client';
 import Image from "next/image";
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function ProcessSection() {
+  const { t } = useLanguage();
   const processSteps = [
     {
       step: "01",
-      title: "Consultation",
-      description: "Initial discussion to understand your requirements and specifications",
+      titleKey: "processConsultationTitle",
+      descriptionKey: "processConsultationDesc",
       image: "/images/process/consultation.webp"
     },
     {
       step: "02",
-      title: "Design & Planning",
-      description: "Create detailed designs and production timeline based on your needs",
+      titleKey: "processDesignPlanningTitle",
+      descriptionKey: "processDesignPlanningDesc",
       image: "/images/process/planning.webp"
     },
     {
       step: "03",
-      title: "Sample Development",
-      description: "Develop and refine samples until they meet your exact requirements",
+      titleKey: "processSampleDevelopmentTitle",
+      descriptionKey: "processSampleDevelopmentDesc",
       image: "/images/process/sample.webp"
     },
     {
       step: "04",
-      title: "Production",
-      description: "Begin full-scale production with continuous quality monitoring",
+      titleKey: "processProductionTitle",
+      descriptionKey: "processProductionDesc",
       image: "/images/process/production.webp"
     },
     {
       step: "05",
-      title: "Quality Control",
-      description: "Comprehensive quality checks before packaging and shipping",
+      titleKey: "processQualityControlTitle",
+      descriptionKey: "processQualityControlDesc",
       image: "/images/services/quality-assurance.webp"
     },
     {
       step: "06",
-      title: "Delivery",
-      description: "Secure packaging and timely delivery to your specified destination",
+      titleKey: "processDeliveryTitle",
+      descriptionKey: "processDeliveryDesc",
       image: "/images/process/delivery.webp"
     }
   ];
@@ -45,10 +48,10 @@ export default function ProcessSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Our Process
+            {t('processSectionTitle')}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            A streamlined approach ensuring quality and efficiency at every step
+            {t('processSectionDesc')}
           </p>
         </div>
 
@@ -60,7 +63,7 @@ export default function ProcessSection() {
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image 
                     src={step.image}
-                    alt={step.title}
+                    alt={t(step.titleKey)}
                     fill
                     className="object-cover hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -74,8 +77,8 @@ export default function ProcessSection() {
                 
                 {/* Content Section */}
                 <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{step.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t(step.titleKey)}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{t(step.descriptionKey)}</p>
                 </div>
               </div>
               {/* Arrow - hide for last item in each row */}

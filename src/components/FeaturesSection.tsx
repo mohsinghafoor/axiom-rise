@@ -1,10 +1,12 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function FeaturesSection() {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observers = cardsRef.current.map((card, index) => {
@@ -38,8 +40,8 @@ export default function FeaturesSection() {
 
   const features = [
     {
-      title: "Premium Quality Assurance",
-      description: "Every garment undergoes rigorous multi-stage quality control processes with ISO 9001:2015 certification, ensuring international standards compliance and zero-defect delivery.",
+      title: t('premiumQualityTitle'),
+      description: t('premiumQualityDesc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -48,8 +50,8 @@ export default function FeaturesSection() {
       color: "bg-blue-500"
     },
     {
-      title: "Global Export Network",
-      description: "Successfully exporting to 50+ countries across North America, Europe, Asia, and beyond with established logistics partnerships and customs expertise.",
+      title: t('globalExportTitle'),
+      description: t('globalExportDesc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -58,8 +60,8 @@ export default function FeaturesSection() {
       color: "bg-green-500"
     },
     {
-      title: "Expert Manufacturing Team",
-      description: "5+ years of industry experience with skilled artisans and modern production facilities equipped with cutting-edge technology for precision manufacturing.",
+      title: t('expertTeamTitle'),
+      description: t('expertTeamDesc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -68,8 +70,8 @@ export default function FeaturesSection() {
       color: "bg-purple-500"
     },
     {
-      title: "Sustainable & Ethical",
-      description: "OEKO-TEX certified eco-friendly materials with GOTS organic cotton options. BSCI compliant ethical labor practices and environmentally responsible production.",
+      title: t('sustainableTitle'),
+      description: t('sustainableDesc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
@@ -78,8 +80,8 @@ export default function FeaturesSection() {
       color: "bg-emerald-500"
     },
     {
-      title: "Custom Design Solutions",
-      description: "In-house design team offering complete customization from concept to production. Tech packs, sample development, and private label manufacturing services.",
+      title: t('customDesignTitle'),
+      description: t('customDesignDesc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
@@ -88,8 +90,8 @@ export default function FeaturesSection() {
       color: "bg-orange-500"
     },
     {
-      title: "Fast Turnaround Time",
-      description: "Efficient production cycles with 15-30 day delivery timelines. Rush order capabilities and flexible scheduling to meet urgent deadlines without compromising quality.",
+      title: t('fastTurnaroundTitle'),
+      description: t('fastTurnaroundDesc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -130,15 +132,14 @@ export default function FeaturesSection() {
         <div className="text-center mb-16 relative">
           <div className="inline-block mb-4">
             <span className="bg-primary-600 dark:bg-primary-500 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
-              Our Advantages
+              {t('featuresBadge')}
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Why Choose <span className="text-primary-600 dark:text-primary-400">Axiom Rise</span>?
+            {t('featuresTitleStart')} <span className="text-primary-600 dark:text-primary-400">{t('featuresTitleHighlight')}</span>{t('featuresTitleEnd')}
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We combine traditional craftsmanship with cutting-edge technology to deliver exceptional 
-            clothing products that exceed expectations and set industry standards worldwide.
+            {t('featuresDesc')}
           </p>
         </div>
 
@@ -195,19 +196,19 @@ export default function FeaturesSection() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold">5+</div>
-              <div className="text-primary-100 text-sm md:text-base">Years Experience</div>
+              <div className="text-primary-100 text-sm md:text-base">{t('yearsExp')}</div>
             </div>
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold">10+</div>
-              <div className="text-primary-100 text-sm md:text-base">Countries Served</div>
+              <div className="text-primary-100 text-sm md:text-base">{t('countriesServ')}</div>
             </div>
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold">100+</div>
-              <div className="text-primary-100 text-sm md:text-base">Happy Clients</div>
+              <div className="text-primary-100 text-sm md:text-base">{t('happyClients')}</div>
             </div>
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold">99%</div>
-              <div className="text-primary-100 text-sm md:text-base">Quality Rate</div>
+              <div className="text-primary-100 text-sm md:text-base">{t('qualityRate')}</div>
             </div>
           </div>
         </div>

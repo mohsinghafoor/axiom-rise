@@ -1,70 +1,74 @@
+'use client';
+
 import Image from "next/image";
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function ServicesGrid() {
+  const { t } = useLanguage();
   const services = [
     {
-      title: "Manufacturing Excellence",
-      description: "State-of-the-art manufacturing facilities equipped with modern machinery and skilled workforce",
+      titleKey: "servicesManufacturingTitle",
+      descriptionKey: "servicesManufacturingDesc",
       features: [
-        "Advanced cutting and sewing equipment",
-        "Quality control at every stage",
-        "Skilled craftsmen and technicians",
-        "Flexible production capacity"
+        "servicesManufacturingFeature1",
+        "servicesManufacturingFeature2",
+        "servicesManufacturingFeature3",
+        "servicesManufacturingFeature4"
       ],
       image: "/images/services/manufacturing-excellence.webp"
     },
     {
-      title: "Custom Design & Development",
-      description: "Transform your ideas into reality with our comprehensive design and development services",
+      titleKey: "servicesCustomDesignTitle",
+      descriptionKey: "servicesCustomDesignDesc",
       features: [
-        "Pattern making and grading",
-        "Sample development",
-        "Design consultation",
-        "Trend analysis and forecasting"
+        "servicesCustomDesignFeature1",
+        "servicesCustomDesignFeature2",
+        "servicesCustomDesignFeature3",
+        "servicesCustomDesignFeature4"
       ],
       image: "/images/services/custom-design.webp"
     },
     {
-      title: "Global Export Services",
-      description: "Seamless export solutions to deliver your products anywhere in the world",
+      titleKey: "servicesGlobalExportTitle",
+      descriptionKey: "servicesGlobalExportDesc",
       features: [
-        "International shipping coordination",
-        "Customs clearance assistance",
-        "Documentation support",
-        "Tracking and logistics management"
+        "servicesGlobalExportFeature1",
+        "servicesGlobalExportFeature2",
+        "servicesGlobalExportFeature3",
+        "servicesGlobalExportFeature4"
       ],
       image: "/images/services/global-export.webp"
     },
     {
-      title: "Quality Assurance",
-      description: "Comprehensive quality control processes ensuring products meet international standards",
+      titleKey: "servicesQualityTitle",
+      descriptionKey: "servicesQualityDesc",
       features: [
-        "Pre-production quality planning",
-        "In-line quality monitoring",
-        "Final inspection protocols",
-        "Compliance certifications"
+        "servicesQualityFeature1",
+        "servicesQualityFeature2",
+        "servicesQualityFeature3",
+        "servicesQualityFeature4"
       ],
       image: "/images/services/quality-assurance.webp"
     },
     {
-      title: "Private Label Solutions",
-      description: "Complete private label services from concept to delivery",
+      titleKey: "servicesPrivateLabelTitle",
+      descriptionKey: "servicesPrivateLabelDesc",
       features: [
-        "Brand development support",
-        "Custom packaging design",
-        "Label and tag production",
-        "Exclusive product lines"
+        "servicesPrivateLabelFeature1",
+        "servicesPrivateLabelFeature2",
+        "servicesPrivateLabelFeature3",
+        "servicesPrivateLabelFeature4"
       ],
       image: "/images/services/private-label.webp"
     },
     {
-      title: "Supply Chain Management",
-      description: "End-to-end supply chain solutions for maximum efficiency and cost-effectiveness",
+      titleKey: "servicesSupplyChainTitle",
+      descriptionKey: "servicesSupplyChainDesc",
       features: [
-        "Raw material sourcing",
-        "Inventory management",
-        "Production planning",
-        "Delivery scheduling"
+        "servicesSupplyChainFeature1",
+        "servicesSupplyChainFeature2",
+        "servicesSupplyChainFeature3",
+        "servicesSupplyChainFeature4"
       ],
       image: "/images/services/supply-chain.webp"
     }
@@ -75,10 +79,10 @@ export default function ServicesGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            What We Offer
+            {t('servicesGridTitle')}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            From manufacturing to global delivery, we provide end-to-end solutions
+            {t('servicesGridDesc')}
           </p>
         </div>
 
@@ -89,7 +93,7 @@ export default function ServicesGrid() {
               <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-primary-100 to-primary-50 dark:from-gray-700 dark:to-gray-800">
                 <Image 
                   src={service.image}
-                  alt={service.title}
+                  alt={t(service.titleKey)}
                   fill
                   className="object-cover hover:scale-110 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -99,15 +103,15 @@ export default function ServicesGrid() {
               
               {/* Content Section */}
               <div className="p-8">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{service.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">{service.description}</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{t(service.titleKey)}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">{t(service.descriptionKey)}</p>
                 <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
+                  {service.features.map((featureKey, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                       <svg className="w-4 h-4 text-primary-600 dark:text-primary-400 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                       </svg>
-                      {feature}
+                      {t(featureKey)}
                     </li>
                   ))}
                 </ul>

@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function CTASection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -59,7 +61,7 @@ export default function CTASection() {
               : 'opacity-0 translate-y-10'
           }`}
         >
-          Ready to Partner with Us?
+          {t('ctaTitle')}
         </h2>
         <p 
           className={`text-xl mb-8 max-w-2xl mx-auto transition-all duration-500 delay-200 ${
@@ -69,7 +71,7 @@ export default function CTASection() {
           }`}
           style={{ color: 'rgba(255, 255, 255, 0.95)' }}
         >
-          Join thousands of satisfied clients worldwide. Get in touch today for competitive pricing and exceptional service.
+          {t('ctaDesc')}
         </p>
         <div
           className={`transition-all duration-500 delay-300 ${
@@ -82,7 +84,7 @@ export default function CTASection() {
             href="/contact" 
             className="bg-white dark:bg-gray-900 text-primary-600 dark:text-primary-400 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 dark:hover:bg-gray-800 transition-all duration-300 inline-block hover:scale-105 transform shadow-lg dark:shadow-xl dark:shadow-orange-500/20 border border-transparent dark:border-gray-700"
           >
-            Contact Us Today
+            {t('ctaButton')}
           </Link>
         </div>
       </div>

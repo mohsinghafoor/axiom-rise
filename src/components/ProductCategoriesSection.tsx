@@ -4,10 +4,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from 'react';
 import { productsData } from '@/data/products';
-
+import { useLanguage } from '../contexts/LanguageContext';
 export default function ProductCategoriesSection() {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const { t, language } = useLanguage();
+
+  const getTranslatedTitle = (product: typeof productsData[0]) => {
+    return typeof product.title === 'string' ? product.title : product.title[language as keyof typeof product.title] || product.title.en;
+  };
+
+  const getTranslatedDescription = (product: typeof productsData[0]) => {
+    return typeof product.description === 'string' ? product.description : product.description[language as keyof typeof product.description] || product.description.en;
+  };
 
   useEffect(() => {
     const observers = cardsRef.current.map((card, index) => {
@@ -56,11 +65,11 @@ export default function ProductCategoriesSection() {
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <span className="bg-gradient-to-r from-orange-600 to-red-600 dark:from-orange-500 dark:to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
-              Our Products
+              {t('productCategoriesBadge')}
             </span>
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Product Categories</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">Discover our diverse range of high-quality clothing for various markets</p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('productCategoriesTitle')}</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300">{t('productCategoriesDesc')}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category, index) => (
@@ -80,17 +89,17 @@ export default function ProductCategoriesSection() {
               <div className="relative h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
                 <Image 
                   src={category.image} 
-                  alt={category.title}
+                  alt={getTranslatedTitle(category)}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-300"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-primary-700 dark:text-primary-400">{category.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{category.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-primary-700 dark:text-primary-400">{getTranslatedTitle(category)}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{getTranslatedDescription(category)}</p>
                 <Link href={`/products/${category.slug}`} className="inline-flex items-center text-primary-600 dark:text-primary-400 font-semibold hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
-                  READ MORE
+                  {t('productCategoriesReadMore')}
                   <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -106,7 +115,7 @@ export default function ProductCategoriesSection() {
             href="/products"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-blue-600 dark:from-primary-500 dark:to-blue-500 text-white text-lg font-bold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-lg"
           >
-            EXPLORE MORE PRODUCTS
+            {t('productCategoriesExploreMore')}
             <svg className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

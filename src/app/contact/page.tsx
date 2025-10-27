@@ -1,8 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Contact() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,7 +30,7 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      title: "Head Office",
+      title: t('contactInfoHeadOffice'),
       details: [
         "Axiom Rise Apparel",
         "Kotla Amba Wala Road, Sialkot",
@@ -38,7 +40,7 @@ export default function Contact() {
       icon: "location"
     },
     {
-      title: "Phone & Fax",
+      title: t('contactInfoPhoneFax'),
       details: [
         "Mobile: +923271213923",
         "WhatsApp: +923271213923"
@@ -46,7 +48,7 @@ export default function Contact() {
       icon: "phone"
     },
     {
-      title: "Email",
+      title: t('contactInfoEmail'),
       details: [
         "General: info@axiomrise.com",
         "Sales: sales@axiomrise.com",
@@ -55,7 +57,7 @@ export default function Contact() {
       icon: "email"
     },
     {
-      title: "Business Hours",
+      title: t('contactInfoBusinessHours'),
       details: [
         "Open 24 hours, 7 days a week (24/7)",
         "Time Zone: PKT (UTC+5)"
@@ -74,10 +76,10 @@ export default function Contact() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-white drop-shadow-lg">
-            Contact Us
+            {t('contactHeroTitle')}
           </h1>
           <p className="text-xl text-white/95 dark:text-white/90 max-w-3xl mx-auto drop-shadow-md">
-            Ready to partner with us? Get in touch today and discover how we can help your business grow
+            {t('contactHeroDesc')}
           </p>
         </div>
       </section>
@@ -89,17 +91,17 @@ export default function Contact() {
             {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-                Send Us a Message
+                {t('contactFormTitle')}
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
-                Fill out the form below and our team will get back to you within 24 hours.
+                {t('contactFormDesc')}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Full Name *
+                      {t('contactFormFullName')}
                     </label>
                     <input
                       type="text"
@@ -109,12 +111,12 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
-                      placeholder="Your full name"
+                      placeholder={t('contactFormFullNamePlaceholder')}
                     />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Email Address *
+                      {t('contactFormEmail')}
                     </label>
                     <input
                       type="email"
@@ -124,7 +126,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
-                      placeholder="your.email@example.com"
+                      placeholder={t('contactFormEmailPlaceholder')}
                     />
                   </div>
                 </div>
@@ -132,7 +134,7 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Company Name
+                      {t('contactFormCompany')}
                     </label>
                     <input
                       type="text"
@@ -141,12 +143,12 @@ export default function Contact() {
                       value={formData.company}
                       onChange={handleChange}
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
-                      placeholder="Your company name"
+                      placeholder={t('contactFormCompanyPlaceholder')}
                     />
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Phone Number
+                      {t('contactFormPhone')}
                     </label>
                     <input
                       type="tel"
@@ -155,14 +157,14 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder={t('contactFormPhonePlaceholder')}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Subject *
+                    {t('contactFormSubject')}
                   </label>
                   <select
                     id="subject"
@@ -172,19 +174,19 @@ export default function Contact() {
                     onChange={handleChange}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
                   >
-                    <option value="">Please select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="quote">Request Quote</option>
-                    <option value="partnership">Partnership Opportunity</option>
-                    <option value="quality">Quality Concern</option>
-                    <option value="support">Technical Support</option>
-                    <option value="other">Other</option>
+                    <option value="">{t('contactFormSubjectSelect')}</option>
+                    <option value="general">{t('contactFormSubjectGeneral')}</option>
+                    <option value="quote">{t('contactFormSubjectQuote')}</option>
+                    <option value="partnership">{t('contactFormSubjectPartnership')}</option>
+                    <option value="quality">{t('contactFormSubjectQuality')}</option>
+                    <option value="support">{t('contactFormSubjectSupport')}</option>
+                    <option value="other">{t('contactFormSubjectOther')}</option>
                   </select>
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Message *
+                    {t('contactFormMessage')}
                   </label>
                   <textarea
                     id="message"
@@ -194,7 +196,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
-                    placeholder="Please provide details about your inquiry..."
+                    placeholder={t('contactFormMessagePlaceholder')}
                   ></textarea>
                 </div>
 
@@ -202,7 +204,7 @@ export default function Contact() {
                   type="submit"
                   className="w-full bg-primary-600 text-white py-3 px-6 rounded-md hover:bg-primary-700 transition-colors font-semibold"
                 >
-                  Send Message
+                  {t('contactFormSendMessage')}
                 </button>
               </form>
             </div>
@@ -210,10 +212,10 @@ export default function Contact() {
             {/* Contact Information */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-                Get in Touch
+                {t('contactInfoTitle')}
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
-                We&apos;re here to help! Reach out to us through any of the following channels.
+                {t('contactInfoDesc')}
               </p>
 
               <div className="space-y-6">
@@ -238,8 +240,8 @@ export default function Contact() {
 
               {/* Social Media */}
               <div className="mt-8 p-6 bg-gradient-to-br from-primary-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 rounded-lg">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Follow Us</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">Stay connected with us on social media</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t('contactSocialTitle')}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{t('contactSocialDesc')}</p>
                 <div className="flex space-x-4">
                   <a
                     href="https://www.facebook.com/share/1ChLBrEUzV/"
@@ -279,7 +281,7 @@ export default function Contact() {
 
               {/* Map */}
               <div className="mt-8">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Find Us</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t('contactMapTitle')}</h3>
                 <div className="h-64 bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1362.963393835624!2d74.5452235!3d32.466675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391ec0329f8eae99%3A0x95901be512b2acd3!2sKotla%20Ambanwala%20Rd%2C%20Kotla%20Ambanwala%20Village%2C%20Sialkot%2C%20Pakistan!5e0!3m2!1sen!2s!4v1697460000000!5m2!1sen!2s"
@@ -311,38 +313,38 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Frequently Asked Questions
+              {t('contactFAQTitle')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Quick answers to common questions about our services
+              {t('contactFAQDesc')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                question: "What is your minimum order quantity?",
-                answer: "Our minimum order quantity varies by product type. Generally, we require a minimum of 500 pieces per style for most garments. Contact us for specific requirements."
+                question: t('contactFAQ1Question'),
+                answer: t('contactFAQ1Answer')
               },
               {
-                question: "How long does production take?",
-                answer: "Production time typically ranges from 15-30 days depending on the complexity and quantity of the order. Rush orders may be accommodated with additional fees."
+                question: t('contactFAQ2Question'),
+                answer: t('contactFAQ2Answer')
               },
               {
-                question: "Do you provide samples?",
-                answer: "Yes, we provide samples for approval before production begins. Sample costs are typically deducted from the final order total."
+                question: t('contactFAQ3Question'),
+                answer: t('contactFAQ3Answer')
               },
               {
-                question: "What payment methods do you accept?",
-                answer: "We accept bank transfers, letters of credit, and other secure international payment methods. Payment terms are typically 30% deposit with 70% before shipment."
+                question: t('contactFAQ4Question'),
+                answer: t('contactFAQ4Answer')
               },
               {
-                question: "Can you handle custom designs?",
-                answer: "Absolutely! We specialize in custom designs and can work with your specifications, sketches, or even develop designs based on your requirements."
+                question: t('contactFAQ5Question'),
+                answer: t('contactFAQ5Answer')
               },
               {
-                question: "What quality certifications do you have?",
-                answer: "We hold ISO 9001:2015, OEKO-TEX Standard 100, GOTS certification, and BSCI compliance certifications ensuring highest quality and ethical standards."
+                question: t('contactFAQ6Question'),
+                answer: t('contactFAQ6Answer')
               }
             ].map((faq, index) => (
               <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-transparent dark:border-gray-700">

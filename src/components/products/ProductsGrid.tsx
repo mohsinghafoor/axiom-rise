@@ -4,14 +4,24 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from 'react';
 import { productsData } from '@/data/products';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function ProductsGrid() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const { t, language } = useLanguage();
 
-  const categories = ['All', 'Jackets', 'Hoodies', 'T-Shirts', 'Sportswear', 'Uniforms', 'Accessories'];
+  const categories = [
+    t('productsGridCategoryAll'), 
+    t('productsGridCategoryJackets'), 
+    t('productsGridCategoryHoodies'), 
+    t('productsGridCategoryTShirts'), 
+    t('productsGridCategorySportswear'), 
+    t('productsGridCategoryUniforms'), 
+    t('productsGridCategoryAccessories')
+  ];
 
   const getCategoryKeyword = (category: string): string[] => {
     const categoryMap: { [key: string]: string[] } = {
@@ -25,17 +35,45 @@ export default function ProductsGrid() {
     return categoryMap[category] || [];
   };
 
+  const getEnglishCategoryName = (translatedCategory: string): string => {
+    const categoryMap: { [key: string]: string } = {
+      [t('productsGridCategoryJackets')]: 'Jackets',
+      [t('productsGridCategoryHoodies')]: 'Hoodies',
+      [t('productsGridCategoryTShirts')]: 'T-Shirts',
+      [t('productsGridCategorySportswear')]: 'Sportswear',
+      [t('productsGridCategoryUniforms')]: 'Uniforms',
+      [t('productsGridCategoryAccessories')]: 'Accessories'
+    };
+    return categoryMap[translatedCategory] || translatedCategory;
+  };
+
+  const getTranslatedTitle = (product: typeof productsData[0]) => {
+    return typeof product.title === 'string' ? product.title : product.title[language as keyof typeof product.title] || product.title.en;
+  };
+
+  const getTranslatedDescription = (product: typeof productsData[0]) => {
+    return typeof product.description === 'string' ? product.description : product.description[language as keyof typeof product.description] || product.description.en;
+  };
+
   const filteredProducts = productsData.filter(product => {
-    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         product.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const currentTitle = getTranslatedTitle(product);
+    const currentDescription = getTranslatedDescription(product);
+    
+    const matchesSearch = currentTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         currentDescription.toLowerCase().includes(searchTerm.toLowerCase());
     
     const matchesCategory = selectedCategory === 'All' || 
-                           getCategoryKeyword(selectedCategory).some(keyword => 
-                             product.title.toLowerCase().includes(keyword) || 
-                             product.description.toLowerCase().includes(keyword)
+                           getCategoryKeyword(getEnglishCategoryName(selectedCategory)).some((keyword: string) => 
+                             currentTitle.toLowerCase().includes(keyword) || 
+                             currentDescription.toLowerCase().includes(keyword)
                            );
     return matchesSearch && matchesCategory;
   });
+
+  useEffect(() => {
+    // Reset category selection when language changes
+    setSelectedCategory('All');
+  }, [language]);
 
   useEffect(() => {
     // Reset visible cards when filtered products change
@@ -94,7 +132,7 @@ export default function ProductsGrid() {
             <div className="relative">
               <input
                 type="text"
-                placeholder="Search products..."
+                placeholder={t('productsGridSearchPlaceholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full px-6 py-4 pl-12 rounded-lg border-2 border-gray-300 dark:border-gray-600 focus:border-primary-600 dark:focus:border-primary-500 focus:outline-none text-gray-900 dark:text-white bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300"
@@ -126,7 +164,7 @@ export default function ProductsGrid() {
         {/* Products Count */}
         <div className="text-center mb-8">
           <p className="text-gray-600 dark:text-gray-300 text-lg">
-            Showing <span className="font-bold text-primary-600 dark:text-primary-400">{filteredProducts.length}</span> products
+            {t('productsGridShowingProducts')} <span className="font-bold text-primary-600 dark:text-primary-400">{filteredProducts.length}</span> {t('productsGridProducts')}
           </p>
         </div>
 
@@ -148,7 +186,7 @@ export default function ProductsGrid() {
               <div className="relative h-56 overflow-hidden rounded-t-xl bg-gray-200 dark:bg-gray-700">
                 <Image 
                   src={product.image} 
-                  alt={product.title}
+                  alt={getTranslatedTitle(product)}
                   fill
                   className="object-cover hover:scale-110 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -157,15 +195,15 @@ export default function ProductsGrid() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  {product.title}
+                  {getTranslatedTitle(product)}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{product.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{getTranslatedDescription(product)}</p>
                 <div className="flex items-center justify-between">
                   <Link 
                     href={`/products/${product.slug}`}
                     className="inline-flex items-center text-primary-600 dark:text-primary-400 font-semibold hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
                   >
-                    Learn More
+                    {t('productsGridLearnMore')}
                     <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -174,7 +212,7 @@ export default function ProductsGrid() {
                     href="/contact"
                     className="px-4 py-2 bg-primary-600 dark:bg-primary-500 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors text-sm font-semibold"
                   >
-                    Get Quote
+                    {t('productsGridGetQuote')}
                   </Link>
                 </div>
               </div>
@@ -188,13 +226,13 @@ export default function ProductsGrid() {
             <svg className="w-24 h-24 mx-auto text-gray-400 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">No Products Found</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">Try adjusting your search or filter criteria</p>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('productsGridNoProductsFound')}</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">{t('productsGridNoProductsDesc')}</p>
             <button 
               onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
               className="px-6 py-3 bg-primary-600 dark:bg-primary-500 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors font-semibold"
             >
-              Clear Filters
+              {t('productsGridClearFilters')}
             </button>
           </div>
         )}

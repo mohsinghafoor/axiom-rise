@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function WhyChooseSection() {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,32 +44,32 @@ export default function WhyChooseSection() {
 
   const features = [
     {
-      title: "Guaranteed Quality Products",
-      description: "We take quality seriously at Axiom Rise Apparel. All of our products are made using the best materials and are rigorously tested to ensure they meet our high standards.",
+      title: t('guaranteedQualityTitle'),
+      description: t('guaranteedQualityDesc'),
       image: "/images/why/quality.webp",
       imageAlt: "Quality control in clothing manufacturing"
     },
     {
-      title: "Low MOQ, Zero Inventory Risk",
-      description: "We understand that inventory risk can be a concern for our clients, which is why we offer a low minimum order quantity. This means you can order exactly what you need without worrying about excess inventory.",
+      title: t('lowMoqTitle'),
+      description: t('lowMoqDesc'),
       image: "/images/why/moq.webp",
       imageAlt: "Minimum order quantity flexibility"
     },
     {
-      title: "Exquisite Custom Styles",
-      description: "Our team of experienced designers and craftsmen work closely with you to create custom clothing that perfectly represents your brand and vision, ensuring every piece is unique and exceptional.",
+      title: t('customStylesTitle'),
+      description: t('customStylesDesc'),
       image: "/images/hero/hoodies.webp",
       imageAlt: "Custom clothing design styles"
     },
     {
-      title: "Creative And Unique Designs",
-      description: "Our design team is committed to creating innovative and unique designs that will make your brand stand out. We&apos;re constantly pushing the boundaries to create something truly special.",
+      title: t('creativeDesignsTitle'),
+      description: t('creativeDesignsDesc'),
       image: "/images/why/unique.webp",
       imageAlt: "Creative and unique clothing designs"
     },
     {
-      title: "Endless Customization Options",
-      description: "We offer a vast array of customization options to choose from. Whether it&apos;s the material, color, or design, we can help you create the perfect product for your brand.",
+      title: t('endlessCustomizationTitle'),
+      description: t('endlessCustomizationDesc'),
       image: "/images/why/customize.avif",
       imageAlt: "Endless customization options for clothing"
     }
@@ -88,9 +90,9 @@ export default function WhyChooseSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Why Axiom Rise Apparel Is Among One Of The Leading{' '}
+            {t('whyChooseTitleStart')}{' '}
             <span className="bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">
-              Clothing Manufacturer
+              {t('whyChooseTitleHighlight')}
             </span>
           </h2>
         </div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { Fragment } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 export default function ManufacturingSection() {
@@ -75,14 +76,14 @@ export default function ManufacturingSection() {
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               {t('manufacturingDesc2').split('garment manufacturing services').map((part, index, array) => (
                 index === array.length - 1 ? (
-                  part
+                  <span key={index}>{part}</span>
                 ) : (
-                  <>
+                  <Fragment key={index}>
                     {part}
                     <Link href="/services" className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold underline decoration-2 underline-offset-4 transition-colors">
                       garment manufacturing services
                     </Link>
-                  </>
+                  </Fragment>
                 )
               ))}
             </p>

@@ -1,28 +1,32 @@
+"use client"
+
 import Link from "next/link";
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function ProductsCTASection() {
+  const { t } = useLanguage();
   return (
     <section className="relative py-20 overflow-hidden bg-gradient-to-br from-[#38ef7d] to-[#7ee8fa]
 dark:from-[#0f766e] dark:via-[#14b8a6] dark:to-[#2dd4bf] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-          Can&apos;t Find What You&apos;re Looking For?
+          {t('productsCTATitle')}
         </h2>
         <p className="text-xl mb-8 text-gray-700 dark:text-gray-200 max-w-2xl mx-auto">
-          We offer custom manufacturing solutions tailored to your specific needs. Contact us to discuss your requirements
+          {t('productsCTADesc')}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link 
             href="/contact"
             className="px-8 py-3 bg-primary-600 dark:bg-primary-500 text-white rounded-lg font-semibold hover:bg-primary-700 dark:hover:bg-primary-600 transition-all hover:scale-105 shadow-lg"
           >
-            Contact Us
+            {t('productsCTAContactUs')}
           </Link>
           <Link 
             href="/services"
             className="px-8 py-3 bg-white dark:bg-gray-900 text-primary-600 dark:text-primary-400 border-2 border-primary-600 dark:border-primary-500 rounded-lg font-semibold hover:bg-primary-50 dark:hover:bg-gray-800 transition-all hover:scale-105"
           >
-            View Our Services
+            {t('productsCTAViewServices')}
           </Link>
         </div>
       </div>
