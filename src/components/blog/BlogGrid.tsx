@@ -3,12 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface BlogGridProps {
   activeCategory: string;
 }
 
 export default function BlogGrid({ activeCategory }: BlogGridProps) {
+  const { t } = useLanguage();
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const cardsRef = useRef<(HTMLElement | null)[]>([]);
 
@@ -25,8 +27,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
 
   const blogPosts = [
     {
-      title: "The Complete Guide to Starting Your Private Label Clothing Line",
-      excerpt: "Learn everything you need to know about launching your own private label clothing brand, from finding the right manufacturer to quality control.",
+      titleKey: "blogPost1Title",
+      excerptKey: "blogPost1Excerpt",
       image: "/images/hero/hoodies.webp",
       category: "Manufacturing",
       date: getFormattedDate(0), // Today
@@ -34,8 +36,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       author: "Sarah Johnson"
     },
     {
-      title: "Sustainable Manufacturing: The Future of Fashion Industry",
-      excerpt: "Discover how eco-friendly practices and sustainable materials are transforming the clothing manufacturing landscape.",
+      titleKey: "blogPost2Title",
+      excerptKey: "blogPost2Excerpt",
       image: "/images/hero/fitness.webp",
       category: "Sustainability",
       date: getFormattedDate(1), // Yesterday
@@ -43,8 +45,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       author: "Michael Chen"
     },
     {
-      title: "Understanding Fabric Quality: A Buyer's Guide",
-      excerpt: "Everything you need to know about fabric types, quality grades, and how to choose the right materials for your clothing line.",
+      titleKey: "blogPost3Title",
+      excerptKey: "blogPost3Excerpt",
       image: "/images/hero/tshirt.webp",
       category: "Quality Control",
       date: getFormattedDate(2), // 2 days ago
@@ -52,8 +54,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       author: "Emily Rodriguez"
     },
     {
-      title: "Export Documentation: Essential Guide for Clothing Manufacturers",
-      excerpt: "Navigate the complex world of international trade with our comprehensive guide to export documentation and customs clearance.",
+      titleKey: "blogPost4Title",
+      excerptKey: "blogPost4Excerpt",
       image: "/images/hero/varsity-jacket.webp",
       category: "Export Guide",
       date: getFormattedDate(3), // 3 days ago
@@ -61,8 +63,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       author: "David Kim"
     },
     {
-      title: "Top 10 Fashion Trends Shaping 2025",
-      excerpt: "Stay ahead of the curve with our analysis of the biggest fashion trends and how they're influencing manufacturing demands.",
+      titleKey: "blogPost5Title",
+      excerptKey: "blogPost5Excerpt",
       image: "/images/hero/sports-wear.webp",
       category: "Fashion Trends",
       date: getFormattedDate(4), // 4 days ago
@@ -70,8 +72,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       author: "Jessica Martinez"
     },
     {
-      title: "Quality Control Checklist for Garment Manufacturing",
-      excerpt: "A detailed checklist to ensure your products meet international quality standards and exceed customer expectations.",
+      titleKey: "blogPost6Title",
+      excerptKey: "blogPost6Excerpt",
       image: "/images/hero/sweatshirt.webp",
       category: "Quality Control",
       date: getFormattedDate(5), // 5 days ago
@@ -79,8 +81,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       author: "Robert Thompson"
     },
     {
-      title: "How to Choose the Right Clothing Manufacturer for Your Brand",
-      excerpt: "Key factors to consider when selecting a manufacturing partner, from production capacity to communication and reliability.",
+      titleKey: "blogPost7Title",
+      excerptKey: "blogPost7Excerpt",
       image: "/images/hero/leather-jacket.webp",
       category: "Manufacturing",
       date: getFormattedDate(6), // 6 days ago
@@ -88,8 +90,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       author: "Amanda Lee"
     },
     {
-      title: "The Rise of Athleisure: Manufacturing Opportunities",
-      excerpt: "Explore the booming athleisure market and how manufacturers can capitalize on this growing trend.",
+      titleKey: "blogPost8Title",
+      excerptKey: "blogPost8Excerpt",
       image: "/images/hero/shorts.webp",
       category: "Industry News",
       date: getFormattedDate(7), // 7 days ago
@@ -97,8 +99,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       author: "Chris Anderson"
     },
     {
-      title: "Understanding MOQ: Minimum Order Quantities Explained",
-      excerpt: "Learn about minimum order quantities, how they work, and strategies for negotiating better terms with manufacturers.",
+      titleKey: "blogPost9Title",
+      excerptKey: "blogPost9Excerpt",
       image: "/images/hero/hoodies.webp",
       category: "Manufacturing",
       date: getFormattedDate(8), // 8 days ago
@@ -166,8 +168,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
         {/* Results Count */}
         <div className="text-center mb-8">
           <p className="text-gray-600 dark:text-gray-300 text-lg">
-            Showing <span className="font-bold text-primary-600 dark:text-primary-400">{filteredPosts.length}</span> article{filteredPosts.length !== 1 ? 's' : ''}
-            {activeCategory !== 'All' && <span className="ml-1">in <span className="font-semibold">{activeCategory}</span></span>}
+            {t('blogGridShowingArticles')} <span className="font-bold text-primary-600 dark:text-primary-400">{filteredPosts.length}</span> {filteredPosts.length === 1 ? t('blogGridArticles') : t('blogGridArticlesPlural')}
+            {activeCategory !== 'All' && <span className="ml-1">{t('blogGridInCategory')} <span className="font-semibold">{activeCategory}</span></span>}
           </p>
         </div>
 
@@ -189,7 +191,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
               <div className="relative h-56 w-full overflow-hidden">
                 <Image 
                   src={post.image}
-                  alt={post.title}
+                  alt={t(post.titleKey)}
                   fill
                   className="object-cover hover:scale-110 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -215,13 +217,13 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
                 {/* Title */}
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                   <Link href={`/blog/${index + 1}`}>
-                    {post.title}
+                    {t(post.titleKey)}
                   </Link>
                 </h3>
 
                 {/* Excerpt */}
                 <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                  {post.excerpt}
+                  {t(post.excerptKey)}
                 </p>
 
                 {/* Author & CTA */}
@@ -238,7 +240,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
                     href={`/blog/${index + 1}`}
                     className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold text-sm flex items-center"
                   >
-                    Read More
+                    {t('blogGridReadMore')}
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -255,8 +257,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
             <svg className="w-24 h-24 mx-auto text-gray-400 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">No Articles Found</h3>
-            <p className="text-gray-600 dark:text-gray-300">No articles available in this category yet. Check back soon!</p>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('blogGridNoArticlesFound')}</h3>
+            <p className="text-gray-600 dark:text-gray-300">{t('blogGridNoArticlesMessage')}</p>
           </div>
         )}
 
@@ -264,7 +266,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
         {filteredPosts.length > 0 && (
           <div className="text-center mt-12">
             <button className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105 shadow-md">
-              Load More Articles
+              {t('blogGridLoadMore')}
             </button>
           </div>
         )}

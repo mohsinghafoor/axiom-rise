@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function BlogCTASection() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative py-20 overflow-hidden bg-gradient-to-br from-primary-600 via-orange-500 to-yellow-400 dark:from-primary-700 dark:via-orange-600 dark:to-primary-800 transition-colors duration-300">
       <div className="absolute inset-0 pointer-events-none">
@@ -10,31 +13,31 @@ export default function BlogCTASection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white drop-shadow-lg">
-            Stay Updated with Industry Insights
+            {t('blogCTAHeading')}
           </h2>
           <p className="text-xl mb-8 text-white/95 dark:text-white/90 drop-shadow-md">
-            Subscribe to our newsletter and get the latest articles, trends, and manufacturing tips delivered to your inbox
+            {t('blogCTADescription')}
           </p>
           {/* Newsletter Form */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto mb-8">
             <input 
               type="email" 
-              placeholder="Enter your email address"
+              placeholder={t('blogCTAEmailPlaceholder')}
               className="flex-1 px-6 py-3 rounded-lg border-2 border-gray-300 dark:border-gray-700 focus:border-primary-600 focus:outline-none text-gray-900 dark:text-white dark:bg-gray-800"
             />
             <button className="bg-white text-primary-600 dark:bg-white dark:text-primary-700 px-8 py-3 rounded-lg font-semibold hover:bg-white/90 dark:hover:bg-gray-100 transition-all hover:scale-105 shadow-lg whitespace-nowrap">
-              Subscribe Now
+              {t('blogCTASubscribeButton')}
             </button>
           </div>
 
           <p className="text-sm text-gray-600 dark:text-gray-300">
-            Join 5,000+ industry professionals already receiving our insights
+            {t('blogCTASubscribersText')}
           </p>
         </div>
 
         {/* Social Links */}
         <div className="mt-12 pt-8 border-t border-gray-300 dark:border-gray-700">
-          <p className="text-white dark:text-white mb-4 font-semibold">Follow us on social media</p>
+          <p className="text-white dark:text-white mb-4 font-semibold">{t('blogCTASocialHeading')}</p>
           <div className="flex justify-center gap-4">
             <Link href="#" className="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-600 dark:hover:bg-primary-500 hover:text-white dark:hover:text-white transition-all">
               <svg className="w-5 h-5 text-primary-600 dark:text-primary-400" fill="currentColor" viewBox="0 0 24 24">
