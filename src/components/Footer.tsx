@@ -66,10 +66,10 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">{t('footerQuickLinks')}</h4>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">{t('footerAboutUs')}</Link></li>
-              <li><Link href="/products" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">{t('footerProducts')}</Link></li>
-              <li><Link href="/services" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">{t('footerServices')}</Link></li>
-              <li><Link href="/contact" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">{t('footerContact')}</Link></li>
+              <li><Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{t('footerAboutUs')}</Link></li>
+              <li><Link href="/products" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{t('footerProducts')}</Link></li>
+              <li><Link href="/services" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{t('footerServices')}</Link></li>
+              <li><Link href="/contact" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{t('footerContact')}</Link></li>
             </ul>
           </div>
 

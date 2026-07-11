@@ -1,6 +1,6 @@
 "use client";
-import Link from "next/link";
 import Carousel from "@/components/Carousel";
+import Button from "@/components/ui/Button";
 import { useState } from "react";
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -71,7 +71,13 @@ export default function HeroSection() {
           onIndexChange={setCurrentHeroIndex}
         />
       </div>
-      <div className="absolute inset-0 bg-black/50 z-20 pointer-events-none"></div>
+      {/* Base scrim, darker than a flat 50% so it still clears AA contrast over bright photo regions (sky, white garments) */}
+      <div className="absolute inset-0 bg-black/60 z-20 pointer-events-none"></div>
+      {/* Extra darkening concentrated behind the centered text block */}
+      <div
+        className="absolute inset-0 z-20 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 65%)' }}
+      ></div>
       <div className="relative z-30 flex items-center justify-center h-full pointer-events-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <div className="mb-3">
@@ -86,18 +92,12 @@ export default function HeroSection() {
             {heroContent[currentHeroIndex]?.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto">
-            <Link
-              href="/products"
-              className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors text-center shadow-lg"
-            >
+            <Button href="/products" variant="secondary">
               {t('viewProducts')}
-            </Link>
-            <Link
-              href="/contact"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors text-center backdrop-blur-sm"
-            >
+            </Button>
+            <Button href="/contact" variant="outline">
               {t('getQuote')}
-            </Link>
+            </Button>
           </div>
         </div>
       </div>

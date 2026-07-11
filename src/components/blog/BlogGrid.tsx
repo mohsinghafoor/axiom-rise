@@ -163,7 +163,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
   }, [filteredPosts.length, activeCategory]);
 
   return (
-    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-50 via-blue-50/50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
+    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-primary-50/60 via-white to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Results Count */}
         <div className="text-center mb-8">
@@ -178,7 +178,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
             <article 
               key={index}
               ref={(el) => {cardsRef.current[index] = el}}
-              className={`bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-primary-500/20 transition-all duration-300 hover:-translate-y-2 border border-transparent dark:border-gray-700 overflow-hidden ${
+              className={`bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl dark:hover:shadow-primary-500/20 transition-all duration-300 hover:-translate-y-2 border border-transparent dark:border-gray-700 overflow-hidden ${
                 visibleCards.has(index)
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-10'
@@ -265,7 +265,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
         {/* Load More Button */}
         {filteredPosts.length > 0 && (
           <div className="text-center mt-12">
-            <button className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105 shadow-md">
+            <button className="bg-primary-600 dark:bg-primary-500 hover:bg-primary-700 dark:hover:bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105 shadow-md">
               {t('blogGridLoadMore')}
             </button>
           </div>

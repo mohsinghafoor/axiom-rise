@@ -279,8 +279,8 @@ export default function ProductPage({ params }: ProductPageProps) {
       >
         <div className="absolute inset-0 bg-black/55"></div>
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -419,7 +419,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               {solutionHighlights.map((item) => (
-                <div key={item.title} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 flex gap-3">
+                <div key={item.title} className="rounded-2xl border border-gray-200 dark:border-gray-700 p-4 flex gap-3">
                   <span className="text-2xl">{item.icon}</span>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">{item.title}</h3>
@@ -460,7 +460,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">FAQ</h2>
             <div className="space-y-4">
               {faq.map((item) => (
-                <details key={item.question} className="bg-white dark:bg-gray-800 rounded-xl p-4">
+                <details key={item.question} className="bg-white dark:bg-gray-800 rounded-2xl p-4">
                   <summary className="cursor-pointer font-semibold text-gray-900 dark:text-white">
                     {item.question}
                   </summary>
@@ -498,7 +498,7 @@ export default function ProductPage({ params }: ProductPageProps) {
 
           {/* Contact CTA */}
           <div className="text-center">
-            <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-xl p-8">
+            <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                 Ready to Get Started?
               </h3>

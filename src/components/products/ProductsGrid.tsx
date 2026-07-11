@@ -120,11 +120,6 @@ export default function ProductsGrid() {
 
   return (
     <section className="py-20 relative overflow-hidden bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
-      {/* Decorative accent circles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-300/20 dark:bg-primary-500/10 rounded-full blur-3xl"></div>
-      </div>
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
         {/* Search and Filter Section */}
         <div className="mb-12">
@@ -174,7 +169,7 @@ export default function ProductsGrid() {
             <div 
               key={`${product.slug}-${index}`}
               ref={(el) => {cardsRef.current[index] = el}}
-              className={`bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-orange-500/10 transition-all duration-300 hover:-translate-y-2 border border-transparent dark:border-gray-700 w-full ${
+              className={`bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl dark:hover:shadow-primary-500/10 transition-all duration-300 hover:-translate-y-2 border border-transparent dark:border-gray-700 w-full ${
                 visibleCards.has(index)
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-10'
@@ -183,7 +178,7 @@ export default function ProductsGrid() {
                 transitionDelay: visibleCards.has(index) ? `${Math.min(index * 20, 100)}ms` : '0ms'
               }}
             >
-              <div className="relative h-56 overflow-hidden rounded-t-xl bg-gray-200 dark:bg-gray-700">
+              <div className="relative h-56 overflow-hidden rounded-t-2xl bg-gray-200 dark:bg-gray-700">
                 <Image 
                   src={product.image} 
                   alt={getTranslatedTitle(product)}
@@ -208,9 +203,9 @@ export default function ProductsGrid() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </Link>
-                  <Link 
+                  <Link
                     href="/contact"
-                    className="px-4 py-2 bg-primary-600 dark:bg-primary-500 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors text-sm font-semibold"
+                    className="px-4 py-2 bg-primary-600 dark:bg-primary-500 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 hover:scale-105 transition-all duration-300 text-sm font-semibold shadow-md hover:shadow-lg"
                   >
                     {t('productsGridGetQuote')}
                   </Link>

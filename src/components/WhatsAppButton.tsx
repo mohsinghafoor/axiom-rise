@@ -3,9 +3,8 @@
 import { useState } from "react";
 
 export default function WhatsAppButton() {
-  const [isHovered, setIsHovered] = useState(false);
   const [hoveredBtn, setHoveredBtn] = useState<string | null>(null);
-  
+
   const whatsappNumber = "923271213923";
   const message = "Hello! I'm interested in your clothing manufacturing services.";
   
@@ -17,42 +16,6 @@ export default function WhatsAppButton() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-4">
-      {/* Facebook Button */}
-      {/* <button
-        onClick={() => window.open('https://www.facebook.com/axiomrise', '_blank')}
-        onMouseEnter={() => setHoveredBtn('facebook')}
-        onMouseLeave={() => setHoveredBtn(null)}
-        className="relative bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-2xl transition-transform duration-300 transform hover:scale-105"
-        aria-label="Follow us on Facebook"
-      >
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M22 12.073C22 6.486 17.523 2 12 2S2 6.486 2 12.073c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.9v-2.891h2.538V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.891h-2.33v6.987C18.343 21.201 22 16.064 22 12.073z"/>
-        </svg>
-        {hoveredBtn === 'facebook' && (
-          <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg whitespace-nowrap shadow-lg">
-            Follow us on Facebook
-          </div>
-        )}
-      </button> */}
-
-      {/* Instagram Button */}
-      {/* <button
-        onClick={() => window.open('https://www.instagram.com/ar___apparel', '_blank')}
-        onMouseEnter={() => setHoveredBtn('instagram')}
-        onMouseLeave={() => setHoveredBtn(null)}
-        className="relative bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 hover:from-purple-700 hover:via-pink-600 hover:to-orange-500 text-white rounded-full p-4 shadow-2xl transition-transform duration-300 transform hover:scale-105"
-        aria-label="Follow us on Instagram"
-      >
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/>
-        </svg>
-        {hoveredBtn === 'instagram' && (
-          <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg whitespace-nowrap shadow-lg">
-            Follow us on Instagram
-          </div>
-        )}
-      </button> */}
-
       {/* WhatsApp Button */}
       <button
         onClick={handleWhatsAppClick}
@@ -75,8 +38,6 @@ export default function WhatsAppButton() {
           </div>
         )}
       </button>
-
-      
     </div>
   );
 }

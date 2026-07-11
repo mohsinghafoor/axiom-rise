@@ -50,9 +50,9 @@ export default function Contact() {
     {
       title: t('contactInfoEmail'),
       details: [
-        "General: info@axiomrise.com",
-        "Sales: sales@axiomrise.com",
-        "Support: support@axiomrise.com"
+        "General: info@axiomrise.co",
+        "Sales: sales@axiomrise.co",
+        "Support: support@axiomrise.co"
       ],
       icon: "email"
     },
@@ -69,10 +69,10 @@ export default function Contact() {
   return (
     <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-primary-600 via-orange-500 to-yellow-400 dark:from-primary-700 dark:via-orange-600 dark:to-primary-800 transition-colors duration-300">
+      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-primary-600 via-primary-500 to-primary-400 dark:from-primary-700 dark:via-primary-600 dark:to-primary-800 transition-colors duration-300">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 dark:bg-orange-400/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 dark:bg-primary-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-white drop-shadow-lg">
@@ -110,7 +110,7 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
                       placeholder={t('contactFormFullNamePlaceholder')}
                     />
                   </div>
@@ -125,7 +125,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
                       placeholder={t('contactFormEmailPlaceholder')}
                     />
                   </div>
@@ -142,7 +142,7 @@ export default function Contact() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
                       placeholder={t('contactFormCompanyPlaceholder')}
                     />
                   </div>
@@ -156,7 +156,7 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
                       placeholder={t('contactFormPhonePlaceholder')}
                     />
                   </div>
@@ -172,7 +172,7 @@ export default function Contact() {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
                   >
                     <option value="">{t('contactFormSubjectSelect')}</option>
                     <option value="general">{t('contactFormSubjectGeneral')}</option>
@@ -195,14 +195,14 @@ export default function Contact() {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
                     placeholder={t('contactFormMessagePlaceholder')}
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-primary-600 text-white py-3 px-6 rounded-md hover:bg-primary-700 transition-colors font-semibold"
+                  className="w-full bg-primary-600 text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors font-semibold"
                 >
                   {t('contactFormSendMessage')}
                 </button>
@@ -239,7 +239,7 @@ export default function Contact() {
               </div>
 
               {/* Social Media */}
-              <div className="mt-8 p-6 bg-gradient-to-br from-primary-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 rounded-lg">
+              <div className="mt-8 p-6 bg-gradient-to-br from-primary-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t('contactSocialTitle')}</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">{t('contactSocialDesc')}</p>
                 <div className="flex space-x-4">
@@ -282,7 +282,7 @@ export default function Contact() {
               {/* Map */}
               <div className="mt-8">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t('contactMapTitle')}</h3>
-                <div className="h-64 bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
+                <div className="h-64 bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1362.963393835624!2d74.5452235!3d32.466675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391ec0329f8eae99%3A0x95901be512b2acd3!2sKotla%20Ambanwala%20Rd%2C%20Kotla%20Ambanwala%20Village%2C%20Sialkot%2C%20Pakistan!5e0!3m2!1sen!2s!4v1697460000000!5m2!1sen!2s"
                     width="100%"
@@ -347,7 +347,7 @@ export default function Contact() {
                 answer: t('contactFAQ6Answer')
               }
             ].map((faq, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-transparent dark:border-gray-700">
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 border border-transparent dark:border-gray-700">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{faq.question}</h3>
                 <p className="text-gray-600 dark:text-gray-300">{faq.answer}</p>
               </div>

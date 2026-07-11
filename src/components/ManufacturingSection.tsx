@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { Fragment } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
+import Badge from "@/components/ui/Badge";
+import Button from "@/components/ui/Button";
 
 export default function ManufacturingSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,12 +45,6 @@ export default function ManufacturingSection() {
       ref={sectionRef}
       className="py-20 relative overflow-hidden bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300"
     >
-      {/* Decorative accent circles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-300/20 dark:bg-primary-500/10 rounded-full blur-3xl"></div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Text Content - Wider on desktop, appears first on mobile */}
@@ -57,12 +53,10 @@ export default function ManufacturingSection() {
           }`}>
             {/* Badge */}
             <div className="inline-block mb-6">
-              <span className="bg-primary-600 dark:bg-primary-500 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
-                {t('manufacturingBadge')}
-              </span>
+              <Badge>{t('manufacturingBadge')}</Badge>
             </div>
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               {t('manufacturingTitleStart')}{' '}
               <span className="text-primary-600 dark:text-primary-400">{t('manufacturingTitleHighlight')}</span>
             </h2>
@@ -89,12 +83,9 @@ export default function ManufacturingSection() {
             </p>
             
             <div className="mt-8">
-              <Link href="/contact" className="inline-flex items-center px-7 py-3 bg-gradient-to-r from-primary-600 to-blue-600 text-white text-sm font-bold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-lg">
+              <Button href="/contact" variant="primary" withArrow>
                 {t('getQuote')}
-                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
+              </Button>
             </div>
           </div>
           
@@ -112,7 +103,7 @@ export default function ManufacturingSection() {
                   className="w-full h-auto object-cover" 
                   priority 
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/30 via-transparent to-primary-500/20"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary-900/30 via-transparent to-primary-500/20"></div>
               </div>
             
               {/* Enhanced Stats Grid */}

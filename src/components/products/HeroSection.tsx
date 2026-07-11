@@ -7,9 +7,9 @@ export default function ProductsHeroSection() {
   const { t } = useLanguage();
 
   return (
-<section className="relative text-white py-20 overflow-hidden 
-  bg-gradient-to-br from-[#11998e] to-[#38ef7d] 
-  dark:from-[#065f46] dark:via-[#0f766e] dark:to-[#14b8a6] 
+<section className="relative text-white py-20 overflow-hidden
+  bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900
+  dark:from-primary-900 dark:via-primary-950 dark:to-gray-900
   transition-colors duration-300">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>

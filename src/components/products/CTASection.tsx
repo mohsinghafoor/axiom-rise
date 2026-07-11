@@ -6,8 +6,8 @@ import { useLanguage } from '../../contexts/LanguageContext';
 export default function ProductsCTASection() {
   const { t } = useLanguage();
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-[#38ef7d] to-[#7ee8fa]
-dark:from-[#0f766e] dark:via-[#14b8a6] dark:to-[#2dd4bf] transition-colors duration-300">
+    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-primary-50 to-primary-100
+dark:from-gray-800 dark:via-gray-900 dark:to-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
           {t('productsCTATitle')}

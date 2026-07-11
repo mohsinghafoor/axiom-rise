@@ -1,8 +1,8 @@
 "use client"
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import Button from '@/components/ui/Button';
 
 export default function CTASection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,12 +36,7 @@ export default function CTASection() {
   }, []);
 
   return (
-    <section className="relative text-white py-20 overflow-hidden bg-gradient-to-br from-[#d62828] via-[#f77f00] to-[#fcbf49] dark:from-orange-900 dark:via-orange-800 dark:to-yellow-800 transition-colors duration-300">
-      {/* Curved top border using clip-path */}
-      {/* <div className="absolute inset-0" style={{ clipPath: 'ellipse(120% 100% at 50% 100%)' }}>
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #4f46e5 100%)' }}></div>
-      </div> */}
-      
+    <section className="relative text-white py-20 overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 dark:from-primary-900 dark:via-primary-950 dark:to-gray-900 transition-colors duration-300">
       {/* Decorative circles */}
       <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
@@ -80,12 +75,9 @@ export default function CTASection() {
               : 'opacity-0 translate-y-10 scale-95'
           }`}
         >
-          <Link 
-            href="/contact" 
-            className="bg-white dark:bg-gray-900 text-primary-600 dark:text-primary-400 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 dark:hover:bg-gray-800 transition-all duration-300 inline-block hover:scale-105 transform shadow-lg dark:shadow-xl dark:shadow-orange-500/20 border border-transparent dark:border-gray-700"
-          >
+          <Button href="/contact" variant="secondary">
             {t('ctaButton')}
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

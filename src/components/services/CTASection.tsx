@@ -6,7 +6,7 @@ export default function ServicesCTASection() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-primary-600 via-orange-500 to-yellow-400 dark:from-primary-700 dark:via-orange-600 dark:to-primary-800 transition-colors duration-300">
+    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-primary-600 via-orange-500 to-primary-400 dark:from-primary-700 dark:via-orange-600 dark:to-primary-800 transition-colors duration-300">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 dark:bg-orange-400/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 dark:bg-primary-500/20 rounded-full blur-3xl"></div>

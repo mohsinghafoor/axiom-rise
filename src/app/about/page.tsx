@@ -52,7 +52,7 @@ export default function About() {
   ]
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
@@ -86,7 +86,7 @@ export default function About() {
                   priority
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white text-primary-700 rounded-xl p-5 shadow-xl max-w-xs">
+              <div className="absolute -bottom-6 -left-6 bg-white text-primary-700 rounded-2xl p-5 shadow-xl max-w-xs">
                 <p className="text-sm font-semibold">{t("aboutHeroCardTitle")}</p>
                 <p className="text-sm text-gray-600 mt-1">
                   {t("aboutHeroCardDesc")}
@@ -102,21 +102,21 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
                 {t("aboutStoryTitle")}
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 dark:text-gray-300">
                 {t("aboutStoryP1")}
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 dark:text-gray-300">
                 {t("aboutStoryP2")}
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 dark:text-gray-300">
                 {t("aboutStoryP3")}
               </p>
             </div>
             <div className="relative">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
                 <Image
                   src="/images/hero/tshirt.webp"
                   alt={t("aboutStoryImageAlt")}
@@ -124,9 +124,9 @@ export default function About() {
                   className="object-cover"
                 />
               </div>
-              <div className="absolute top-6 right-6 bg-white rounded-xl p-4 shadow-lg">
-                <p className="text-sm font-semibold text-gray-900">{t("aboutStoryCardTitle")}</p>
-                <p className="text-sm text-gray-600">{t("aboutStoryCardDesc")}</p>
+              <div className="absolute top-6 right-6 bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg">
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">{t("aboutStoryCardTitle")}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{t("aboutStoryCardDesc")}</p>
               </div>
             </div>
           </div>
@@ -134,19 +134,19 @@ export default function About() {
       </section>
 
       {/* Values Section */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 dark:bg-gray-900 py-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">{t("aboutValuesTitle")}</h2>
-            <p className="text-lg text-gray-600 mt-3">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">{t("aboutValuesTitle")}</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mt-3">
               {t("aboutValuesDesc")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value) => (
-              <div key={value.title} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+              <div key={value.title} className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{value.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{value.description}</p>
               </div>
             ))}
           </div>
@@ -158,17 +158,17 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
                 {t("aboutCapabilitiesTitle")}
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 dark:text-gray-300">
                 {t("aboutCapabilitiesDesc")}
               </p>
               <ul className="space-y-3">
                 {capabilities.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="mt-1 h-2 w-2 rounded-full bg-primary-600"></span>
-                    <span className="text-gray-600">{item}</span>
+                    <span className="text-gray-600 dark:text-gray-300">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -192,7 +192,7 @@ export default function About() {
                   alt: t("aboutCapabilitiesImageAlt4")
                 }
               ].map((image) => (
-                <div key={image.src} className="relative aspect-square rounded-2xl overflow-hidden border border-gray-200">
+                <div key={image.src} className="relative aspect-square rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
                   <Image src={image.src} alt={image.alt} fill className="object-cover" />
                 </div>
               ))}
@@ -202,19 +202,19 @@ export default function About() {
       </section>
 
       {/* Services */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 dark:bg-gray-900 py-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">{t("aboutServicesTitle")}</h2>
-            <p className="text-lg text-gray-600 mt-3">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">{t("aboutServicesTitle")}</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mt-3">
               {t("aboutServicesDesc")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
-              <div key={service.title} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+              <div key={service.title} className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{service.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
               </div>
             ))}
           </div>
@@ -226,7 +226,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-primary-100 bg-primary-50">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-primary-100 dark:border-primary-900/40 bg-primary-50 dark:bg-primary-900/20">
                 <Image
                   src="/images/services/quality-assurance.webp"
                   alt={t("aboutSustainabilityImageAlt")}
@@ -234,19 +234,19 @@ export default function About() {
                   className="object-cover"
                 />
               </div>
-              <div className="absolute bottom-6 left-6 bg-white rounded-xl p-4 shadow-lg max-w-xs">
-                <p className="text-sm font-semibold text-gray-900">{t("aboutSustainabilityCardTitle")}</p>
-                <p className="text-sm text-gray-600">{t("aboutSustainabilityCardDesc")}</p>
+              <div className="absolute bottom-6 left-6 bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg max-w-xs">
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">{t("aboutSustainabilityCardTitle")}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{t("aboutSustainabilityCardDesc")}</p>
               </div>
             </div>
             <div className="space-y-6">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
                 {t("aboutSustainabilityTitle")}
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 dark:text-gray-300">
                 {t("aboutSustainabilityP1")}
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 dark:text-gray-300">
                 {t("aboutSustainabilityP2")}
               </p>
             </div>
