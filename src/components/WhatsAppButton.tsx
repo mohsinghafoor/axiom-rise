@@ -18,7 +18,7 @@ export default function WhatsAppButton() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-4">
       {/* Facebook Button */}
-      <button
+      {/* <button
         onClick={() => window.open('https://www.facebook.com/axiomrise', '_blank')}
         onMouseEnter={() => setHoveredBtn('facebook')}
         onMouseLeave={() => setHoveredBtn(null)}
@@ -33,10 +33,10 @@ export default function WhatsAppButton() {
             Follow us on Facebook
           </div>
         )}
-      </button>
+      </button> */}
 
       {/* Instagram Button */}
-      <button
+      {/* <button
         onClick={() => window.open('https://www.instagram.com/ar___apparel', '_blank')}
         onMouseEnter={() => setHoveredBtn('instagram')}
         onMouseLeave={() => setHoveredBtn(null)}
@@ -51,7 +51,7 @@ export default function WhatsAppButton() {
             Follow us on Instagram
           </div>
         )}
-      </button>
+      </button> */}
 
       {/* WhatsApp Button */}
       <button

@@ -125,7 +125,7 @@ export default function ProductsGrid() {
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-300/20 dark:bg-primary-500/10 rounded-full blur-3xl"></div>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
         {/* Search and Filter Section */}
         <div className="mb-12">
           <div className="max-w-2xl mx-auto mb-8">
@@ -174,7 +174,7 @@ export default function ProductsGrid() {
             <div 
               key={`${product.slug}-${index}`}
               ref={(el) => {cardsRef.current[index] = el}}
-              className={`bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-orange-500/10 transition-all duration-300 hover:-translate-y-2 border border-transparent dark:border-gray-700 ${
+              className={`bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-orange-500/10 transition-all duration-300 hover:-translate-y-2 border border-transparent dark:border-gray-700 w-full ${
                 visibleCards.has(index)
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-10'
