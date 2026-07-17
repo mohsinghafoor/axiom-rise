@@ -1,603 +1,300 @@
-"use client"
+'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { productMenu, servicesMenu, NavItem } from '@/data/navigation'
 
-export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isProductsOpen, setIsProductsOpen] = useState(false)
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
-  const [activeThirdLevel, setActiveThirdLevel] = useState<string | null>(null)
-  const pathname = usePathname()
+function Caret({ className = '' }: { className?: string }) {
+  return (
+    <svg className={`w-3 h-3 ${className}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  )
+}
 
-  const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About Us' },
-    { href: '/services', label: 'Services' },
-    { href: '/contact', label: 'Contact' }
-  ]
-  const productCategories = [
-    {
-      title: 'HOODIES MANUFACTURER',
-      href: '/products/hoodies',
-      subcategories: [
-        { 
-          title: 'Hoodies Manufacturer', 
-          href: '/products/hoodies/manufacturer',
-          subcategories: [
-            { title: 'Custom Hoodies Wholesale', href: '/products/hoodies/manufacturer/custom-wholesale' },
-            { title: 'Bulk Cheap Hoodies', href: '/products/hoodies/manufacturer/bulk-cheap' },
-            { title: 'Tie Dye Hoodies Wholesale and Bulk', href: '/products/hoodies/manufacturer/tie-dye-wholesale' },
-            { title: 'Wholesale 100 Cotton Hoodies', href: '/products/hoodies/manufacturer/100-cotton-wholesale' },
-            { title: 'Wholesale Cropped Hoodies', href: '/products/hoodies/manufacturer/cropped-wholesale' },
-            { title: 'Wholesale Camo Hoodies', href: '/products/hoodies/manufacturer/camo-wholesale' },
-            { title: 'Wholesale Zip-Up-Hoodies', href: '/products/hoodies/manufacturer/zip-up-wholesale' },
-            { title: 'Wholesale White Hoodies', href: '/products/hoodies/manufacturer/white-wholesale' },
-            { title: 'Wholesale Polyester Hoodies', href: '/products/hoodies/manufacturer/polyester-wholesale' },
-            { title: 'Wholesale Womens Hoodies', href: '/products/hoodies/manufacturer/womens-wholesale' },
-            { title: 'Wholesale French Terry Hoodies', href: '/products/hoodies/manufacturer/french-terry-wholesale' },
-            { title: 'Wholesale Heavyweight Hoodies', href: '/products/hoodies/manufacturer/heavyweight-wholesale' },
-            { title: 'Wholesale Kids and Youth Hoodies', href: '/products/hoodies/manufacturer/kids-youth-wholesale' },
-            { title: 'Wholesale Sublimation Hoodies', href: '/products/hoodies/manufacturer/sublimation-wholesale' },
-            { title: 'Wholesale Vintage Hoodies', href: '/products/hoodies/manufacturer/vintage-wholesale' },
-            { title: 'Wholesale Unisex Hoodies', href: '/products/hoodies/manufacturer/unisex-wholesale' },
-            { title: 'Wholesale & Bulk Black Hoodies', href: '/products/hoodies/manufacturer/black-wholesale' }
-          ]
-        },
-        { title: 'Hoodies Supplier & Vendors', href: '/products/hoodies/suppliers' },
-        { title: 'Bulk-And-Wholesale-Hoodies', href: '/products/hoodies/wholesale' }
-      ]
-    },
-    {
-      title: 'UNIFORM MANUFACTURERS',
-      href: '/products/uniforms',
-      subcategories: [
-        { title: 'WORK-WEAR-UNIFORM-MANUFACTURERS', href: '/products/uniforms/workwear' },
-        { title: 'HOSPITAL-UNIFORMS-MANUFACTURERS', href: '/products/uniforms/hospital' },
-        { title: 'MARTIAL-ARTS-UNIFORM-MANUFACTURER', href: '/products/uniforms/martial-arts' },
-        { title: 'UNIFORM-T-SHIRT-MANUFACTURER', href: '/products/uniforms/tshirt' },
-        { title: 'School Uniforms', href: '/products/uniforms/school' },
-        { title: 'Corporate Uniforms', href: '/products/uniforms/corporate' },
-        { title: 'Medical Uniforms', href: '/products/uniforms/medical' },
-        {
-          title: 'WHOLESALE-SHORTS',
-          href: '/products/uniforms/wholesale-shorts',
-          subcategories: [
-            { title: 'WHOLESALE BASKETBALL SHORTS', href: '/products/uniforms/wholesale-shorts/basketball' },
-            { title: 'WHOLESALE MESH SHORTS', href: '/products/uniforms/wholesale-shorts/mesh' }
-          ]
-        },
-        {
-          title: 'WHOLESALE SCRUBS VENDOR',
-          href: '/products/uniforms/scrubs',
-        }
-      ]
-    },
-    {
-      title: 'T-SHIRT MANUFACTURER',
-      href: '/products/tshirts',
-      subcategories: [
-        { title: 'Custom T-Shirts', href: '/products/tshirts/custom' },
-        { title: 'Bulk T-Shirts', href: '/products/tshirts/bulk' },
-        { title: 'Branded T-Shirts', href: '/products/tshirts/branded' }
-      ]
-    },
-    {
-      title: 'SPORTSWEAR MANUFACTURER',
-      href: '/products/sportswear',
-      subcategories: [
-        {
-          title: 'TEAM UNIFORM',
-          href: '/products/sportswear/team-uniform',
-          subcategories: [
-            { title: 'CUSTOM SOCCER UNIFORMS', href: '/products/sportswear/team-uniform/soccer' },
-            { title: 'CUSTOM LACROSSE UNIFORMS', href: '/products/sportswear/team-uniform/lacrosse' },
-            {
-              title: 'BASKETBALL-UNIFORM',
-              href: '/products/sportswear/team-uniform/basketball',
-              subcategories: [
-                { title: 'YOUTH BASKETBALL UNIFORMS', href: '/products/sportswear/team-uniform/basketball/youth' },
-                { title: 'CUSTOM BASKETBALL SHIRTS', href: '/products/sportswear/team-uniform/basketball/shirts' },
-                { title: 'CUSTOM BASKETBALL HOODIES', href: '/products/sportswear/team-uniform/basketball/hoodies' },
-                { title: 'CUSTOM BASKETBALL JERSEYS', href: '/products/sportswear/team-uniform/basketball/jerseys' }
-              ]
-            },
-            { title: 'BASEBALL UNIFORM', href: '/products/sportswear/team-uniform/baseball' },
-            { title: 'VOLLEYBALL-UNIFORMS', href: '/products/sportswear/team-uniform/volleyball' },
-            { title: 'CUSTOM TRACKSUITS', href: '/products/sportswear/team-uniform/tracksuits' },
-            { title: 'FIELD HOCKEY UNIFORMS', href: '/products/sportswear/team-uniform/field-hockey' },
-            { title: 'TOPGOLF-UNIFORM', href: '/products/sportswear/team-uniform/topgolf' },
-            { title: 'TENNIS UNIFORMS', href: '/products/sportswear/team-uniform/tennis' },
-            { title: 'ICE HOCKEY UNIFORM', href: '/products/sportswear/team-uniform/ice-hockey' }
-          ]
-        }
-      ]
-    },
-    {
-      title: 'EQUESTRIAN CLOTHING MANUFACTURER',
-      href: '/products/equestrian',
-      subcategories: [
-        { title: 'Horse Riding Gear', href: '/products/equestrian/riding-gear' },
-        { title: 'Equestrian Apparel', href: '/products/equestrian/apparel' },
-        { title: 'Horse Competition Wear', href: '/products/equestrian/competition' }
-      ]
-    },
-    {
-      title: 'JACKET MANUFACTURER',
-      href: '/products/jackets',
-      subcategories: [
-        {
-          title: 'VARSITY JACKET MANUFACTURER',
-          href: '/products/jackets/varsity',
-        },
-        {
-          title: 'PUFFER JACKET MANUFACTURER',
-          href: '/products/jackets/puffer',
-        },
-        {
-          title: 'LEATHER JACKET MANUFACTURER',
-          href: '/products/jackets/leather',
-        },
-        {
-          title: 'BOMBER JACKET MANUFACTURER',
-          href: '/products/jackets/bomber',
-        },
-        {
-          title: 'RAIN JACKET MANUFACTURER',
-          href: '/products/jackets/rain',
-          subcategories: [
-            { title: 'RAIN JACKET SUBITEM 1', href: '/products/jackets/rain/subitem1' },
-            { title: 'RAIN JACKET SUBITEM 2', href: '/products/jackets/rain/subitem2' }
-          ]
-        }
-      ]
-    },
-    {
-      title: 'WHOLESALE VARSITY JACKETS',
-      href: '/products/wholesale-varsity-jackets',
-      subcategories: [
-        { title: 'Custom Varsity Jackets', href: '/products/wholesale-varsity-jackets/custom' },
-        { title: 'Bulk Varsity Jackets', href: '/products/wholesale-varsity-jackets/bulk' },
-        { title: 'Team Varsity Jackets', href: '/products/wholesale-varsity-jackets/team' }
-      ]
-    },
-    {
-      title: 'SWEATSHIRT MANUFACTURERS',
-      href: '/products/sweatshirts',
-      subcategories: [
-        { title: 'Custom Sweatshirts', href: '/products/sweatshirts/custom' },
-        { title: 'Wholesale Sweatshirts', href: '/products/sweatshirts/wholesale' },
-        { title: 'Branded Sweatshirts', href: '/products/sweatshirts/branded' }
-      ]
-    },
-    {
-      title: 'HAT MANUFACTURERS',
-      href: '/products/hats',
-      subcategories: [
-        { title: 'Baseball Caps', href: '/products/hats/baseball-caps' },
-        { title: 'Beanies', href: '/products/hats/beanies' },
-        { title: 'Custom Hats', href: '/products/hats/custom' }
-      ]
-    },
-    {
-      title: 'SHORTS MANUFACTURER',
-      href: '/products/shorts',
-      subcategories: [
-        { title: 'Athletic Shorts', href: '/products/shorts/athletic' },
-        { title: 'Casual Shorts', href: '/products/shorts/casual' },
-        { title: 'Custom Shorts', href: '/products/shorts/custom' }
-      ]
-    },
-    {
-      title: 'FITNESS CLOTHING MANUFACTURERS',
-      href: '/products/fitness',
-      subcategories: [
-        { title: 'Gym Wear', href: '/products/fitness/gym' },
-        { title: 'Yoga Clothing', href: '/products/fitness/yoga' },
-        { title: 'Running Gear', href: '/products/fitness/running' }
-      ]
-    },
-    {
-      title: 'TACTICAL CLOTHING',
-      href: '/products/tactical',
-      subcategories: [
-        { title: 'Military Gear', href: '/products/tactical/military' },
-        { title: 'Security Uniforms', href: '/products/tactical/security' },
-        { title: 'Outdoor Tactical', href: '/products/tactical/outdoor' }
-      ]
-    },
-    {
-      title: 'LEATHER BAGS MANUFACTURER',
-      href: '/products/bags',
-      subcategories: [
-        {
-          title: 'HANDBAGS-MANUFACTURER',
-          href: '/products/bags/handbags',
-          subcategories: [
-            { title: 'LEATHER-HANDBAGS-MANUFACTURER', href: '/products/bags/handbags/leather' },
-            { title: 'TOTE HANDBAGS MANUFACTURER', href: '/products/bags/handbags/tote' }
-          ]
-        },
-        { title: 'MARTIAL ARTS CLOTHING', href: '/products/bags/martial-arts' }
-      ]
-    },
-    {
-      title: 'MARTIAL ARTS CLOTHING',
-      href: '/products/martial-arts',
-      subcategories: [
-        { title: 'Karate Uniforms', href: '/products/martial-arts/karate' },
-        { title: 'Judo Gear', href: '/products/martial-arts/judo' },
-        { title: 'Taekwondo Clothing', href: '/products/martial-arts/taekwondo' }
-      ]
+function DesktopDropdown({
+  label,
+  href,
+  items,
+  active,
+  pathname,
+}: {
+  label: string
+  href: string
+  items: NavItem[]
+  active: boolean
+  pathname: string
+}) {
+  const [open, setOpen] = useState(false)
+  const openTimer = useRef<ReturnType<typeof setTimeout>>()
+  const closeTimer = useRef<ReturnType<typeof setTimeout>>()
+
+  // Close whenever the route changes (e.g. after clicking a dropdown item)
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(openTimer.current)
+      clearTimeout(closeTimer.current)
     }
-  ]
+  }, [])
+
+  const handleEnter = () => {
+    clearTimeout(closeTimer.current)
+    openTimer.current = setTimeout(() => setOpen(true), 120)
+  }
+
+  const handleLeave = () => {
+    clearTimeout(openTimer.current)
+    closeTimer.current = setTimeout(() => setOpen(false), 180)
+  }
+
+  const close = () => {
+    clearTimeout(openTimer.current)
+    setOpen(false)
+  }
 
   return (
-    <nav className="bg-white shadow-xl border-b border-gray-100 sticky top-0 z-50" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <Image 
-                src="/images/axiom-rise-logo.png" 
-                alt="Axiom Rise Logo" 
-                width={150} 
-                height={40}
-                className="h-auto w-auto"
-                style={{ height: '40px' }}
-                priority
-              />
-            </Link>
-          </div>
+    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+      <Link
+        href={href}
+        onClick={close}
+        className={`flex items-center gap-1.5 font-display font-medium text-[15px] tracking-[1.2px] transition-colors duration-300 ${
+          active || open ? 'text-primary-600' : 'text-black hover:text-primary-600'
+        }`}
+      >
+        {label}
+        <Caret className={`mt-0.5 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+      </Link>
 
-          {/* Desktop Menu - Center Navigation */}
-          <div className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex items-center space-x-8">
+      <div
+        className={`absolute left-0 top-full pt-3 z-50 transition-all duration-300 ease-out ${
+          open ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 -translate-y-2 pointer-events-none'
+        }`}
+      >
+        <div className="bg-white min-w-[230px] shadow-card py-3">
+          {items.map((item, index) => (
+            <div key={item.label} className="relative group/sub">
               <Link
-                href="/"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
+                href={item.href}
+                onClick={close}
+                className={`flex items-center justify-between gap-3 px-4 py-2.5 font-display font-medium text-xs uppercase tracking-[1px] text-black hover:bg-primary-800 hover:text-white transition-all duration-300 ${
+                  open ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
                 }`}
+                style={{ transitionDelay: open ? `${80 + index * 40}ms` : '0ms' }}
               >
-                HOME
+                {item.label}
+                {item.children && <Caret className="-rotate-90" />}
               </Link>
-              
-              {/* Products Dropdown */}
-              {/* <div 
-                className="relative group"
-                onMouseEnter={() => {
-                  setIsProductsOpen(true)
-                }}
-                onMouseLeave={() => {
-                  setIsProductsOpen(false)
-                  setActiveSubmenu(null)
-                  setActiveThirdLevel(null)
-                }}
-              >
-                <button className="text-gray-600 hover:text-gray-800 px-3 py-4 text-sm font-semibold transition-colors flex items-center">
-                  Our Products
-                  <svg className="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </button> */}
-
-                {/* Main Dropdown */}
-                {/* {isProductsOpen && (
-                  <div className="absolute left-0 top-full w-80 bg-white rounded-xl border border-gray-200 z-50" style={{ boxShadow: '0 8px 32px 0 rgba(60,72,88,0.18)' }}>
-                    <div className="py-2">
-                      {productCategories.map((category, index) => (
-                        <div
-                          key={category.title}
-                          className="relative"
-                          onMouseEnter={() => setActiveSubmenu(category.title)}
-                          onMouseLeave={() => setActiveSubmenu(null)}
-                        >
-                          <Link
-                            href={category.href}
-                            className={`flex items-center justify-between px-4 py-3 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors ${
-                              index !== productCategories.length - 1 ? 'border-b border-gray-100' : ''
-                            }`}
-                          >
-                            <span className="font-medium">{category.title}</span>
-                            <svg className="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </Link> */}
-
-                          {/* Submenu */}
-                          {/* {activeSubmenu === category.title && (
-                            <div 
-                              className="absolute left-full top-0 w-72 bg-white rounded-lg shadow-xl border border-gray-200 z-60"
-                              onMouseEnter={() => setActiveSubmenu(category.title)}
-                              onMouseLeave={() => {
-                                setActiveSubmenu(null)
-                                setActiveThirdLevel(null)
-                              }}
-                            >
-                              <div className="py-2">
-                                {category.subcategories.map((subcategory, subIndex) => (
-                                  <div 
-                                    key={subcategory.href}
-                                    className="relative"
-                                    onMouseEnter={() => setActiveThirdLevel(subcategory.title)}
-                                    onMouseLeave={() => setActiveThirdLevel(null)}
-                                  >
-                                    <Link
-                                      href={subcategory.href}
-                                      className={`flex items-center justify-between px-4 py-2 text-sm transition-colors ${
-                                        activeThirdLevel && activeThirdLevel.startsWith(subcategory.title)
-                                          ? 'bg-blue-600 text-white'
-                                          : 'text-gray-600 hover:bg-primary-50 hover:text-primary-600'
-                                      } ${subIndex !== category.subcategories.length - 1 ? 'border-b border-gray-100' : ''}`}
-                                    >
-                                      <span>{subcategory.title}</span>
-                                      {subcategory.subcategories && (
-                                        <svg className="h-3 w-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                          <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                                        </svg>
-                                      )}
-                                    </Link>
-
-                                    {/* Third Level Submenu */}
-                                    {/* {subcategory.subcategories && activeThirdLevel === subcategory.title && (
-                                      <div 
-                                        className="absolute left-full top-0 w-80 bg-white rounded-lg shadow-xl border border-gray-200 z-70 max-h-96 overflow-y-auto"
-                                        onMouseEnter={() => setActiveThirdLevel(subcategory.title)}
-                                        onMouseLeave={() => setActiveThirdLevel(null)}
-                                      >
-                                        <div className="py-2">
-                                          {subcategory.subcategories.map((thirdLevel, thirdIndex) => (
-                                            <Link
-                                              key={thirdLevel.href}
-                                              href={thirdLevel.href}
-                                              className={`block px-4 py-2 text-sm text-gray-500 hover:bg-primary-50 hover:text-primary-600 transition-colors ${
-                                                thirdIndex !== subcategory.subcategories!.length - 1 ? 'border-b border-gray-50' : ''
-                                              }`}
-                                            >
-                                              {thirdLevel.title}
-                                            </Link>
-                                          ))}
-                                        </div>
-                                      </div>
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )} */}
-              {/* </div>  */}
-
-              {/* Other navigation items excluding Contact */}
-              <Link
-                href="/products"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/products' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
-                }`}
-              >
-                OUR PRODUCTS
-              </Link>
-              <Link
-                href="/services"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/services' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
-                }`}
-              >
-                SERVICES
-              </Link>
-
-              <Link
-                href="/clients"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/clients' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
-                }`}
-              >
-                CLIENTS
-              </Link>
-              <Link
-                href="/blog"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/blog' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
-                }`}
-              >
-                BLOG
-              </Link>
-              <Link
-                href="/about"
-                className={`px-3 py-4 text-sm font-semibold transition-colors relative ${
-                  pathname === '/about' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-600 hover:text-gray-800'
-                }`}
-              >
-                ABOUT US
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Side - Talk to Expert Button */}
-          <div className="hidden md:flex items-center">
-            <Link
-              href="/contact"
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors shadow-md hover:shadow-lg"
-            >
-              TALK TO AN EXPERT
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-primary-600 focus:outline-none focus:text-primary-600"
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link
-                href="/"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              
-              {/* Mobile Products Link - Simple Link */}
-              <Link
-                href="/products"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Products
-              </Link>
-
-              {/* Mobile Products Dropdown - Commented out for now */}
-              {/* <div>
-                <button
-                  onClick={() => setIsProductsOpen(!isProductsOpen)}
-                  className="w-full text-left text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-base font-medium flex items-center justify-between"
-                >
-                  Products
-                  <svg 
-                    className={`h-4 w-4 transform transition-transform ${isProductsOpen ? 'rotate-180' : ''}`} 
-                    fill="currentColor" 
-                    viewBox="0 0 20 20"
-                  >
-                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </button>
-                
-                {isProductsOpen && (
-                  <div className="pl-4 space-y-1">
-                    {productCategories.map((category) => (
-                      <div key={category.title}>
-                        <button
-                          onClick={() => setActiveSubmenu(activeSubmenu === category.title ? null : category.title)}
-                          className="w-full text-left text-gray-600 hover:text-primary-600 px-3 py-2 text-sm flex items-center justify-between"
-                        >
-                          {category.title}
-                          <svg 
-                            className={`h-3 w-3 transform transition-transform ${activeSubmenu === category.title ? 'rotate-180' : ''}`} 
-                            fill="currentColor" 
-                            viewBox="0 0 20 20"
-                          >
-                            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                          </svg>
-                        </button>
-                        
-                        {activeSubmenu === category.title && (
-                          <div className="pl-4 space-y-1">
-                            {category.subcategories.map((subcategory) => (
-                              <div key={subcategory.href}>
-                                {subcategory.subcategories ? (
-                                  <div>
-                                    <button
-                                      onClick={() => setActiveThirdLevel(activeThirdLevel === subcategory.title ? null : subcategory.title)}
-                                      className="w-full text-left text-gray-500 hover:text-primary-600 px-3 py-1 text-sm flex items-center justify-between"
-                                    >
-                                      {subcategory.title}
-                                      <svg 
-                                        className={`h-2 w-2 transform transition-transform ${activeThirdLevel === subcategory.title ? 'rotate-180' : ''}`} 
-                                        fill="currentColor" 
-                                        viewBox="0 0 20 20"
-                                      >
-                                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                                      </svg>
-                                    </button>
-                                    
-                                    {activeThirdLevel === subcategory.title && (
-                                      <div className="pl-4 space-y-1 max-h-48 overflow-y-auto">
-                                        {subcategory.subcategories.map((thirdLevel) => (
-                                          <Link
-                                            key={thirdLevel.href}
-                                            href={thirdLevel.href}
-                                            className="block text-gray-400 hover:text-primary-600 px-3 py-1 text-xs"
-                                            onClick={() => setIsMenuOpen(false)}
-                                          >
-                                            {thirdLevel.title}
-                                          </Link>
-                                        ))}
-                                      </div>
-                                    )}
-                                  </div>
-                                ) : (
-                                  <Link
-                                    href={subcategory.href}
-                                    className="block text-gray-500 hover:text-primary-600 px-3 py-1 text-sm"
-                                    onClick={() => setIsMenuOpen(false)}
-                                  >
-                                    {subcategory.title}
-                                  </Link>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
+              {item.children && (
+                <div className="absolute left-full top-0 pl-1 invisible opacity-0 translate-x-1 group-hover/sub:visible group-hover/sub:opacity-100 group-hover/sub:translate-x-0 transition-all duration-300 ease-out">
+                  <div className="bg-white min-w-[220px] shadow-card py-3">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        href={child.href}
+                        onClick={close}
+                        className="block px-4 py-2.5 font-display font-medium text-xs uppercase tracking-[1px] text-black hover:bg-primary-800 hover:text-white transition-colors duration-300"
+                      >
+                        {child.label}
+                      </Link>
                     ))}
                   </div>
-                )}
-              </div> */}
-
-              {/* Services Link */}
-              <Link
-                href="/services"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Services
-              </Link>
-
-              {/* Clients Link */}
-              <Link
-                href="/clients"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Clients
-              </Link>
-
-              {/* Blog Link */}
-              <Link
-                href="/blog"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Blog
-              </Link>
-
-              {/* About Us Link */}
-              <Link
-                href="/about"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About Us
-              </Link>
-
-              {/* Contact/Talk to Expert Link */}
-              <Link
-                href="/contact"
-                className="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
+                </div>
+              )}
             </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function Navbar() {
+  const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [openMobileSection, setOpenMobileSection] = useState<string | null>(null)
+  const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null)
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+    setOpenMobileSection(null)
+    setOpenMobileGroup(null)
+  }
+
+  const linkClass = (href: string) =>
+    `font-display font-medium text-[15px] tracking-[1.2px] transition-colors duration-300 ${
+      pathname === href ? 'text-primary-600' : 'text-black hover:text-primary-600'
+    }`
+
+  return (
+    <nav className="bg-white border-b-[3px] border-primary-50 sticky top-0 z-50">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link href="/" className="flex-shrink-0" onClick={closeMenu}>
+            <Image
+              src="/images/axiom-rise-logo.png"
+              alt="Axiom Rise"
+              width={160}
+              height={40}
+              className="w-auto"
+              style={{ height: '40px' }}
+              priority
+            />
+          </Link>
+
+          {/* Desktop menu */}
+          <div className="hidden lg:flex items-center gap-8">
+            <Link href="/" className={linkClass('/')}>HOME</Link>
+            <DesktopDropdown
+              label="PRODUCTS"
+              href="/products"
+              items={productMenu}
+              active={pathname.startsWith('/products') || pathname.startsWith('/categories')}
+              pathname={pathname}
+            />
+            <DesktopDropdown
+              label="SERVICES"
+              href="/services"
+              items={servicesMenu}
+              active={pathname.startsWith('/services')}
+              pathname={pathname}
+            />
+            <Link href="/blog" className={linkClass('/blog')}>BLOG</Link>
+            <Link href="/about" className={linkClass('/about')}>ABOUT US</Link>
+            <Link href="/#faq" className="font-display font-medium text-[15px] tracking-[1.2px] text-black hover:text-primary-600 transition-colors duration-300">FAQ&apos;S</Link>
           </div>
-        )}
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:block">
+            <Link href="/contact" className="btn-primary hover:scale-95 transform transition-all duration-300">
+              INQUIRE NOW
+            </Link>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setIsMenuOpen(true)}
+            className="lg:hidden w-[45px] h-[41px] bg-primary-600 hover:bg-primary-800 rounded-[3px] flex items-center justify-center transition-colors"
+            aria-label="Open menu"
+          >
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile off-canvas */}
+      {isMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-[60] bg-black/40" onClick={closeMenu} />
+      )}
+      <div
+        className={`lg:hidden fixed top-0 right-0 h-full w-[85%] max-w-[350px] bg-white z-[70] shadow-2xl transform transition-transform duration-300 overflow-y-auto ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex items-center justify-between p-4 border-b border-primary-50">
+          <Image src="/images/axiom-rise-logo.png" alt="Axiom Rise" width={120} height={30} className="w-auto" style={{ height: '30px' }} />
+          <button
+            onClick={closeMenu}
+            className="w-[45px] h-[41px] bg-primary-600 hover:bg-primary-800 rounded-[3px] flex items-center justify-center transition-colors"
+            aria-label="Close menu"
+          >
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="p-4 space-y-1">
+          <Link href="/" onClick={closeMenu} className="block py-3 font-display font-medium text-sm tracking-[1.2px] text-black hover:text-primary-600 border-b border-primary-50">HOME</Link>
+
+          {/* Products accordion */}
+          <div className="border-b border-primary-50">
+            <button
+              onClick={() => setOpenMobileSection(openMobileSection === 'products' ? null : 'products')}
+              className="w-full flex items-center justify-between py-3 font-display font-medium text-sm tracking-[1.2px] text-black"
+            >
+              PRODUCTS
+              <Caret className={`transition-transform duration-300 ${openMobileSection === 'products' ? 'rotate-180' : ''}`} />
+            </button>
+            {openMobileSection === 'products' && (
+              <div className="pb-2 pl-3">
+                <Link href="/products" onClick={closeMenu} className="block py-2 font-display font-medium text-xs uppercase tracking-[1px] text-primary-600">
+                  All Products
+                </Link>
+                {productMenu.map((group) => (
+                  <div key={group.label}>
+                    <div className="flex items-center justify-between">
+                      <Link
+                        href={group.href}
+                        onClick={closeMenu}
+                        className="py-2 font-display font-medium text-xs uppercase tracking-[1px] text-body hover:text-primary-600"
+                      >
+                        {group.label}
+                      </Link>
+                      <button
+                        onClick={() => setOpenMobileGroup(openMobileGroup === group.label ? null : group.label)}
+                        className="p-2 text-body"
+                        aria-label={`Toggle ${group.label}`}
+                      >
+                        <Caret className={`transition-transform duration-300 ${openMobileGroup === group.label ? 'rotate-180' : ''}`} />
+                      </button>
+                    </div>
+                    {openMobileGroup === group.label &&
+                      group.children?.map((child) => (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          onClick={closeMenu}
+                          className="block py-2 pl-4 text-sm text-body hover:text-primary-600"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Services accordion */}
+          <div className="border-b border-primary-50">
+            <button
+              onClick={() => setOpenMobileSection(openMobileSection === 'services' ? null : 'services')}
+              className="w-full flex items-center justify-between py-3 font-display font-medium text-sm tracking-[1.2px] text-black"
+            >
+              SERVICES
+              <Caret className={`transition-transform duration-300 ${openMobileSection === 'services' ? 'rotate-180' : ''}`} />
+            </button>
+            {openMobileSection === 'services' && (
+              <div className="pb-2 pl-3">
+                {servicesMenu.map((item) => (
+                  <Link key={item.label} href={item.href} onClick={closeMenu} className="block py-2 text-sm text-body hover:text-primary-600">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Link href="/blog" onClick={closeMenu} className="block py-3 font-display font-medium text-sm tracking-[1.2px] text-black hover:text-primary-600 border-b border-primary-50">BLOG</Link>
+          <Link href="/about" onClick={closeMenu} className="block py-3 font-display font-medium text-sm tracking-[1.2px] text-black hover:text-primary-600 border-b border-primary-50">ABOUT US</Link>
+          <Link href="/#faq" onClick={closeMenu} className="block py-3 font-display font-medium text-sm tracking-[1.2px] text-black hover:text-primary-600 border-b border-primary-50">FAQ&apos;S</Link>
+          <Link href="/contact" onClick={closeMenu} className="block py-3 font-display font-medium text-sm tracking-[1.2px] text-black hover:text-primary-600">CONTACT US</Link>
+
+          <div className="pt-4">
+            <Link href="/contact" onClick={closeMenu} className="btn-primary block text-center">
+              INQUIRE NOW
+            </Link>
+          </div>
+        </div>
       </div>
     </nav>
   )

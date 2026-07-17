@@ -65,10 +65,10 @@ export const productsData = [
     image: "/images/hero/sweatshirt.webp",
     slug: "sweatshirt-manufacturers"
   },
-  { 
-    title: "MARTIAL ARTS CLOTHING", 
+  {
+    title: "MARTIAL ARTS CLOTHING",
     description: "Specialized martial arts uniforms and training gear",
-    image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=400&fit=crop",
+    image: "/images/products/kimono.webp",
     slug: "martial-arts-clothing"
   },
   { 
@@ -119,10 +119,10 @@ export const productsData = [
     image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&h=400&fit=crop",
     slug: "chef-uniform-manufacturer"
   },
-  { 
-    title: "SPORTS UNIFORM MANUFACTURER", 
+  {
+    title: "SPORTS UNIFORM MANUFACTURER",
     description: "Custom sports uniforms for teams and clubs",
-    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=400&fit=crop",
+    image: "/images/products/rashguard.webp",
     slug: "sports-uniform-manufacturer"
   },
   { 

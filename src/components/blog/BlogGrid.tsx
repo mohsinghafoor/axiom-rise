@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from 'react';
+import { blogPosts as blogPostsData, formatBlogDate } from '@/data/blogs';
 
 interface BlogGridProps {
   activeCategory: string;
@@ -12,114 +13,23 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const cardsRef = useRef<(HTMLElement | null)[]>([]);
 
-  // Helper function to format date with day gap
-  const getFormattedDate = (daysAgo: number) => {
-    const date = new Date();
-    date.setDate(date.getDate() - daysAgo);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
-
-  const blogPosts = [
-    {
-      title: "The Complete Guide to Starting Your Private Label Clothing Line",
-      excerpt: "Learn everything you need to know about launching your own private label clothing brand, from finding the right manufacturer to quality control.",
-      image: "/images/hero/hoodies.webp",
-      category: "Manufacturing",
-      date: getFormattedDate(0), // Today
-      readTime: "8 min read",
-      author: "Sarah Johnson"
-    },
-    {
-      title: "Sustainable Manufacturing: The Future of Fashion Industry",
-      excerpt: "Discover how eco-friendly practices and sustainable materials are transforming the clothing manufacturing landscape.",
-      image: "/images/hero/fitness.webp",
-      category: "Sustainability",
-      date: getFormattedDate(1), // Yesterday
-      readTime: "6 min read",
-      author: "Michael Chen"
-    },
-    {
-      title: "Understanding Fabric Quality: A Buyer's Guide",
-      excerpt: "Everything you need to know about fabric types, quality grades, and how to choose the right materials for your clothing line.",
-      image: "/images/hero/tshirt.webp",
-      category: "Quality Control",
-      date: getFormattedDate(2), // 2 days ago
-      readTime: "10 min read",
-      author: "Emily Rodriguez"
-    },
-    {
-      title: "Export Documentation: Essential Guide for Clothing Manufacturers",
-      excerpt: "Navigate the complex world of international trade with our comprehensive guide to export documentation and customs clearance.",
-      image: "/images/hero/varsity-jacket.webp",
-      category: "Export Guide",
-      date: getFormattedDate(3), // 3 days ago
-      readTime: "7 min read",
-      author: "David Kim"
-    },
-    {
-      title: "Top 10 Fashion Trends Shaping 2025",
-      excerpt: "Stay ahead of the curve with our analysis of the biggest fashion trends and how they're influencing manufacturing demands.",
-      image: "/images/hero/sports-wear.webp",
-      category: "Fashion Trends",
-      date: getFormattedDate(4), // 4 days ago
-      readTime: "5 min read",
-      author: "Jessica Martinez"
-    },
-    {
-      title: "Quality Control Checklist for Garment Manufacturing",
-      excerpt: "A detailed checklist to ensure your products meet international quality standards and exceed customer expectations.",
-      image: "/images/hero/sweatshirt.webp",
-      category: "Quality Control",
-      date: getFormattedDate(5), // 5 days ago
-      readTime: "9 min read",
-      author: "Robert Thompson"
-    },
-    {
-      title: "How to Choose the Right Clothing Manufacturer for Your Brand",
-      excerpt: "Key factors to consider when selecting a manufacturing partner, from production capacity to communication and reliability.",
-      image: "/images/hero/leather-jacket.webp",
-      category: "Manufacturing",
-      date: getFormattedDate(6), // 6 days ago
-      readTime: "8 min read",
-      author: "Amanda Lee"
-    },
-    {
-      title: "The Rise of Athleisure: Manufacturing Opportunities",
-      excerpt: "Explore the booming athleisure market and how manufacturers can capitalize on this growing trend.",
-      image: "/images/hero/shorts.webp",
-      category: "Industry News",
-      date: getFormattedDate(7), // 7 days ago
-      readTime: "6 min read",
-      author: "Chris Anderson"
-    },
-    {
-      title: "Understanding MOQ: Minimum Order Quantities Explained",
-      excerpt: "Learn about minimum order quantities, how they work, and strategies for negotiating better terms with manufacturers.",
-      image: "/images/hero/hoodies.webp",
-      category: "Manufacturing",
-      date: getFormattedDate(8), // 8 days ago
-      readTime: "7 min read",
-      author: "Lisa Wang"
-    }
-  ];
+  const blogPosts = blogPostsData.map(post => ({
+    ...post,
+    date: formatBlogDate(post.daysAgo),
+  }));
 
   // Filter posts based on active category
-  const filteredPosts = activeCategory === 'All' 
-    ? blogPosts 
+  const filteredPosts = activeCategory === 'All'
+    ? blogPosts
     : blogPosts.filter(post => post.category === activeCategory);
 
   useEffect(() => {
     // Reset visible cards when filtered posts change
     setVisibleCards(new Set());
-    
-    // Minimal delay to ensure DOM is ready
+
     const setupTimer = setTimeout(() => {
       const observers: IntersectionObserver[] = [];
-      
+
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
 
@@ -127,8 +37,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                // Reduced delay for faster appearance
-                const delay = Math.min(index * 20, 100); // Max 100ms delay
+                const delay = Math.min(index * 80, 240);
                 setTimeout(() => {
                   setVisibleCards((prev) => {
                     const newSet = new Set(prev);
@@ -141,8 +50,8 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
             });
           },
           {
-            threshold: 0.05, // Reduced threshold - triggers earlier
-            rootMargin: '100px 0px 0px 0px' // Start loading 100px before entering viewport
+            threshold: 0.05,
+            rootMargin: '100px 0px 0px 0px'
           }
         );
 
@@ -153,7 +62,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
       return () => {
         observers.forEach(obs => obs.disconnect());
       };
-    }, 50); // Reduced initial delay
+    }, 50);
 
     return () => {
       clearTimeout(setupTimer);
@@ -161,87 +70,79 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
   }, [filteredPosts.length, activeCategory]);
 
   return (
-    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%)' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-cream">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Results Count */}
-        <div className="text-center mb-8">
-          <p className="text-gray-600 text-lg">
-            Showing <span className="font-bold text-primary-600">{filteredPosts.length}</span> article{filteredPosts.length !== 1 ? 's' : ''}
-            {activeCategory !== 'All' && <span className="ml-1">in <span className="font-semibold">{activeCategory}</span></span>}
+        <div className="text-center mb-10">
+          <p className="text-sm uppercase tracking-[1.5px] text-body/70">
+            Showing <span className="font-semibold text-primary-600">{filteredPosts.length}</span> article{filteredPosts.length !== 1 ? 's' : ''}
+            {activeCategory !== 'All' && <span className="ml-1">in <span className="font-semibold text-primary-800">{activeCategory}</span></span>}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post, index) => (
-            <article 
-              key={index}
+            <article
+              key={`${activeCategory}-${index}`}
               ref={(el) => {cardsRef.current[index] = el}}
-              className={`bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${
+              className={`group bg-white rounded-card shadow-card overflow-hidden transition-all duration-700 ease-out hover:-translate-y-2 ${
                 visibleCards.has(index)
                   ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
+                  : 'opacity-0 translate-y-8'
               }`}
-              style={{
-                transitionDelay: visibleCards.has(index) ? `${Math.min(index * 20, 100)}ms` : '0ms'
-              }}
             >
               {/* Image */}
-              <div className="relative h-56 w-full overflow-hidden">
-                <Image 
+              <Link href="/blog" className="block relative h-56 w-full overflow-hidden">
+                <Image
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover hover:scale-110 transition-transform duration-500"
+                  className="object-cover transition-transform duration-[600ms] group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-primary-600/0 group-hover:bg-primary-600/10 transition-colors duration-[600ms]" />
                 {/* Category Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-primary-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    {post.category}
-                  </span>
-                </div>
-              </div>
+                <span className="absolute top-4 left-4 bg-primary-600 text-white px-3 py-1 rounded-full text-xs tracking-[1px] uppercase">
+                  {post.category}
+                </span>
+              </Link>
 
               {/* Content */}
               <div className="p-6">
                 {/* Meta Info */}
-                <div className="flex items-center text-sm text-gray-500 mb-3">
+                <div className="flex items-center text-xs uppercase tracking-[1px] text-body/60 mb-3">
                   <span>{post.date}</span>
-                  <span className="mx-2">•</span>
+                  <span className="mx-2 text-primary-600">•</span>
                   <span>{post.readTime}</span>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-primary-600 transition-colors">
-                  <Link href={`/blog/${index + 1}`}>
+                <h3 className="font-display text-lg md:text-xl leading-[30px] text-ink mb-3 line-clamp-2 group-hover:text-primary-800 transition-colors duration-300">
+                  <Link href="/blog">
                     {post.title}
                   </Link>
                 </h3>
 
                 {/* Excerpt */}
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-sm leading-relaxed text-body mb-5 line-clamp-3">
                   {post.excerpt}
                 </p>
 
                 {/* Author & CTA */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div className="flex items-center justify-between pt-4 border-t border-primary-50">
                   <div className="flex items-center">
                     <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
-                      <span className="text-primary-600 font-semibold text-sm">
+                      <span className="text-primary-800 font-semibold text-xs">
                         {post.author.split(' ').map(n => n[0]).join('')}
                       </span>
                     </div>
-                    <span className="ml-2 text-sm text-gray-700 font-medium">{post.author}</span>
+                    <span className="ml-2 text-sm text-body font-medium">{post.author}</span>
                   </div>
-                  <Link 
-                    href={`/blog/${index + 1}`}
-                    className="text-primary-600 hover:text-primary-700 font-semibold text-sm flex items-center"
+                  <Link
+                    href="/blog"
+                    className="inline-block bg-white text-primary-800 border border-primary-800 font-sans text-[10px] uppercase tracking-[1.5px] rounded-card px-4 py-2.5 transition-colors duration-300 hover:bg-primary-600 hover:border-primary-600 hover:text-white"
                   >
                     Read More
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
                   </Link>
                 </div>
               </div>
@@ -252,18 +153,18 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
         {/* No Results Message */}
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
-            <svg className="w-24 h-24 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-24 h-24 mx-auto text-primary-200 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">No Articles Found</h3>
-            <p className="text-gray-600">No articles available in this category yet. Check back soon!</p>
+            <h3 className="font-display text-2xl text-ink mb-2">No Articles Found</h3>
+            <p className="text-body">No articles available in this category yet. Check back soon!</p>
           </div>
         )}
 
         {/* Load More Button */}
         {filteredPosts.length > 0 && (
-          <div className="text-center mt-12">
-            <button className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105 shadow-md">
+          <div className="text-center mt-14">
+            <button className="btn-primary hover:scale-95 transform transition-all duration-300">
               Load More Articles
             </button>
           </div>
