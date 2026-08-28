@@ -65,7 +65,7 @@ const reasons = [
   },
   {
     title: 'Transparent Minimums & Tiered Pricing',
-    description: 'MOQs from 30 units and pricing tiers you can see up front — no quote-stage surprises.',
+    description: 'MOQs from 10 units and pricing tiers you can see up front — no quote-stage surprises.',
   },
 ]
 

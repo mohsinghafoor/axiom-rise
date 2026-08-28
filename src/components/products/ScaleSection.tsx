@@ -26,7 +26,7 @@ const benefits = [
   {
     title: 'Category Specific Quality Control',
     description:
-      'QC checklists tailored per product type — from outerwear seam sealing to uniform colour-fastness testing.',
+      'QC checklists tailored per product type — from outerwear seam sealing to activewear stretch-recovery testing.',
     icon: (
       <svg className={iconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -36,7 +36,7 @@ const benefits = [
   {
     title: 'Scalable Production Capacity',
     description:
-      'Start at 30 units per style and scale to tens of thousands without ever switching suppliers.',
+      'Start at 10 units per style and scale to tens of thousands without ever switching suppliers.',
     icon: (
       <svg className={iconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />

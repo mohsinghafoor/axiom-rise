@@ -2,9 +2,17 @@
 
 import { useState } from 'react'
 import Reveal from '@/components/ui/Reveal'
-import { faqs } from '@/data/faqs'
+import { faqs, type Faq } from '@/data/faqs'
 
-export default function FAQ() {
+interface FAQProps {
+  items?: Faq[]
+  title?: string
+}
+
+export default function FAQ({
+  items = faqs,
+  title = 'FREQUENTLY ASKED QUESTIONS',
+}: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
@@ -13,11 +21,11 @@ export default function FAQ() {
         <Reveal variant="right">
           <div className="max-w-4xl mx-auto">
             <h3 className="font-display text-[24px] md:text-[31px] leading-[1.3] text-ink">
-              FREQUENTLY ASKED QUESTIONS
+              {title}
             </h3>
 
             <div className="mt-8">
-              {faqs.map((faq, index) => {
+              {items.map((faq, index) => {
                 const isOpen = openIndex === index
                 return (
                   <div key={faq.question} className="border-b border-primary-600">

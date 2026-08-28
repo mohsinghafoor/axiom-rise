@@ -92,7 +92,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
               }`}
             >
               {/* Image */}
-              <Link href="/blog" className="block relative h-56 w-full overflow-hidden">
+              <Link href={`/blog/${post.slug}`} className="block relative h-56 w-full overflow-hidden">
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -118,7 +118,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
 
                 {/* Title */}
                 <h3 className="font-display text-lg md:text-xl leading-[30px] text-ink mb-3 line-clamp-2 group-hover:text-primary-800 transition-colors duration-300">
-                  <Link href="/blog">
+                  <Link href={`/blog/${post.slug}`}>
                     {post.title}
                   </Link>
                 </h3>
@@ -139,7 +139,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
                     <span className="ml-2 text-sm text-body font-medium">{post.author}</span>
                   </div>
                   <Link
-                    href="/blog"
+                    href={`/blog/${post.slug}`}
                     className="inline-block bg-white text-primary-800 border border-primary-800 font-sans text-[10px] uppercase tracking-[1.5px] rounded-card px-4 py-2.5 transition-colors duration-300 hover:bg-primary-600 hover:border-primary-600 hover:text-white"
                   >
                     Read More

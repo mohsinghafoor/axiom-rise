@@ -7,12 +7,12 @@ export const faqs: Faq[] = [
   {
     question: "What is Axiom Rise's minimum order quantity?",
     answer:
-      "30 units per style and colour. That applies to every product category — jackets, uniforms, streetwear, sportswear and accessories. Whether you are placing your first capsule order or your fiftieth restock, the same low MOQ keeps your inventory risk manageable.",
+      "10 units per style and colour. That applies to every product category — jackets, streetwear, sportswear and accessories. Whether you are placing your first capsule order or your fiftieth restock, the same low MOQ keeps your inventory risk manageable.",
   },
   {
     question: 'How much does it cost to manufacture custom clothing in Pakistan?',
     answer:
-      'There is no fixed answer; unit cost depends on fabric GSM, garment complexity, order volume, and branding method. A 100-unit run of printed t-shirts prices very differently from a 30-unit run of technical outerwear. Send us your tech pack or reference images and we will return an itemised quote within 48 hours.',
+      'There is no fixed answer; unit cost depends on fabric GSM, garment complexity, order volume, and branding method. A 100-unit run of printed t-shirts prices very differently from a 10-unit run of technical outerwear. Send us your tech pack or reference images and we will return an itemised quote within 48 hours.',
   },
   {
     question: 'How long does production take?',

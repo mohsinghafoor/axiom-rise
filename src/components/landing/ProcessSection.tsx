@@ -10,12 +10,16 @@ const steps = [
   { title: 'Delivery', image: '/images/process/delivery.webp' },
 ]
 
-export default function ProcessSection() {
+export default function ProcessSection({
+  title = "Here's Our Clothing Manufacturing Process",
+}: {
+  title?: string
+} = {}) {
   return (
     <section className="bg-cream py-20">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="down">
-          <SectionHeading title="Here's Our Clothing Manufacturing Process" />
+          <SectionHeading title={title} />
         </Reveal>
 
         <div className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">

@@ -10,19 +10,28 @@ const quickLinks = [
 ]
 
 const categoriesLeft = [
-  { label: 'Jackets', href: '/products/jacket-manufacturer' },
-  { label: 'Hoodies', href: '/products/hoodies-manufacturer' },
-  { label: 'T-Shirts', href: '/products/t-shirts-manufacturer' },
-  { label: 'Sweatshirts', href: '/products/sweatshirt-manufacturers' },
-  { label: 'Varsity Jackets', href: '/products/wholesale-varsity-jackets' },
+  { label: 'Softshell Jackets', href: '/products/softshell-jacket' },
+  { label: 'Bomber Jackets', href: '/products/bomber-jacket' },
+  { label: 'Bubble Jackets', href: '/products/bubble-jacket' },
+  { label: 'Puffer Jackets', href: '/products/puffer-jacket' },
+  { label: 'Leather Jackets', href: '/products/leather-jacket' },
+  { label: 'Varsity Jackets', href: '/products/varsity-jacket' },
 ]
 
 const categoriesRight = [
-  { label: 'Sportswear', href: '/products/sportswear-manufacturer' },
+  { label: 'Shorts', href: '/products/shorts' },
+  { label: 'Hoodies', href: '/products/hoodies' },
+  { label: 'Tracksuits', href: '/products/tracksuits' },
+  { label: 'T-Shirts', href: '/products/t-shirts' },
+  { label: 'Sweatshirts', href: '/products/sweatshirts' },
+]
+
+const categoriesMore = [
   { label: 'Fitness Clothing', href: '/products/fitness-clothing-manufacturer' },
-  { label: 'Shorts', href: '/products/wholesale-shorts' },
-  { label: 'Uniforms', href: '/products/uniform-manufacturers' },
-  { label: 'Martial Arts', href: '/products/martial-arts-clothing' },
+  { label: 'Caps & Hats', href: '/products/cap-manufacturer' },
+  { label: 'Beanies', href: '/products/beanie-manufacturer' },
+  { label: 'Bags & Backpacks', href: '/products/backpack-manufacturer' },
+  { label: 'Socks', href: '/products/socks-manufacturer' },
 ]
 
 const footerLinkClass =
@@ -34,7 +43,7 @@ export default function Footer() {
   return (
     <footer className="bg-black">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Image
@@ -91,7 +100,7 @@ export default function Footer() {
 
           {/* Categories */}
           <div>
-            <h2 className={footerHeadingClass}>Categories</h2>
+            <h2 className={footerHeadingClass}>Jackets</h2>
             <ul className="mt-5 space-y-3">
               {categoriesLeft.map((link) => (
                 <li key={link.label}>
@@ -104,9 +113,22 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className={footerHeadingClass}>Categories</h2>
+            <h2 className={footerHeadingClass}>Streetwear</h2>
             <ul className="mt-5 space-y-3">
               {categoriesRight.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className={footerLinkClass}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className={footerHeadingClass}>More</h2>
+            <ul className="mt-5 space-y-3">
+              {categoriesMore.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className={footerLinkClass}>
                     {link.label}

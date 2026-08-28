@@ -18,7 +18,7 @@ export default function BlogsSection() {
           {posts.map((post, index) => (
             <Reveal key={post.title} variant="up" delay={index * 100}>
               <article className="group">
-                <Link href="/blog" className="block relative h-56 rounded-card overflow-hidden shadow-card">
+                <Link href={`/blog/${post.slug}`} className="block relative h-56 rounded-card overflow-hidden shadow-card">
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -31,11 +31,11 @@ export default function BlogsSection() {
                   </span>
                 </Link>
                 <h3 className="mt-5 font-display text-lg md:text-xl leading-[30px] text-ink group-hover:text-primary-800 transition-colors">
-                  <Link href="/blog">{post.title}</Link>
+                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-body line-clamp-3">{post.excerpt}</p>
                 <Link
-                  href="/blog"
+                  href={`/blog/${post.slug}`}
                   className="mt-4 inline-block bg-white text-primary-800 border border-primary-800 font-sans text-xs uppercase tracking-[2px] rounded-card px-5 py-3 transition-colors duration-300 hover:bg-primary-600 hover:border-primary-600 hover:text-white"
                 >
                   Read More

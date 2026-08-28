@@ -12,7 +12,7 @@ const carouselImages = [
 
 export default function IntroSection() {
   return (
-    <section className="bg-cream py-16 md:py-24">
+    <section className="bg-cream py-16 md:py-24 overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-8 items-stretch">
           <Reveal variant="left" className="min-h-[320px] md:min-h-[460px]">
@@ -34,8 +34,8 @@ export default function IntroSection() {
               </p>
               <p className="mt-4 text-[15px] leading-relaxed text-body">
                 We manufacture a wide range of product categories: custom jackets, hoodies, streetwear,
-                sportswear, uniforms and accessories — all built to your exact spec, with low minimums
-                and full customisation on fabric, fit and branding.
+                sportswear and accessories — all built to your exact spec, with low minimums and full
+                customisation on fabric, fit and branding.
               </p>
               <div className="mt-8">
                 <Link href="/contact" className="btn-primary">

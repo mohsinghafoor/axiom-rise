@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body {
+    overflow-x: hidden;
+    /* clip does not create a scroll container, keeping position: sticky intact */
+    overflow-x: clip;
+  }
+
   h1,
   h2,
   h3,

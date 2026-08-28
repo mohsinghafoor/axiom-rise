@@ -3,7 +3,7 @@ import CountUp from '@/components/ui/CountUp'
 const counters = [
   { end: 7, suffix: '', label: 'Days Delivery' },
   { end: 14, suffix: '', label: 'Days Production Time' },
-  { end: 30, suffix: '', label: 'Min Order Per Product' },
+  { end: 10, suffix: '', label: 'Min Order Per Product' },
   { end: 100, suffix: '%', label: 'Satisfaction' },
 ]
 

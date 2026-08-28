@@ -59,7 +59,18 @@ function DesktopDropdown({
   }
 
   return (
-    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+    <div
+      className="relative"
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      onFocus={() => {
+        clearTimeout(closeTimer.current)
+        setOpen(true)
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setOpen(false)
+      }}
+    >
       <Link
         href={href}
         onClick={close}
@@ -91,7 +102,7 @@ function DesktopDropdown({
                 {item.children && <Caret className="-rotate-90" />}
               </Link>
               {item.children && (
-                <div className="absolute left-full top-0 pl-1 invisible opacity-0 translate-x-1 group-hover/sub:visible group-hover/sub:opacity-100 group-hover/sub:translate-x-0 transition-all duration-300 ease-out">
+                <div className="absolute left-full top-0 pl-1 invisible opacity-0 translate-x-1 group-hover/sub:visible group-hover/sub:opacity-100 group-hover/sub:translate-x-0 group-focus-within/sub:visible group-focus-within/sub:opacity-100 group-focus-within/sub:translate-x-0 transition-all duration-300 ease-out">
                   <div className="bg-white min-w-[220px] shadow-card py-3">
                     {item.children.map((child) => (
                       <Link

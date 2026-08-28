@@ -9,18 +9,34 @@ export interface ManufacturingLine {
 
 export const manufacturingLines: ManufacturingLine[] = [
   {
-    slug: 'outerwear',
-    label: 'Outerwear Manufacturing',
-    shortName: 'Outerwear',
+    slug: 'jackets',
+    label: 'Jackets',
+    shortName: 'Jacket',
     description:
-      'Premium production for jackets, hoodies and sweatshirts demanding superior fabric, structure and fit.',
+      'Structured outerwear — softshells, varsity and premium jackets built on verified fabric specs and taped-seam construction.',
     bandImage: '/images/hero/leather-jacket.webp',
     slugs: [
-      'jacket-manufacturer',
-      'wholesale-varsity-jackets',
-      'hoodies-manufacturer',
-      'hoodies-supplier-vendors',
-      'sweatshirt-manufacturers',
+      'softshell-jacket',
+      'bomber-jacket',
+      'bubble-jacket',
+      'puffer-jacket',
+      'leather-jacket',
+      'varsity-jacket',
+    ],
+  },
+  {
+    slug: 'streetwear',
+    label: 'Streetwear',
+    shortName: 'Streetwear',
+    description:
+      'Heavyweight streetwear staples — shorts, hoodies, tracksuits, tees and sweatshirts with the fabric, structure and fit premium brands demand.',
+    bandImage: '/images/hero/sweatshirt.webp',
+    slugs: [
+      'shorts',
+      'hoodies',
+      'tracksuits',
+      't-shirts',
+      'sweatshirts',
     ],
   },
   {
@@ -31,38 +47,8 @@ export const manufacturingLines: ManufacturingLine[] = [
       'Performance-driven gear engineered for maximum durability during high-impact training and competition.',
     bandImage: '/images/hero/sports-wear.webp',
     slugs: [
-      'sportswear-manufacturer',
       'fitness-clothing-manufacturer',
-      'wholesale-shorts',
-      'martial-arts-clothing',
-      'sports-uniform-manufacturer',
     ],
-  },
-  {
-    slug: 'uniforms',
-    label: 'Uniforms & Workwear',
-    shortName: 'Uniforms',
-    description:
-      'Professional uniform programs with consistent sizing, colour-fastness and durability across every reorder.',
-    bandImage: '/images/products/uniform.webp',
-    slugs: [
-      'uniform-manufacturers',
-      'wholesale-scrub-vendors',
-      'school-uniform-manufacturer',
-      'corporate-uniform-manufacturer',
-      'hospitality-uniform-manufacturer',
-      'security-uniform-manufacturer',
-      'chef-uniform-manufacturer',
-    ],
-  },
-  {
-    slug: 'essentials',
-    label: 'Everyday Essentials',
-    shortName: 'Essentials',
-    description:
-      'Core wardrobe staples produced in premium fabrics with full customisation on fit, colour and branding.',
-    bandImage: '/images/hero/tshirt.webp',
-    slugs: ['t-shirts-manufacturer', 'equestrian-clothing-manufacturer'],
   },
   {
     slug: 'accessories',

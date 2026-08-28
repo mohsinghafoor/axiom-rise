@@ -4,17 +4,22 @@ import Reveal from '@/components/ui/Reveal'
 
 interface SamplesBandProps {
   title?: string
-  description?: string
+  /** A single paragraph, or several rendered in sequence. */
+  description?: string | string[]
+  ctaLabel?: string
+  image?: string
 }
 
 export default function SamplesBand({
   title = 'Get Your Samples With Free Shipping; No Hidden Costs, No Commitment',
   description = 'You bring the brand vision. We send you physical Golden Samples with zero shipping cost. Every order starts with a sample you physically approve — whether you are launching a new streetwear label, scaling an existing line, or sourcing a reliable factory for a national brand.',
+  ctaLabel = 'Request Samples With Free Shipping Today',
+  image = '/images/hero/fitness.webp',
 }: SamplesBandProps) {
   return (
     <section className="relative py-28 md:py-40">
       <Image
-        src="/images/hero/fitness.webp"
+        src={image}
         alt=""
         fill
         className="object-cover"
@@ -37,12 +42,17 @@ export default function SamplesBand({
             <h2 className="mt-6 font-display text-[25px] md:text-[39px] leading-[1.2] text-white">
               {title}
             </h2>
-            <p className="mt-6 text-base leading-relaxed tracking-[0.3px] text-white/95">
-              {description}
-            </p>
+            {(Array.isArray(description) ? description : [description]).map((paragraph, index) => (
+              <p
+                key={index}
+                className={`${index === 0 ? 'mt-6' : 'mt-4'} text-base leading-relaxed tracking-[0.3px] text-white/95`}
+              >
+                {paragraph}
+              </p>
+            ))}
             <div className="mt-8">
-              <Link href="/contact" className="btn-primary">
-                Request Samples With Free Shipping Today
+              <Link href="/contact" className="btn-primary leading-tight">
+                {ctaLabel}
               </Link>
             </div>
           </div>

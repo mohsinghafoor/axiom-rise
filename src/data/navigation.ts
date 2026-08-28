@@ -6,56 +6,26 @@ export interface NavItem {
 
 export const productMenu: NavItem[] = [
   {
-    label: 'Outerwear',
-    href: '/categories/outerwear',
+    label: 'Jackets',
+    href: '/categories/jackets',
     children: [
-      { label: 'Jackets', href: '/products/jacket-manufacturer' },
-      { label: 'Varsity Jackets', href: '/products/wholesale-varsity-jackets' },
-      { label: 'Hoodies', href: '/products/hoodies-manufacturer' },
-      { label: 'Sweatshirts', href: '/products/sweatshirt-manufacturers' },
+      { label: 'Softshell Jackets', href: '/products/softshell-jacket' },
+      { label: 'Bomber Jackets', href: '/products/bomber-jacket' },
+      { label: 'Bubble Jackets', href: '/products/bubble-jacket' },
+      { label: 'Puffer Jackets', href: '/products/puffer-jacket' },
+      { label: 'Leather Jackets', href: '/products/leather-jacket' },
+      { label: 'Varsity Jackets', href: '/products/varsity-jacket' },
     ],
   },
   {
-    label: 'Activewear',
-    href: '/categories/activewear',
+    label: 'Streetwear',
+    href: '/categories/streetwear',
     children: [
-      { label: 'Sportswear', href: '/products/sportswear-manufacturer' },
-      { label: 'Fitness Clothing', href: '/products/fitness-clothing-manufacturer' },
-      { label: 'Shorts', href: '/products/wholesale-shorts' },
-      { label: 'Martial Arts Clothing', href: '/products/martial-arts-clothing' },
-      { label: 'Sports Uniforms', href: '/products/sports-uniform-manufacturer' },
-    ],
-  },
-  {
-    label: 'Uniforms',
-    href: '/categories/uniforms',
-    children: [
-      { label: 'Corporate Uniforms', href: '/products/corporate-uniform-manufacturer' },
-      { label: 'School Uniforms', href: '/products/school-uniform-manufacturer' },
-      { label: 'Medical Scrubs', href: '/products/wholesale-scrub-vendors' },
-      { label: 'Hospitality Uniforms', href: '/products/hospitality-uniform-manufacturer' },
-      { label: 'Security Uniforms', href: '/products/security-uniform-manufacturer' },
-      { label: 'Chef Uniforms', href: '/products/chef-uniform-manufacturer' },
-    ],
-  },
-  {
-    label: 'Essentials',
-    href: '/categories/essentials',
-    children: [
-      { label: 'T-Shirts', href: '/products/t-shirts-manufacturer' },
-      { label: 'Equestrian Clothing', href: '/products/equestrian-clothing-manufacturer' },
-    ],
-  },
-  {
-    label: 'Accessories',
-    href: '/categories/accessories',
-    children: [
-      { label: 'Caps & Hats', href: '/products/cap-manufacturer' },
-      { label: 'Beanies', href: '/products/beanie-manufacturer' },
-      { label: 'Bags & Backpacks', href: '/products/backpack-manufacturer' },
-      { label: 'Leather Goods', href: '/products/leather-bags-manufacturer' },
-      { label: 'Scarves & Gloves', href: '/products/scarf-manufacturer' },
-      { label: 'Socks', href: '/products/socks-manufacturer' },
+      { label: 'Shorts', href: '/products/shorts' },
+      { label: 'Hoodies', href: '/products/hoodies' },
+      { label: 'Tracksuits', href: '/products/tracksuits' },
+      { label: 'T-Shirts', href: '/products/t-shirts' },
+      { label: 'Sweatshirts', href: '/products/sweatshirts' },
     ],
   },
 ]

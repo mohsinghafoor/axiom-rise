@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import Reveal from '@/components/ui/Reveal'
 import ProductCard from '@/components/ui/ProductCard'
-import { productsData } from '@/data/products'
+import { manufacturingLines } from '@/data/manufacturingLines'
 
 export default function ProductLines() {
-  const products = productsData.slice(0, 6)
-
   return (
     <section className="bg-white pb-20">
       <div className="relative">
@@ -29,13 +27,14 @@ export default function ProductLines() {
           </Reveal>
 
           <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {products.map((product, index) => (
-              <Reveal key={product.slug} variant="up" delay={(index % 3) * 100}>
+            {manufacturingLines.map((line, index) => (
+              <Reveal key={line.slug} variant="up" delay={index * 100}>
                 <ProductCard
-                  title={product.title}
-                  description={product.description}
-                  image={product.image}
-                  slug={product.slug}
+                  title={line.label}
+                  description={line.description}
+                  image={line.bandImage}
+                  slug={line.slug}
+                  href={`/categories/${line.slug}`}
                 />
               </Reveal>
             ))}
