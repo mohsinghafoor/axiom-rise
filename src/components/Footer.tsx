@@ -26,14 +26,6 @@ const categoriesRight = [
   { label: 'Sweatshirts', href: '/products/sweatshirts' },
 ]
 
-const categoriesMore = [
-  { label: 'Fitness Clothing', href: '/products/fitness-clothing-manufacturer' },
-  { label: 'Caps & Hats', href: '/products/cap-manufacturer' },
-  { label: 'Beanies', href: '/products/beanie-manufacturer' },
-  { label: 'Bags & Backpacks', href: '/products/backpack-manufacturer' },
-  { label: 'Socks', href: '/products/socks-manufacturer' },
-]
-
 const footerLinkClass =
   'text-[13px] uppercase tracking-[1px] text-primary-200 hover:text-primary-600 transition-colors duration-300'
 
@@ -43,7 +35,7 @@ export default function Footer() {
   return (
     <footer className="bg-black">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Image
@@ -116,19 +108,6 @@ export default function Footer() {
             <h2 className={footerHeadingClass}>Streetwear</h2>
             <ul className="mt-5 space-y-3">
               {categoriesRight.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className={footerLinkClass}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2 className={footerHeadingClass}>More</h2>
-            <ul className="mt-5 space-y-3">
-              {categoriesMore.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className={footerLinkClass}>
                     {link.label}

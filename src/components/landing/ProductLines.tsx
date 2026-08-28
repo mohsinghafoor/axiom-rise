@@ -4,6 +4,11 @@ import ProductCard from '@/components/ui/ProductCard'
 import { manufacturingLines } from '@/data/manufacturingLines'
 
 export default function ProductLines() {
+  const gridClass =
+    manufacturingLines.length <= 2
+      ? 'lg:grid-cols-2 max-w-[900px] mx-auto'
+      : 'lg:grid-cols-3'
+
   return (
     <section className="bg-white pb-20">
       <div className="relative">
@@ -26,7 +31,7 @@ export default function ProductLines() {
             </h2>
           </Reveal>
 
-          <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className={`mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 ${gridClass} gap-6 md:gap-8`}>
             {manufacturingLines.map((line, index) => (
               <Reveal key={line.slug} variant="up" delay={index * 100}>
                 <ProductCard

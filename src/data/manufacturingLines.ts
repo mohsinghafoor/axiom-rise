@@ -39,38 +39,6 @@ export const manufacturingLines: ManufacturingLine[] = [
       'sweatshirts',
     ],
   },
-  {
-    slug: 'activewear',
-    label: 'Activewear & Sports',
-    shortName: 'Activewear',
-    description:
-      'Performance-driven gear engineered for maximum durability during high-impact training and competition.',
-    bandImage: '/images/hero/sports-wear.webp',
-    slugs: [
-      'fitness-clothing-manufacturer',
-    ],
-  },
-  {
-    slug: 'accessories',
-    label: 'Accessories & Gear',
-    shortName: 'Accessories',
-    description:
-      'Headwear, bags and finishing accessories that complete your collection under the same quality system.',
-    bandImage: '/images/hero/shorts.webp',
-    slugs: [
-      'hat-manufacturers',
-      'leather-bags-manufacturer',
-      'backpack-manufacturer',
-      'cap-manufacturer',
-      'beanie-manufacturer',
-      'scarf-manufacturer',
-      'gloves-manufacturer',
-      'socks-manufacturer',
-      'belt-manufacturer',
-      'wallet-manufacturer',
-      'gym-bag-manufacturer',
-    ],
-  },
 ]
 
 export const lineForSlug = (slug: string) =>
