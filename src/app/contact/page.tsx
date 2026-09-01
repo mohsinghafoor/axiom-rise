@@ -1,8 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Contact() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,7 +30,7 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      title: "Head Office",
+      title: t('contactInfoHeadOffice'),
       details: [
         "Axiom Rise Apparel",
         "Kotla Amba Wala Road, Sialkot",
@@ -38,7 +40,7 @@ export default function Contact() {
       icon: "location"
     },
     {
-      title: "Phone & Fax",
+      title: t('contactInfoPhoneFax'),
       details: [
         "Mobile: +923271213923",
         "WhatsApp: +923271213923"
@@ -46,20 +48,18 @@ export default function Contact() {
       icon: "phone"
     },
     {
-      title: "Email",
+      title: t('contactInfoEmail'),
       details: [
-        "General: info@axiomrise.com",
-        "Sales: sales@axiomrise.com",
-        "Support: support@axiomrise.com"
+        "General: info@axiomrise.co",
+        "Sales: sales@axiomrise.co",
+        "Support: support@axiomrise.co"
       ],
       icon: "email"
     },
     {
-      title: "Business Hours",
+      title: t('contactInfoBusinessHours'),
       details: [
-        "Monday - Friday: 9:00 AM - 6:00 PM",
-        "Saturday: 9:00 AM - 2:00 PM",
-        "Sunday: Closed",
+        "Open 24 hours, 7 days a week (24/7)",
         "Time Zone: PKT (UTC+5)"
       ],
       icon: "clock"
@@ -67,18 +67,20 @@ export default function Contact() {
   ]
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20" style={{backgroundImage: 'radial-gradient(circle farthest-corner at 10% 20%, rgba(214,40,40,1) 0%, rgba(255,195,0,1) 90%)'}}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              Contact Us
-            </h1>
-            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Ready to partner with us? Get in touch today and discover how we can help your business grow
-            </p>
-          </div>
+      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-primary-600 via-primary-500 to-primary-400 dark:from-primary-700 dark:via-primary-600 dark:to-primary-800 transition-colors duration-300">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-white drop-shadow-lg">
+            {t('contactHeroTitle')}
+          </h1>
+          <p className="text-xl text-white/95 dark:text-white/90 max-w-3xl mx-auto drop-shadow-md">
+            {t('contactHeroDesc')}
+          </p>
         </div>
       </section>
 
@@ -88,18 +90,18 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Send Us a Message
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                {t('contactFormTitle')}
               </h2>
-              <p className="text-gray-600 mb-8">
-                Fill out the form below and our team will get back to you within 24 hours.
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
+                {t('contactFormDesc')}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      {t('contactFormFullName')}
                     </label>
                     <input
                       type="text"
@@ -108,13 +110,13 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                      placeholder="Your full name"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                      placeholder={t('contactFormFullNamePlaceholder')}
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      {t('contactFormEmail')}
                     </label>
                     <input
                       type="email"
@@ -123,16 +125,16 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                      placeholder="your.email@example.com"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                      placeholder={t('contactFormEmailPlaceholder')}
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Company Name
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      {t('contactFormCompany')}
                     </label>
                     <input
                       type="text"
@@ -140,13 +142,13 @@ export default function Contact() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                      placeholder="Your company name"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                      placeholder={t('contactFormCompanyPlaceholder')}
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      {t('contactFormPhone')}
                     </label>
                     <input
                       type="tel"
@@ -154,15 +156,15 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                      placeholder="+1 (555) 123-4567"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                      placeholder={t('contactFormPhonePlaceholder')}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {t('contactFormSubject')}
                   </label>
                   <select
                     id="subject"
@@ -170,21 +172,21 @@ export default function Contact() {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
                   >
-                    <option value="">Please select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="quote">Request Quote</option>
-                    <option value="partnership">Partnership Opportunity</option>
-                    <option value="quality">Quality Concern</option>
-                    <option value="support">Technical Support</option>
-                    <option value="other">Other</option>
+                    <option value="">{t('contactFormSubjectSelect')}</option>
+                    <option value="general">{t('contactFormSubjectGeneral')}</option>
+                    <option value="quote">{t('contactFormSubjectQuote')}</option>
+                    <option value="partnership">{t('contactFormSubjectPartnership')}</option>
+                    <option value="quality">{t('contactFormSubjectQuality')}</option>
+                    <option value="support">{t('contactFormSubjectSupport')}</option>
+                    <option value="other">{t('contactFormSubjectOther')}</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {t('contactFormMessage')}
                   </label>
                   <textarea
                     id="message"
@@ -193,42 +195,42 @@ export default function Contact() {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                    placeholder="Please provide details about your inquiry..."
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                    placeholder={t('contactFormMessagePlaceholder')}
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-primary-600 text-white py-3 px-6 rounded-md hover:bg-primary-700 transition-colors font-semibold"
+                  className="w-full bg-primary-600 text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors font-semibold"
                 >
-                  Send Message
+                  {t('contactFormSendMessage')}
                 </button>
               </form>
             </div>
 
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Get in Touch
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                {t('contactInfoTitle')}
               </h2>
-              <p className="text-gray-600 mb-8">
-                We&apos;re here to help! Reach out to us through any of the following channels.
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
+                {t('contactInfoDesc')}
               </p>
 
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-primary-600 dark:text-primary-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{info.title}</h3>
                       <div className="space-y-1">
                         {info.details.map((detail, detailIndex) => (
-                          <p key={detailIndex} className="text-gray-600">{detail}</p>
+                          <p key={detailIndex} className="text-gray-600 dark:text-gray-300">{detail}</p>
                         ))}
                       </div>
                     </div>
@@ -237,9 +239,9 @@ export default function Contact() {
               </div>
 
               {/* Social Media */}
-              <div className="mt-8 p-6 bg-gradient-to-br from-primary-50 to-blue-50 rounded-lg">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
-                <p className="text-gray-600 mb-4">Stay connected with us on social media</p>
+              <div className="mt-8 p-6 bg-gradient-to-br from-primary-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t('contactSocialTitle')}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{t('contactSocialDesc')}</p>
                 <div className="flex space-x-4">
                   <a
                     href="https://www.facebook.com/share/1ChLBrEUzV/"
@@ -263,15 +265,26 @@ export default function Contact() {
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                   </a>
+                  <a
+                    href="https://www.linkedin.com/in/tehseen-ghafoor-924a40361/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-12 h-12 bg-blue-700 hover:bg-blue-800 text-white rounded-lg transition-colors shadow-md hover:shadow-lg"
+                    aria-label="LinkedIn"
+                  >
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.446-2.136 2.941v5.665H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.369-1.852 3.602 0 4.268 2.369 4.268 5.452v6.291zM5.337 7.433c-1.144 0-2.07-.927-2.07-2.07 0-1.144.926-2.07 2.07-2.07 1.145 0 2.071.926 2.071 2.07 0 1.143-.926 2.07-2.071 2.07zM6.813 20.452H3.861V9h2.952v11.452z"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
 
               {/* Map */}
               <div className="mt-8">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Find Us</h3>
-                <div className="h-64 bg-gray-200 rounded-lg overflow-hidden shadow-md">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t('contactMapTitle')}</h3>
+                <div className="h-64 bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54341.67891729556!2d74.51524674863283!3d32.49268200000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391ee86e8c8f0001%3A0x7a5f5d8f8f8f8f8f!2sParis%20Road%2C%20Sialkot%20Cantt%2C%20Sialkot%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1362.963393835624!2d74.5452235!3d32.466675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391ec0329f8eae99%3A0x95901be512b2acd3!2sKotla%20Ambanwala%20Rd%2C%20Kotla%20Ambanwala%20Village%2C%20Sialkot%2C%20Pakistan!5e0!3m2!1sen!2s!4v1697460000000!5m2!1sen!2s"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -281,9 +294,9 @@ export default function Contact() {
                     title="Axiom Rise Location - Sialkot, Pakistan"
                   ></iframe>
                 </div>
-                <div className="mt-4 text-sm text-gray-600">
+                <div className="mt-4 text-sm text-gray-600 dark:text-gray-300">
                   <p className="flex items-center">
-                    <svg className="w-4 h-4 mr-2 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 mr-2 text-primary-600 dark:text-primary-400" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
                     </svg>
                     Kotla Amba Wala , Sialkot, Punjab, Pakistan
@@ -296,47 +309,47 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 dark:bg-gray-900 py-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              {t('contactFAQTitle')}
             </h2>
-            <p className="text-xl text-gray-600">
-              Quick answers to common questions about our services
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              {t('contactFAQDesc')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                question: "What is your minimum order quantity?",
-                answer: "Our minimum order quantity varies by product type. Generally, we require a minimum of 500 pieces per style for most garments. Contact us for specific requirements."
+                question: t('contactFAQ1Question'),
+                answer: t('contactFAQ1Answer')
               },
               {
-                question: "How long does production take?",
-                answer: "Production time typically ranges from 15-30 days depending on the complexity and quantity of the order. Rush orders may be accommodated with additional fees."
+                question: t('contactFAQ2Question'),
+                answer: t('contactFAQ2Answer')
               },
               {
-                question: "Do you provide samples?",
-                answer: "Yes, we provide samples for approval before production begins. Sample costs are typically deducted from the final order total."
+                question: t('contactFAQ3Question'),
+                answer: t('contactFAQ3Answer')
               },
               {
-                question: "What payment methods do you accept?",
-                answer: "We accept bank transfers, letters of credit, and other secure international payment methods. Payment terms are typically 30% deposit with 70% before shipment."
+                question: t('contactFAQ4Question'),
+                answer: t('contactFAQ4Answer')
               },
               {
-                question: "Can you handle custom designs?",
-                answer: "Absolutely! We specialize in custom designs and can work with your specifications, sketches, or even develop designs based on your requirements."
+                question: t('contactFAQ5Question'),
+                answer: t('contactFAQ5Answer')
               },
               {
-                question: "What quality certifications do you have?",
-                answer: "We hold ISO 9001:2015, OEKO-TEX Standard 100, GOTS certification, and BSCI compliance certifications ensuring highest quality and ethical standards."
+                question: t('contactFAQ6Question'),
+                answer: t('contactFAQ6Answer')
               }
             ].map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 border border-transparent dark:border-gray-700">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{faq.question}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{faq.answer}</p>
               </div>
             ))}
           </div>

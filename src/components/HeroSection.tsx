@@ -1,7 +1,8 @@
 "use client";
-import Link from "next/link";
 import Carousel from "@/components/Carousel";
+import Button from "@/components/ui/Button";
 import { useState } from "react";
+import { useLanguage } from '../contexts/LanguageContext';
 
 const heroImages = [
   "/images/hero/hoodies.webp",
@@ -14,51 +15,52 @@ const heroImages = [
   "/images/hero/shorts.webp"
 ];
 
-const heroContent = [
-  {
-    title: "Premium Hoodies Collection",
-    subtitle: "Ultimate Comfort Meets Style",
-    description: "Crafted with premium materials and attention to detail, our hoodies blend streetwear aesthetics with unmatched comfort for the modern lifestyle."
-  },
-  {
-    title: "Elite Sportswear Manufacturing",
-    subtitle: "Performance-Driven Athletic Apparel",
-    description: "Engineered for champions with moisture-wicking technology, breathable fabrics, and ergonomic designs that enhance athletic performance."
-  },
-  {
-    title: "Classic T-Shirt Excellence",
-    subtitle: "Timeless Style, Perfect Fit",
-    description: "From premium cotton basics to designer cuts, our t-shirts represent the perfect fusion of comfort, durability, and contemporary fashion."
-  },
-  {
-    title: "Varsity Jacket Heritage",
-    subtitle: "Collegiate Style Redefined",
-    description: "Authentic varsity craftsmanship with modern materials and designs that celebrate tradition while embracing contemporary streetwear culture."
-  },
-  {
-    title: "Luxury Leather Jackets",
-    subtitle: "Timeless Elegance & Sophistication",
-    description: "Meticulously crafted from premium genuine leather, our jackets embody luxury, durability, and classic style that transcends seasons."
-  },
-  {
-    title: "Peak Fitness Apparel",
-    subtitle: "Activate Your Potential",
-    description: "High-performance fitness wear designed with cutting-edge fabric technology to support your most intense workouts and active lifestyle."
-  },
-  {
-    title: "Cozy Sweatshirt Collection",
-    subtitle: "Relaxed Luxury for Everyday",
-    description: "Soft, warm, and stylish sweatshirts that provide the perfect balance of comfort and fashion for casual and athleisure wear."
-  },
-  {
-    title: "Premium Shorts Range",
-    subtitle: "Freedom of Movement & Style",
-    description: "From athletic performance to casual comfort, our shorts collection offers versatile designs with superior materials and modern fits."
-  }
-];
-
 export default function HeroSection() {
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+  const { t } = useLanguage();
+
+  const heroContent = [
+    {
+      title: t('heroTitle1'),
+      subtitle: t('heroSubtitle1'),
+      description: t('heroDesc1')
+    },
+    {
+      title: t('heroTitle2'),
+      subtitle: t('heroSubtitle2'),
+      description: t('heroDesc2')
+    },
+    {
+      title: t('heroTitle3'),
+      subtitle: t('heroSubtitle3'),
+      description: t('heroDesc3')
+    },
+    {
+      title: t('heroTitle4'),
+      subtitle: t('heroSubtitle4'),
+      description: t('heroDesc4')
+    },
+    {
+      title: t('heroTitle5'),
+      subtitle: t('heroSubtitle5'),
+      description: t('heroDesc5')
+    },
+    {
+      title: t('heroTitle6'),
+      subtitle: t('heroSubtitle6'),
+      description: t('heroDesc6')
+    },
+    {
+      title: t('heroTitle7'),
+      subtitle: t('heroSubtitle7'),
+      description: t('heroDesc7')
+    },
+    {
+      title: t('heroTitle8'),
+      subtitle: t('heroSubtitle8'),
+      description: t('heroDesc8')
+    }
+  ];
   return (
     <section className="relative h-screen overflow-hidden">
       <div className="absolute inset-0 z-10">
@@ -69,7 +71,13 @@ export default function HeroSection() {
           onIndexChange={setCurrentHeroIndex}
         />
       </div>
-      <div className="absolute inset-0 bg-black/50 z-20 pointer-events-none"></div>
+      {/* Base scrim, darker than a flat 50% so it still clears AA contrast over bright photo regions (sky, white garments) */}
+      <div className="absolute inset-0 bg-black/60 z-20 pointer-events-none"></div>
+      {/* Extra darkening concentrated behind the centered text block */}
+      <div
+        className="absolute inset-0 z-20 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 65%)' }}
+      ></div>
       <div className="relative z-30 flex items-center justify-center h-full pointer-events-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <div className="mb-3">
@@ -84,18 +92,12 @@ export default function HeroSection() {
             {heroContent[currentHeroIndex]?.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto">
-            <Link
-              href="/products"
-              className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors text-center shadow-lg"
-            >
-              View Products
-            </Link>
-            <Link
-              href="/contact"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors text-center backdrop-blur-sm"
-            >
-              Get Quote
-            </Link>
+            <Button href="/products" variant="secondary">
+              {t('viewProducts')}
+            </Button>
+            <Button href="/contact" variant="outline">
+              {t('getQuote')}
+            </Button>
           </div>
         </div>
       </div>

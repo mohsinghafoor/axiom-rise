@@ -1,11 +1,13 @@
 "use client"
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import Button from '@/components/ui/Button';
 
 export default function CTASection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -34,15 +36,10 @@ export default function CTASection() {
   }, []);
 
   return (
-    <section className="relative text-white py-20 overflow-hidden" style={{ backgroundImage: 'radial-gradient(circle farthest-corner at 10% 20%, rgba(214,40,40,1) 0%, rgba(255,195,0,1) 90%)' }}>
-      {/* Curved top border using clip-path */}
-      {/* <div className="absolute inset-0" style={{ clipPath: 'ellipse(120% 100% at 50% 100%)' }}>
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #4f46e5 100%)' }}></div>
-      </div> */}
-      
+    <section className="relative text-white py-20 overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 dark:from-primary-900 dark:via-primary-950 dark:to-gray-900 transition-colors duration-300">
       {/* Decorative circles */}
-      <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 dark:bg-white/5 rounded-full blur-3xl"></div>
       
       <div 
         ref={sectionRef}
@@ -59,7 +56,7 @@ export default function CTASection() {
               : 'opacity-0 translate-y-10'
           }`}
         >
-          Ready to Partner with Us?
+          {t('ctaTitle')}
         </h2>
         <p 
           className={`text-xl mb-8 max-w-2xl mx-auto transition-all duration-500 delay-200 ${
@@ -69,7 +66,7 @@ export default function CTASection() {
           }`}
           style={{ color: 'rgba(255, 255, 255, 0.95)' }}
         >
-          Join thousands of satisfied clients worldwide. Get in touch today for competitive pricing and exceptional service.
+          {t('ctaDesc')}
         </p>
         <div
           className={`transition-all duration-500 delay-300 ${
@@ -78,13 +75,9 @@ export default function CTASection() {
               : 'opacity-0 translate-y-10 scale-95'
           }`}
         >
-          <Link 
-            href="/contact" 
-            className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors inline-block hover:scale-105 transform"
-            style={{ boxShadow: '0 8px 16px rgba(0,0,0,0.15), 0 4px 8px rgba(0,0,0,0.1)' }}
-          >
-            Contact Us Today
-          </Link>
+          <Button href="/contact" variant="secondary">
+            {t('ctaButton')}
+          </Button>
         </div>
       </div>
     </section>
