@@ -49,7 +49,7 @@ export default function Home() {
           'Send your product reference, target material, quantity, size range, branding files, packaging and destination — and we will quote against it.',
         ]}
         ctaLabel="Request a Sample Review"
-        secondaryCta={{ label: 'See the Sampling Process', href: '/services/tech-pack-design' }}
+        secondaryCta={{ label: 'See the Sampling Process', href: '/services/apparel-prototyping-and-sampling' }}
         features={sampleCommitments}
       />
       <TrustStrip />

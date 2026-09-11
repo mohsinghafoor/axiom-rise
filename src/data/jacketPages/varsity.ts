@@ -64,7 +64,7 @@ export const varsityContent: JacketPageContent = {
       ],
       [
         { text: 'We treat this seam as its own quality checkpoint, separate from our ' },
-        { text: 'general stitch inspection process', href: '/services/quality-control' },
+        { text: 'general stitch inspection process', href: '/services/quality-control-and-inspection' },
         {
           text:
             '. Every unit gets it checked for even tension and binding before final QC, because it’s the one detail that tells a buyer whether they’re holding heritage construction or an imitation.',

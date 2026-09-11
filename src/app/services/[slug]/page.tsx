@@ -8,6 +8,7 @@ import SamplesBand from '@/components/landing/SamplesBand'
 import Testimonials from '@/components/landing/Testimonials'
 import FAQ from '@/components/landing/FAQ'
 import ContactSection from '@/components/landing/ContactSection'
+import ServiceDetailPage from '@/components/services/ServiceDetailPage'
 import { services, serviceBySlug } from '@/data/services'
 
 export function generateStaticParams() {
@@ -16,43 +17,27 @@ export function generateStaticParams() {
 
 const stepIconClass = 'w-[42px] h-[42px] mx-auto text-primary-600 transition-colors duration-300 group-hover:text-primary-800'
 
-const processSteps = [
-  {
-    title: 'Design Review & Concept Handover',
-    description: 'We review your files, references or rough sketches and agree the technical direction together.',
-    icon: (
-      <svg className={stepIconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Specification & Material Mapping',
-    description: 'Measurements, materials and construction details are locked into a factory-ready specification.',
-    icon: (
-      <svg className={stepIconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Execution & Golden Sample',
-    description: 'The service runs against the locked spec, and you approve a physical result before bulk.',
-    icon: (
-      <svg className={stepIconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Final Delivery & Documentation',
-    description: 'You receive the finished work plus every file, report and spec — yours to keep, forever.',
-    icon: (
-      <svg className={stepIconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-      </svg>
-    ),
-  },
+const stepIcons = [
+  (
+    <svg key="step-1" className={stepIconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+    </svg>
+  ),
+  (
+    <svg key="step-2" className={stepIconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z" />
+    </svg>
+  ),
+  (
+    <svg key="step-3" className={stepIconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  (
+    <svg key="step-4" className={stepIconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+    </svg>
+  ),
 ]
 
 const trustPoints = [
@@ -77,6 +62,9 @@ const trustPoints = [
 export default function ServicePage({ params }: { params: { slug: string } }) {
   const service = serviceBySlug(params.slug)
   if (!service) notFound()
+
+  // Services with long-form content render the full editorial layout.
+  if (service.detail) return <ServiceDetailPage service={service} detail={service.detail} />
 
   const related = services.filter((s) => s.slug !== service.slug).slice(0, 3)
 
@@ -133,7 +121,11 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 <h2 className="font-display text-[22px] md:text-[31px] leading-snug text-ink">
                   {service.pain.title}
                 </h2>
-                <p className="mt-6 text-[15px] leading-relaxed text-body">{service.pain.body}</p>
+                {service.pain.body.map((paragraph, index) => (
+                  <p key={index} className={`text-[15px] leading-relaxed text-body ${index === 0 ? 'mt-6' : 'mt-4'}`}>
+                    {paragraph}
+                  </p>
+                ))}
                 <div className="mt-8">
                   <Link href="/contact" className="btn-primary">
                     Get a Free Review
@@ -189,10 +181,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           </Reveal>
 
           <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
+            {service.process.map((step, index) => (
               <Reveal key={step.title} variant="up" delay={index * 100}>
                 <div className="group text-center px-4">
-                  {step.icon}
+                  {stepIcons[index % stepIcons.length]}
                   <div className="mt-4 font-display text-primary-600 text-sm">0{index + 1}</div>
                   <h5 className="mt-1 font-display text-[18px] md:text-[20px] font-semibold text-primary-800 leading-snug">
                     {step.title}
@@ -263,7 +255,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      <FAQ />
+      <FAQ items={service.faqs} />
       <ContactSection />
     </div>
   )

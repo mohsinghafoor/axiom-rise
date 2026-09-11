@@ -46,7 +46,7 @@ const rightItems: WhyItem[] = [
     title: 'Fit Controlled Across Sizes',
     description:
       'Digital pattern making, grading rules, points of measure and size-set approval protect the intended fit — so a large is not just a blown-up small.',
-    href: '/services/tech-pack-design',
+    href: '/services/pattern-making-and-grading',
     cta: 'Pattern Making and Grading',
     icon: (
       <svg className={iconClass} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">

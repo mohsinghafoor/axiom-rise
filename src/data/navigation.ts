@@ -41,11 +41,17 @@ export const productMenu: NavItem[] = [
 
 export const servicesMenu: NavItem[] = [
   { label: 'Tech Pack Design', href: '/services/tech-pack-design' },
+  { label: 'Pattern Making & Grading', href: '/services/pattern-making-and-grading' },
+  { label: 'Apparel Prototyping & Sampling', href: '/services/apparel-prototyping-and-sampling' },
   { label: 'Fabric Sourcing', href: '/services/fabric-sourcing' },
   { label: 'Cut & Sew Manufacturing', href: '/services/cut-and-sew-manufacturing' },
+  { label: 'CMT Manufacturing', href: '/services/cmt-manufacturing' },
   { label: 'Private Label Clothing', href: '/services/private-label-clothing' },
   { label: 'Custom Embroidery', href: '/services/custom-embroidery' },
   { label: 'Screen Printing', href: '/services/screen-printing' },
+  { label: 'DTG Printing', href: '/services/dtg-printing' },
   { label: 'Sublimation Printing', href: '/services/sublimation-printing' },
-  { label: 'Quality Control & Inspection', href: '/services/quality-control' },
+  { label: 'Custom Clothing Labels', href: '/services/custom-clothing-labels' },
+  { label: 'Custom Packaging', href: '/services/custom-packaging' },
+  { label: 'Quality Control & Inspection', href: '/services/quality-control-and-inspection' },
 ]

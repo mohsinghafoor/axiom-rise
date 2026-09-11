@@ -67,7 +67,7 @@ export const bubbleContent: JacketPageContent = {
           text:
             'The biggest quality risk specific to bubble jackets is fill consistency between panels. Underfilled panels look flat; overfilled panels stress the seams. We weigh fill per panel and spot-check finished units against the Golden Sample’s silhouette as part of our standard ',
         },
-        { text: 'QC and inspection process', href: '/services/quality-control' },
+        { text: 'QC and inspection process', href: '/services/quality-control-and-inspection' },
         {
           text:
             ', not just its weight, because two jackets can weigh the same and still look different.',
