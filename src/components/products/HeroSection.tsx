@@ -18,11 +18,12 @@ export default function ProductsHeroSection() {
         <Reveal variant="down">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="font-display text-[30px] md:text-[48px] leading-[1.15] tracking-[-1px] text-white">
-              Secure Your Supply Chain Across Every Apparel Category Under One Roof
+              Secure Your Supply Chain Across Apparel, Streetwear and Bags Under One Roof
             </h1>
             <div className="mt-5 mx-auto w-[50px] border-t border-white/70" />
             <p className="mt-5 text-base md:text-lg text-white/95 max-w-3xl mx-auto">
-              Specialized technical production floors delivering consistent quality for your global brand requirements
+              Specialized technical production floors — outerwear, heavyweight knitwear and cut-and-sew
+              bags — delivering consistent quality for your global brand requirements
             </p>
           </div>
         </Reveal>

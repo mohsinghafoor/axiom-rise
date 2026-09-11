@@ -34,8 +34,8 @@ export default function IntroSection() {
               </p>
               <p className="mt-4 text-[15px] leading-relaxed text-body">
                 We manufacture a wide range of product categories: custom jackets, hoodies, streetwear,
-                sportswear and accessories — all built to your exact spec, with low minimums and full
-                customisation on fabric, fit and branding.
+                sportswear, bags and accessories — all built to your exact spec, with low minimums and
+                full customisation on fabric, fit and branding.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
                 <Link href="/contact" className="btn-primary">

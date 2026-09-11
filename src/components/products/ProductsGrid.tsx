@@ -15,9 +15,10 @@ export default function ProductsGrid() {
         </Reveal>
         <Reveal variant="fade" delay={150}>
           <p className="mt-6 text-[15px] leading-relaxed text-body text-center max-w-3xl mx-auto">
-            Finding one manufacturer who excels at both structured outerwear and heavyweight streetwear
-            usually means compromising on quality. Our production floors are organised into dedicated lines, so
-            every category gets a specialised team — and you get consistent quality across your whole range.
+            Finding one manufacturer who excels at structured outerwear, heavyweight streetwear and
+            cut-and-sew bags usually means compromising somewhere. Our production floors are organised into
+            dedicated lines, so every category gets a specialised team — and you get consistent quality
+            across your whole range.
           </p>
         </Reveal>
       </div>

@@ -22,7 +22,7 @@ export default function ProductLines() {
         <div className="relative mx-auto max-w-[1280px] px-4 pt-16 sm:px-6 md:pt-20 lg:px-8">
           <Reveal variant="down">
             <SectionHeading
-              title="Custom Apparel for Fashion, Sport and Business"
+              title="Custom Apparel and Bags for Fashion, Sport and Business"
               subtitle="Each production line is matched to its real fabric, fit, construction and wear requirements."
               tone="white"
             />
