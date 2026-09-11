@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    overflow-x: hidden;
+    /* clip does not create a scroll container, keeping position: sticky intact */
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-semibold tracking-tight text-ink;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-primary-600 text-white font-sans text-xs font-normal uppercase tracking-[2px] leading-none rounded-card px-6 py-3.5 transition-colors duration-300 hover:bg-primary-800;
+  }
+
+  .btn-outline-white {
+    @apply inline-block border border-white text-white font-sans text-xs font-normal uppercase tracking-[2px] leading-none rounded-card px-6 py-3.5 transition-colors duration-300 hover:bg-primary-800 hover:border-primary-800;
+  }
+}

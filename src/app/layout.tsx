@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Bricolage_Grotesque, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
-const inter = Inter({ subsets: ['latin'] })
+const bricolage = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display' })
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-body' })
 
 export const metadata: Metadata = {
   title: 'Axiom Rise - Premium Clothing Export',
@@ -22,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${bricolage.variable} ${jakarta.variable} font-sans text-body`}>
         <Navbar />
         <main className="min-h-screen">
           {children}

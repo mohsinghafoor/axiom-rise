@@ -1,4 +1,70 @@
 export const productsData = [
+  {
+    title: "SOFTSHELL JACKETS",
+    description: "3-layer bonded softshells with a verified hydrostatic head rating",
+    image: "/images/products/jackets.webp",
+    slug: "softshell-jacket"
+  },
+  {
+    title: "BOMBER JACKETS",
+    description: "Nylon bomber jackets on rib knit tested for elastic recovery",
+    image: "/images/products/jackets.webp",
+    slug: "bomber-jacket"
+  },
+  {
+    title: "BUBBLE JACKETS",
+    description: "Short, rounded baffle-box builds with fill weighed per panel",
+    image: "/images/hero/leather-jacket.webp",
+    slug: "bubble-jacket"
+  },
+  {
+    title: "PUFFER JACKETS",
+    description: "Cold-rated puffers with welded seams and a disclosed fill power",
+    image: "/images/hero/varsity-jacket.webp",
+    slug: "puffer-jacket"
+  },
+  {
+    title: "LEATHER JACKETS",
+    description: "Graded hides with the tanning method disclosed on your tech pack",
+    image: "/images/hero/leather-jacket.webp",
+    slug: "leather-jacket"
+  },
+  {
+    title: "VARSITY JACKETS",
+    description: "24oz Melton wool bodies with a dedicated shoulder-seam QC check",
+    image: "/images/hero/varsity-jacket.webp",
+    slug: "varsity-jacket"
+  },
+  {
+    title: "CUSTOM SHORTS",
+    description: "Jogger, gym, denim, swim, mesh and cargo shorts built to your spec",
+    image: "/images/hero/shorts.webp",
+    slug: "shorts"
+  },
+  {
+    title: "CUSTOM HOODIES",
+    description: "Heavyweight fleece hoodies from 350 to 600 GSM, cut and sewn to your block",
+    image: "/images/hero/hoodies.webp",
+    slug: "hoodies"
+  },
+  {
+    title: "CUSTOM TRACKSUITS",
+    description: "Matching sets with ribbing, hardware and dye lots synchronised across top and bottom",
+    image: "/images/hero/sports-wear.webp",
+    slug: "tracksuits"
+  },
+  {
+    title: "CUSTOM T-SHIRTS",
+    description: "Combed ring-spun tees from 180 to 300 GSM, side-seamed and print-ready",
+    image: "/images/hero/tshirt.webp",
+    slug: "t-shirts"
+  },
+  {
+    title: "CUSTOM SWEATSHIRTS",
+    description: "320 to 600 GSM loopback, brushed and garment-dyed fleece with S-3XL grading",
+    image: "/images/hero/sweatshirt.webp",
+    slug: "sweatshirts"
+  },
   { 
     title: "JACKET MANUFACTURER", 
     description: "Quality jackets from casual to premium outerwear",
@@ -65,10 +131,10 @@ export const productsData = [
     image: "/images/hero/sweatshirt.webp",
     slug: "sweatshirt-manufacturers"
   },
-  { 
-    title: "MARTIAL ARTS CLOTHING", 
+  {
+    title: "MARTIAL ARTS CLOTHING",
     description: "Specialized martial arts uniforms and training gear",
-    image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=400&fit=crop",
+    image: "/images/products/kimono.webp",
     slug: "martial-arts-clothing"
   },
   { 
@@ -119,10 +185,10 @@ export const productsData = [
     image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&h=400&fit=crop",
     slug: "chef-uniform-manufacturer"
   },
-  { 
-    title: "SPORTS UNIFORM MANUFACTURER", 
+  {
+    title: "SPORTS UNIFORM MANUFACTURER",
     description: "Custom sports uniforms for teams and clubs",
-    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=400&fit=crop",
+    image: "/images/products/rashguard.webp",
     slug: "sports-uniform-manufacturer"
   },
   { 
@@ -180,3 +246,5 @@ export const productsData = [
     slug: "gym-bag-manufacturer"
   }
 ];
+
+export const dedicatedProductRoutes = ['softshell-jacket', 'bomber-jacket', 'bubble-jacket', 'puffer-jacket', 'leather-jacket', 'varsity-jacket', 'shorts', 'hoodies', 'tracksuits', 't-shirts', 'sweatshirts']
