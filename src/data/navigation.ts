@@ -28,6 +28,15 @@ export const productMenu: NavItem[] = [
       { label: 'Sweatshirts', href: '/products/sweatshirts' },
     ],
   },
+  {
+    label: 'Bags',
+    href: '/categories/bags',
+    children: [
+      { label: 'Canvas Tote Bags', href: '/products/canvas-tote-bags' },
+      { label: 'Cotton Tote Bags', href: '/products/cotton-tote-bags' },
+      { label: 'Leather Bags', href: '/products/leather-bags' },
+    ],
+  },
 ]
 
 export const servicesMenu: NavItem[] = [
