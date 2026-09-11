@@ -11,7 +11,11 @@ export default function BlogsSection() {
     <section className="bg-white py-20">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="down">
-          <SectionHeading title="Our Latest Blogs" />
+          <SectionHeading
+            title="Our Latest Blogs"
+            subtitle="Fabric, construction and sourcing notes from the production floor."
+            tone="navy"
+          />
         </Reveal>
 
         <div className="mt-14 grid md:grid-cols-3 gap-8">
@@ -36,7 +40,7 @@ export default function BlogsSection() {
                 <p className="mt-2 text-sm leading-relaxed text-body line-clamp-3">{post.excerpt}</p>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="mt-4 inline-block bg-white text-primary-800 border border-primary-800 font-sans text-xs uppercase tracking-[2px] rounded-card px-5 py-3 transition-colors duration-300 hover:bg-primary-600 hover:border-primary-600 hover:text-white"
+                  className="btn-pill-outline mt-4"
                 >
                   Read More
                 </Link>

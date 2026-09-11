@@ -4,16 +4,16 @@ import Reveal from '@/components/ui/Reveal'
 
 const docs = [
   {
-    title: 'COMPANY PROFILE',
+    title: 'Company Profile',
     image: '/images/services/manufacturing-excellence.webp',
     href: '/about',
-    cta: 'Learn About Us',
+    cta: 'View the Company Profile',
   },
   {
-    title: 'COMPANY PORTFOLIO',
+    title: 'Manufacturing Portfolio',
     image: '/images/services/private-label.webp',
     href: '/products',
-    cta: 'View Our Work',
+    cta: 'View the Manufacturing Portfolio',
   },
 ]
 
@@ -37,7 +37,7 @@ export default function CompanyDocs() {
                 />
                 <div className="absolute inset-0 bg-primary-800/40 group-hover:bg-primary-800/55 transition-colors duration-[600ms]" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                  <h3 className="font-display text-[24px] md:text-[31px] text-white tracking-wide">
+                  <h3 className="font-display text-[26px] leading-[1.2] text-white md:text-[34px]">
                     {doc.title}
                   </h3>
                   <span className="btn-outline-white mt-5">{doc.cta}</span>

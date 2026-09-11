@@ -55,10 +55,10 @@ export default function TrustStrip() {
               >
                 {item.icon}
                 <div>
-                  <h5 className="font-display text-[18px] md:text-[20px] font-semibold text-primary-800 leading-snug">
+                  <h5 className="font-sans text-[17px] font-semibold leading-snug tracking-normal text-primary-800 md:text-[19px]">
                     {item.title}
                   </h5>
-                  <p className="mt-1 text-sm text-ink">{item.description}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-ink/80">{item.description}</p>
                 </div>
               </div>
             </Reveal>
