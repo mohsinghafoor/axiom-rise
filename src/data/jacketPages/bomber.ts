@@ -186,7 +186,7 @@ export const bomberContent: JacketPageContent = {
           text:
             'Cheap suppliers cut this corner because rib trim is a small share of fabric cost but the most visible failure point once a collar goes slack. We test recovery on the approved Golden Sample as part of our standard ',
         },
-        { text: 'QC and inspection process', href: '/services/quality-control' },
+        { text: 'QC and inspection process', href: '/services/quality-control-and-inspection' },
         { text: ' before authorizing bulk cutting.' },
       ],
       ctaLabel: 'Inquire Now',

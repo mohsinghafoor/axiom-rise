@@ -39,6 +39,19 @@ export const manufacturingLines: ManufacturingLine[] = [
       'sweatshirts',
     ],
   },
+  {
+    slug: 'bags',
+    label: 'Bags',
+    shortName: 'Bag',
+    description:
+      'Cut-and-sew bags — heavyweight duck canvas totes, combed cotton shoppers and graded-hide leather, with load-rated handles and the material spec stated on your tech pack.',
+    bandImage: 'https://images.unsplash.com/photo-1578237493287-8d4d2b03591a?w=1920&h=1080&fit=crop',
+    slugs: [
+      'canvas-tote-bags',
+      'cotton-tote-bags',
+      'leather-bags',
+    ],
+  },
 ]
 
 export const lineForSlug = (slug: string) =>

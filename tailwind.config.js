@@ -16,6 +16,7 @@ module.exports = {
           400: '#6D8EC5',
           500: '#4272B7',
           600: '#2F5DAA',
+          650: '#1D518A',
           700: '#244C8C',
           800: '#1A3C6E',
           900: '#142E54',
@@ -31,6 +32,7 @@ module.exports = {
       },
       boxShadow: {
         card: '0 5px 60px 0 rgba(0, 0, 0, 0.10)',
+        float: '0 3px 29px 10px rgba(0, 0, 0, 0.15)',
         glow: '0 0 82px 0 rgba(0, 0, 0, 0.10)',
       },
       borderRadius: {

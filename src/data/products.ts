@@ -65,6 +65,24 @@ export const productsData = [
     image: "/images/hero/sweatshirt.webp",
     slug: "sweatshirts"
   },
+  {
+    title: "CANVAS TOTE BAGS",
+    description: "10oz to 18oz double-fill duck canvas totes with X-box stitched handles rated past 35lb",
+    image: "https://images.unsplash.com/photo-1578237493287-8d4d2b03591a?w=1200&h=900&fit=crop",
+    slug: "canvas-tote-bags"
+  },
+  {
+    title: "COTTON TOTE BAGS",
+    description: "5oz to 10oz combed cotton shoppers, cross-stitched and inspected to AQL 2.5",
+    image: "https://images.unsplash.com/photo-1574365569389-a10d488ca3fb?w=1200&h=900&fit=crop",
+    slug: "cotton-tote-bags"
+  },
+  {
+    title: "LEATHER BAGS",
+    description: "Totes, holdalls and backpacks on graded hides with the tanning method disclosed",
+    image: "https://images.unsplash.com/photo-1636098152681-ea367dcb7ca7?w=1200&h=900&fit=crop",
+    slug: "leather-bags"
+  },
   { 
     title: "JACKET MANUFACTURER", 
     description: "Quality jackets from casual to premium outerwear",
@@ -247,4 +265,4 @@ export const productsData = [
   }
 ];
 
-export const dedicatedProductRoutes = ['softshell-jacket', 'bomber-jacket', 'bubble-jacket', 'puffer-jacket', 'leather-jacket', 'varsity-jacket', 'shorts', 'hoodies', 'tracksuits', 't-shirts', 'sweatshirts']
+export const dedicatedProductRoutes = ['softshell-jacket', 'bomber-jacket', 'bubble-jacket', 'puffer-jacket', 'leather-jacket', 'varsity-jacket', 'shorts', 'hoodies', 'tracksuits', 't-shirts', 'sweatshirts', 'canvas-tote-bags', 'cotton-tote-bags', 'leather-bags']

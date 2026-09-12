@@ -21,11 +21,35 @@
 }
 
 @layer components {
+  /* Buttons — 12px uppercase, 2px tracking, 20px radius, 15px/30px padding. */
+  .btn-base {
+    @apply inline-block font-sans text-xs font-semibold uppercase tracking-[2px] leading-none rounded-card px-[30px] py-[15px] transition-colors duration-300;
+  }
+
   .btn-primary {
-    @apply inline-block bg-primary-600 text-white font-sans text-xs font-normal uppercase tracking-[2px] leading-none rounded-card px-6 py-3.5 transition-colors duration-300 hover:bg-primary-800;
+    @apply btn-base bg-primary-600 text-white hover:bg-primary-800;
+  }
+
+  /* Solid white on dark imagery — the reference's secondary hero CTA. */
+  .btn-secondary {
+    @apply btn-base bg-white text-primary-800 hover:bg-primary-800 hover:text-white;
   }
 
   .btn-outline-white {
-    @apply inline-block border border-white text-white font-sans text-xs font-normal uppercase tracking-[2px] leading-none rounded-card px-6 py-3.5 transition-colors duration-300 hover:bg-primary-800 hover:border-primary-800;
+    @apply btn-base border border-white text-white hover:bg-primary-800 hover:border-primary-800;
+  }
+
+  /* Compact pill used on cards, where the CTA sits under a block of copy. */
+  .btn-pill {
+    @apply inline-block font-sans text-[11px] font-normal uppercase tracking-[2px] leading-none rounded-card border border-primary-600 bg-primary-600 px-5 py-2.5 text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-primary-800;
+  }
+
+  .btn-pill-outline {
+    @apply inline-block font-sans text-[11px] font-normal uppercase tracking-[2px] leading-none rounded-card border border-primary-800 bg-transparent px-5 py-2.5 text-primary-800 transition-colors duration-300 hover:bg-primary-600 hover:border-primary-600 hover:text-white;
+  }
+
+  /* Small uppercase label above a section heading. */
+  .eyebrow {
+    @apply font-sans text-xs font-semibold uppercase tracking-[2px] text-primary-600;
   }
 }

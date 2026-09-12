@@ -23,7 +23,7 @@ export default function IntroSection() {
 
           <Reveal variant="right">
             <div className="bg-white/95 rounded-card shadow-card p-8 md:p-12 h-full flex flex-col justify-center text-center md:text-left">
-              <h2 className="font-display text-[20px] md:text-[27px] leading-snug text-ink">
+              <h2 className="font-display text-[22px] leading-snug text-primary-650 md:text-[30px]">
                 Are you looking to connect with the right apparel factory to take your fashion business to the next level?
               </h2>
               <p className="mt-6 text-[15px] leading-relaxed text-body">
@@ -34,12 +34,15 @@ export default function IntroSection() {
               </p>
               <p className="mt-4 text-[15px] leading-relaxed text-body">
                 We manufacture a wide range of product categories: custom jackets, hoodies, streetwear,
-                sportswear and accessories — all built to your exact spec, with low minimums and full
-                customisation on fabric, fit and branding.
+                sportswear, bags and accessories — all built to your exact spec, with low minimums and
+                full customisation on fabric, fit and branding.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
                 <Link href="/contact" className="btn-primary">
-                  Make An Enquiry
+                  Request a Free Quote
+                </Link>
+                <Link href="/about" className="btn-pill-outline self-center">
+                  About Axiom Rise
                 </Link>
               </div>
             </div>

@@ -91,8 +91,8 @@ export default function Services() {
               </h1>
               <div className="mt-5 mx-auto w-[50px] border-t border-white/70" />
               <p className="mt-5 text-base md:text-lg text-white/95 max-w-3xl mx-auto">
-                Design, sourcing, production, decoration, quality control and shipping — one factory, one
-                invoice, one point of accountability.
+                Tech packs, pattern making, prototyping, fabric sourcing, cut and sew production, decoration,
+                labelling, packaging and inspection — one factory, one invoice, one point of accountability.
               </p>
               <div className="mt-8">
                 <Link href="/contact" className="btn-primary">
@@ -159,8 +159,8 @@ export default function Services() {
             </Reveal>
             <Reveal variant="fade" delay={100}>
               <p className="mt-4 text-[15px] leading-relaxed text-white/90 text-center max-w-2xl mx-auto">
-                We run a complete supply chain operation designed to scale with your brand. Pick a single
-                service or hand us the whole chain.
+                Fourteen connected disciplines that take a design from first sketch to a barcoded carton on
+                your warehouse shelf. Take a single service, or hand us the whole chain.
               </p>
             </Reveal>
 

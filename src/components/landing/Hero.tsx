@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center pb-40">
+    <section className="relative flex min-h-[600px] items-center py-24 md:min-h-[660px] md:py-28">
       <Image
         src="/images/hero/sweatshirt.webp"
         alt="Axiom Rise clothing manufacturing"
@@ -12,25 +12,31 @@ export default function Hero() {
         priority
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Directional scrim so the left-aligned copy stays legible over the photo. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/60 to-ink/20" />
 
-      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-2xl py-24">
-          <h1
-            className="font-display text-[28px] sm:text-[34px] md:text-[44px] leading-[1.2] tracking-[-1px] text-white"
-            style={{ textShadow: '0px 0px 2px rgba(0,0,0,0.3)' }}
-          >
-            Fashion Forward: Get Expertly Crafted Clothing from a Top Clothing Manufacturer in Pakistan
+      <div className="relative z-10 mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[720px]">
+          <h1 className="font-display text-[30px] leading-[1.2] tracking-[0.5px] text-white sm:text-[38px] lg:text-[46px]">
+            Custom Clothing Manufacturer for Brands Ready to Scale
           </h1>
-          <p
-            className="mt-6 text-[17px] leading-relaxed text-white/95"
-            style={{ textShadow: '0px 0px 2px rgba(0,0,0,0.3)' }}
-          >
-            Exceptional manufacturing services for brands, businesses and stores that want 100% quality and big margins.
+
+          <p className="mt-6 text-[18px] font-medium leading-[1.35] text-white md:text-[20px]">
+            Turn your designs into production-ready apparel without managing separate pattern,
+            fabric, sampling, sewing and branding suppliers.
           </p>
-          <div className="mt-8">
+
+          <p className="mt-4 max-w-[620px] text-[15px] leading-relaxed text-white/90">
+            Axiom Rise supports startups, established labels, retailers and business buyers — from
+            first concept to approved sample, bulk production, custom packaging and delivery.
+          </p>
+
+          <div className="mt-9 flex flex-wrap gap-4">
             <Link href="/contact" className="btn-primary">
-              Make An Enquiry
+              Request a Free Quote
+            </Link>
+            <Link href="/products" className="btn-secondary">
+              Explore the Product Range
             </Link>
           </div>
         </div>

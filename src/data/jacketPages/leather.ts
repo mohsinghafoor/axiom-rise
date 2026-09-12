@@ -64,7 +64,7 @@ export const leatherContent: JacketPageContent = {
           text:
             'We state the exact grade and tanning method on your tech pack before sampling, and every hide is ',
         },
-        { text: 'manually graded', href: '/services/quality-control' },
+        { text: 'manually graded', href: '/services/pattern-making-and-grading' },
         {
           text:
             ' before cutting. A visible scar or inconsistent dye lot gets pulled and replaced, not bundled in to hit a quantity target.',

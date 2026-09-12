@@ -20,11 +20,11 @@ export default function FAQ({
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="right">
           <div className="max-w-4xl mx-auto">
-            <h3 className="font-display text-[24px] md:text-[31px] leading-[1.3] text-ink">
+            <h2 className="text-center font-display text-[26px] leading-[1.2] tracking-[0.7px] text-ink md:text-[40px]">
               {title}
-            </h3>
+            </h2>
 
-            <div className="mt-8">
+            <div className="mt-10">
               {items.map((faq, index) => {
                 const isOpen = openIndex === index
                 return (

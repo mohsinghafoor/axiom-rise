@@ -7,7 +7,7 @@ export const faqs: Faq[] = [
   {
     question: "What is Axiom Rise's minimum order quantity?",
     answer:
-      "10 units per style and colour. That applies to every product category — jackets, streetwear, sportswear and accessories. Whether you are placing your first capsule order or your fiftieth restock, the same low MOQ keeps your inventory risk manageable.",
+      "10 units per style and colour. That applies to every product category — jackets, streetwear, sportswear, bags and accessories. Whether you are placing your first capsule order or your fiftieth restock, the same low MOQ keeps your inventory risk manageable.",
   },
   {
     question: 'How much does it cost to manufacture custom clothing in Pakistan?',

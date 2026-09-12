@@ -16,7 +16,11 @@ function Stars({ count }: { count: number }) {
   )
 }
 
-export default function Testimonials() {
+interface TestimonialsProps {
+  title?: string
+}
+
+export default function Testimonials({ title = 'Feedback From Clothing Buyers' }: TestimonialsProps) {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
@@ -32,9 +36,9 @@ export default function Testimonials() {
     <section className="bg-white py-20">
       <div className="max-w-[720px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <Reveal variant="down">
-          <h6 className="font-display text-sm uppercase tracking-[2px] text-primary-600">Testimonial</h6>
-          <h2 className="mt-3 font-display text-[28px] md:text-[39px] leading-tight text-ink">
-            Customer Feedback
+          <p className="eyebrow">Testimonial</p>
+          <h2 className="mt-3 font-display text-[28px] leading-[1.2] tracking-[0.7px] text-ink md:text-[40px]">
+            {title}
           </h2>
           <div className="mt-5">
             <Stars count={current.rating} />
